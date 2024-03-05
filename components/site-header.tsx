@@ -11,6 +11,7 @@ import { MainNav } from "@/components/main-nav"
 import { ThemeToggle } from "@/components/theme-toggle"
 
 export function SiteHeader() {
+  const {cartCount }= useShoppingCart()
 
   const pathname =  usePathname()
   const router = useRouter()
@@ -18,7 +19,6 @@ export function SiteHeader() {
   const defaultSearch = searchParams.get("search") ?? ""
   if(pathname.startsWith("/studio")) return null
 
-  const {cartCount }= useShoppingCart()
   function onSubmit(event:React.SyntheticEvent<HTMLFormElement>) {
 
     event.preventDefault()
