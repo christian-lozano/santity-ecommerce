@@ -19,6 +19,11 @@ export const product = defineType ({
         }
       },
       {
+        name:"genero",
+        title:"Genero",
+        type:"string"
+      },
+      {
         name:"images",
         title:"Images",
         type:"array",
@@ -29,6 +34,29 @@ export const product = defineType ({
         title:"categories",
         type:"array",
         of:[{type:"string"}]
+      },
+      {
+        name: "tallas",
+        title: "Tallas",
+        type: "array",
+        of: [
+          {
+            type: "object",
+            name: "Tallas y Stock ",
+            fields: [
+              {
+                title: 'Talla',
+                name: 'talla',
+                type: 'string'
+              },
+              {
+                title: 'Stock',
+                name: 'stock',
+                type: 'number'
+              }
+            ]
+          }
+        ]
       },
       {
         name:"sku",

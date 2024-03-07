@@ -46,6 +46,8 @@ export function ProductGrid({products}:Props) {
             />
           </div>
           <h3 className="mt-4 font-medium">{product.name}</h3>
+          {/* <h3 className="mt-4 font-medium">{product.genero}</h3> */}
+
           <p className="mt-2 font-medium">{formatCurrencyString({currency: product.currency , value:product.price})}</p>
         </Link>
       ))}

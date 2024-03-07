@@ -15,11 +15,22 @@ const filters = [
     id: "category",
     name: "Category",
     options: [
-      { value: "bags", label: "Bags" },
-      { value: "belts", label: "Belts" },
-      { value: "gloves", label: "Gloves" },
+      { value: "calzado", label: "calzado" },
+      { value: "zapatillas", label: "zapatillas" },
+      { value: "hombre", label: "hombre" },
       { value: "scarves", label: "Scarves" },
       { value: "wallets", label: "Wallets" },
+    ],
+  },
+  {
+    id: "genero",
+    name: "Genero",
+    options: [
+      { value: "hombre", label: "Hombre" },
+      { value: "mujer", label: "Mujer" },
+      { value: "niños", label: "Niños" },
+      { value: "niño", label: "Niño" },
+      { value: "niña", label: "Niña" },
     ],
   },
   {
@@ -62,29 +73,42 @@ export function ProductFilters() {
               <span>
                 {section.name}
                 <span className="ml-1 text-xs font-extrabold uppercase text-gray-400">
-                  {searchParams.get(section.id) ? `(${searchParams.get(section.id)})` : ""}
+                  {searchParams.get(section.id)
+                    ? `(${searchParams.get(section.id)})`
+                    : ""}
                 </span>
               </span>
             </AccordionTrigger>
             <AccordionContent>
               <div className="space-y-4">
-                {section.options.map((option,optionIdx) => (
+                {section.options.map((option, optionIdx) => (
                   <div
                     key={option.value}
                     className="flex items-center space-x-2"
                   >
                     <Checkbox
-                     id={`filter-${section.id}-${optionIdx}`} 
-                     checked={searchValues.some(([key,value]) => key === section.id && value === option.value)}
+                      id={`filter-${section.id}-${optionIdx}`}
+                      checked={searchValues.some(
+                        ([key, value]) =>
+                          key === section.id && value === option.value
+                      )}
                       onClick={(event) => {
-                    const params =  new URLSearchParams(searchParams.toString());
-                    const checked =   event.currentTarget.dataset.state === "checked";
-                    checked ? params.delete(section.id):params.set(section.id,option.value)
+                        const params = new URLSearchParams(
+                          searchParams.toString()
+                        )
+                        const checked =
+                          event.currentTarget.dataset.state === "checked"
+                        checked
+                          ? params.delete(section.id)
+                          : params.set(section.id, option.value)
 
-                    router.replace(`/?${params.toString()}`)
-
-                    }}/>
-                    <label htmlFor={`filter-${section.id}-${optionIdx}`} className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                        router.replace(`/?${params.toString()}`)
+                      }}
+                    />
+                    <label
+                      htmlFor={`filter-${section.id}-${optionIdx}`}
+                      className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                    >
                       {option.value}
                     </label>
                   </div>

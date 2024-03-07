@@ -16,9 +16,13 @@ interface Props {
 
 export function ProductInfo({product}:Props) {
 
-  const {addItem,incrementItem,cartDetails} = useShoppingCart()
-  const [selectSize, setSelectSize] = useState(product.sizes[0])
 
+  
+  const {addItem,incrementItem,cartDetails} = useShoppingCart()
+
+  const [selectSize, setSelectSize] = useState(product.tallas[0].talla)
+
+    
   const {toast }= useToast()
  
   const isInCart = !!cartDetails?.[product._id]
@@ -32,7 +36,7 @@ export function ProductInfo({product}:Props) {
     }
     isInCart ? incrementItem(item._id) : addItem(item)
     toast({
-      title:`${item.name} (${getSizeName(selectSize)})`,
+      title:`${item.name} (${selectSize})`,
       description:"Product added to cart",
       action:(
         <Link href={"/cart"}>
@@ -61,11 +65,11 @@ export function ProductInfo({product}:Props) {
 
       <div className="mt-4">
         <p>
-          Size: <strong>{getSizeName(selectSize)}</strong>
+          Size: <strong>{selectSize}</strong>
         </p>
-        {product.sizes.map((size) => (
-          <Button onClick={()=>setSelectSize(size)} key={size} variant={selectSize === size ? "default" : "outline"}  className="mr-2 mt-4">
-           { getSizeName(size)}
+        {product.tallas.map(({talla,stock}) => (
+          <Button onClick={()=>setSelectSize(talla)} key={talla} disabled={stock <= 0 && true} variant={selectSize === talla ? "default" : "outline"}  className={ `${stock <= 0 && "line-through"} mr-2 mt-4`} >
+             {talla}
           </Button>
         ))}
       </div>

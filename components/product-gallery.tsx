@@ -11,6 +11,8 @@ interface Props {
 }
 
 export function ProductGallery({product}:Props) {
+  console.log(product);
+  
   const [selectedImage, setSetselectedImage] = useState(0)
   return (
     <div className="flex flex-col-reverse">

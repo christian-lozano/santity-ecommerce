@@ -25,6 +25,7 @@ export default async function Page({params} : Props) {
     sizes,
     categories,
     colors,
+    tallas,
     "slug":slug.current
 
   }`)

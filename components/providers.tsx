@@ -14,7 +14,7 @@ export function Providers({ children }: Props) {
   return <CartProvider currency="PEN" shouldPersist cartMode="checkout-session" stripe="" >
     <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
       <Toaster/>
-    {children}
+         {children}
       <TailwindIndicator/>
     </ThemeProvider>
     </CartProvider>
