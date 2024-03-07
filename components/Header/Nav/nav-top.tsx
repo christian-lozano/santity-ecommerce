@@ -33,7 +33,7 @@ export default function NavTop({ children }: Props) {
               className=" absolute  right-5 top-3 xl:right-[35%] "
               onClick={() => setActiveSearch(!search)}
             >
-              <X className={"h-4 w-4 text-white xl:h-5 xl:w-5"} />
+              <X className={"w-18 h-8 text-white"} />
             </button>
           </div>
         }
@@ -51,14 +51,14 @@ export default function NavTop({ children }: Props) {
               size="sm"
               variant="ghost"
             >
-              <Search className={"h-4 w-4 xl:h-5 xl:w-5"} />
+              <Search className={"h-5 xl:w-5"} />
               <span className="sr-only">Buscar</span>
             </Button>
 
             {/* icono carrito */}
             <Link href="/cart">
               <Button size="sm" variant="ghost">
-                <ShoppingBag className="h-4 w-4 xl:h-5 xl:w-5" />
+                <ShoppingBag className="h-5 w-5" />
                 <span className="ml-2 text-sm font-bold">{cartCount}</span>
                 <span className="sr-only">Cart</span>
               </Button>
@@ -67,7 +67,7 @@ export default function NavTop({ children }: Props) {
             {process.env.NODE_ENV === "development" && (
               <Link href={"/studio"}>
                 <Button size={"sm"} variant={"ghost"}>
-                  <Edit className="h-4 w-4 xl:h-5 xl:w-5" />
+                  <Edit className="h-5 w-5" />
                 </Button>
               </Link>
             )}
