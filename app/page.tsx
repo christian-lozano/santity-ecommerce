@@ -74,10 +74,10 @@ export default async function Page({ searchParams }: Props) {
             props={{
               title: "Men and Women",
               subtitle: "Shop men and women clothing!",
-              type2: "Men",
+              type2: "Hombre",
               link2: "men",
               img2: "https://i.imgur.com/O9BRrNL.jpg",
-              type1: "Women",
+              type1: "Mujer",
               link1: "women",
               img1: "https://i.imgur.com/J1K8pVr.jpg",
             }}
