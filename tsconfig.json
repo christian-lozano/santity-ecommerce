@@ -25,6 +25,12 @@
     "strictNullChecks": true,
     "target": "ES2017"
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "components/Typeandtype/Typeandtype.jsx"
+, "components/product/product.js"  ],
   "exclude": ["node_modules"]
 }

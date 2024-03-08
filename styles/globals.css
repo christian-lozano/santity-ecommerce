@@ -295,3 +295,42 @@ select:focus {
   outline-offset: 0px !important;
   box-shadow: none !important;
 }
+.button-contianer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.img-container {
+  display: flex;
+  overflow: hidden;
+  width: 100%;
+  border: 5px solid #ffffff;
+  border-radius: 10px;
+}
+
+.img-container div {
+  width: 105rem;
+}
+
+.slider {
+  margin: 0 20px;
+  overflow: "hidden";
+  padding: 2rem 0;
+}
+
+.slider img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.react-multi-carousel-list {
+  padding: 0rem 0 2rem 0;
+}
+
+.custom-dot-list-style button {
+  border: none;
+  background: rgb(255, 68, 68);
+}
+.react-multi-carousel-dot.react-multi-carousel-dot--active button {
+  background: rgb(255, 68, 68) !important;
+}
