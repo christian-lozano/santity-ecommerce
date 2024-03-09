@@ -441,6 +441,7 @@ const CarouselProduct = () => {
         slideBackgroundColor="darkgrey"
         slideImageFit="cover"
         dotListClass="custom-dot-list-style"
+     
       >
         {products.map((el, index) => (
           <Product products={el} />

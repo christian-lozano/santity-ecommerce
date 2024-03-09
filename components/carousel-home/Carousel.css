@@ -1,6 +1,6 @@
 .carouselbanner {
   height: 75vh;
-  min-height: 400px
+  min-height: 400px;
 }
 .progress {
   height: 2px;
@@ -8,40 +8,41 @@
 }
 .progress > div {
   position: absolute;
-  background-color:var(--theme-color);
+  background-color: var(--theme-color);
   height: 100%;
   width: 0;
 }
 .progress .activeprogress {
   width: 100%;
-  transition: linear
+  transition: linear;
 }
 .carouselcontrols {
-  z-index: 999;
+  /* z-index: 999; */
   display: flex;
   width: 100%;
   position: absolute;
   bottom: 0;
   gap: 35px;
   padding: 20px 10%;
-  font-weight: bold; 
+  font-weight: bold;
   justify-content: center;
 }
 .carouselcontrols span {
   cursor: pointer;
-  transition: all 0.3s
+  transition: all 0.3s;
 }
 
-.carouselcontrols .activecarouselitem .butt svg, .carouselcontrols .but:hover {
+.carouselcontrols .activecarouselitem .butt svg,
+.carouselcontrols .but:hover {
   color: var(--theme-color);
   color: rgb(0, 204, 255);
 }
 
-.butt{
+.butt {
   width: 5rem;
   /* background-color: aqua; */
 }
-.butt svg{
+.butt svg {
   color: black;
   /* background-color: aqua; */
 }

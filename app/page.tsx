@@ -67,9 +67,9 @@ export default async function Page({ searchParams }: Props) {
         <h1 className="text-4xl font-extrabold tracking-normal">{siteConfig.name}</h1>
         <p className="mx-auto mt-4 max-w-3xl text-base">{siteConfig.description}</p>
       </div> */}
-      <Carousel></Carousel>
+      <Carousel />
       <div>
-        <main className="container  px-6">
+        <main className=" container xl:px-6">
           <Typeandtype
             props={{
               title: "Men and Women",

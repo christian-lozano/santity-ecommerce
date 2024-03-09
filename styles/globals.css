@@ -313,7 +313,7 @@ select:focus {
 }
 
 .slider {
-  margin: 0 20px;
+  margin: 20px;
   overflow: "hidden";
   padding: 2rem 0;
 }
@@ -324,7 +324,7 @@ select:focus {
 }
 
 .react-multi-carousel-list {
-  padding: 0rem 0 2rem 0;
+  padding: 5rem 0 2rem 0;
 }
 
 .custom-dot-list-style button {
@@ -333,4 +333,13 @@ select:focus {
 }
 .react-multi-carousel-dot.react-multi-carousel-dot--active button {
   background: rgb(255, 68, 68) !important;
+}
+
+.react-multi-carousel-item {
+  /* width: 225px !important; */
+  display: flex;
+  justify-content: center;
+  align-content: center;
+
+  margin: 0rem;
 }
