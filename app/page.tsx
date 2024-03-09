@@ -84,6 +84,7 @@ export default async function Page({ searchParams }: Props) {
           >
             <CarouselProduct />
           </Typeandtype>
+          <CarouselProduct />
 
           <section
             aria-labelledby="products-heading"

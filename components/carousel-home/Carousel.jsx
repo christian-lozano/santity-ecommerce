@@ -5,7 +5,6 @@ import React, { useEffect, useState } from "react"
 import Slide from "./Slide/Slide"
 import "./Carousel.css"
 
-
 const Carousel = (props) => {
   const slides = [
     {
@@ -43,7 +42,7 @@ const Carousel = (props) => {
   const slidesrow = slides?.map((slide, i) => {
     return (
       <Slide
-        className={`slide ${slide.class} ${
+        className={`slide  ${slide.class} ${
           pos % slides.length === i && "active"
         }`}
         slide={slide}
@@ -168,7 +167,6 @@ const Carousel = (props) => {
           </div>
         </div>
       </div>
-
     </>
   )
 }
