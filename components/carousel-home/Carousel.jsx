@@ -20,7 +20,7 @@ const Carousel = (props) => {
       subtitle: "Shop exclusive ladies bags now on ShopiumX",
       title: "LADIES BAGS",
       link: "/shop/bags",
-      img: "https://i.imgur.com/h0EVY1R.jpg",
+      img: "https://imgur.com/O9BRrNL.jpg",
       position: 2,
       img2: "https://res.cloudinary.com/da868wsih/image/upload/v1709318809/fritz_sport/ecommerce/home/slider_desktop/1_sctc0r.png",
       class: "leftimg",

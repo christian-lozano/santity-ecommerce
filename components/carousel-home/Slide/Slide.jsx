@@ -17,8 +17,8 @@ const Slide = (props) => {
       )}
       <div className="slidecont">
         <div className="slidetitles">
-          <h3 className="text-black">{subtitle}</h3>
-          <h1 className="text-black">{title}</h1>
+          <h3 className="text-white">{subtitle}</h3>
+          <h1 className="text-white">{title}</h1>
         </div>
         <Link href={"/website/" + link}>
           <Appbtn text={btntext} icon="fal fa-chevron-right" />
