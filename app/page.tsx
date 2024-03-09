@@ -69,7 +69,7 @@ export default async function Page({ searchParams }: Props) {
       </div> */}
       <Carousel />
       <div>
-        <main className=" container xl:px-6">
+        <main className=" xl:container xl:px-6">
           <Typeandtype
             props={{
               title: "Men and Women",
