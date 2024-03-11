@@ -15,7 +15,7 @@ interface InventoryProduct {
   genero: string
   tallas: ApiData[]
 }
-interface InventoryHeader {
+interface InventorySlider {
   id: string
   name: string
   image: string
@@ -41,7 +41,12 @@ export interface SanityProduct extends Omit<InventoryProduct, "images"> {
   slug: string
   images: Image[]
 }
-
+export interface SanitySlider extends Omit<InventorySlider, "images"> {
+  _id: string
+  _createdAt: Date
+  slug: string
+  images: Image[]
+}
 export const inventory: InventoryProduct[] = [
   // {
   //   id: "64da6006-a4bb-4555-af78-3467853eb75e",
@@ -188,7 +193,6 @@ export const inventory: InventoryProduct[] = [
   //   categories: ["sunglasses"],
   //   colors: ["yellow"],
   //   currency: "USD",
-
   //   genero: "hombre",
   // },
   // {

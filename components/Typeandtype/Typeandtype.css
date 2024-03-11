@@ -5,15 +5,15 @@
 }
 .typeandtype > h2 {
   text-align: center;
-  margin-bottom: 30px
+  margin-bottom: 30px;
 }
 .typeandtype .types {
   display: flex;
   flex-direction: column;
-  gap: 20px
+  gap: 20px;
 }
 .scrollcont {
-  height: 400px
+  height: 400px;
 }
 .containertype {
   display: flex;
@@ -25,36 +25,35 @@
   left: 50%;
   transform: translateX(-50%);
   width: 1100px;
-  margin-top: 50px
+  margin-top: 50px;
 }
 .typeandtype .horizontal-menu {
   width: 1100px;
   max-width: 95%;
   left: 50%;
-  transform: translateX(-50%)
+  transform: translateX(-50%);
 }
 .horizontal-menu {
-  width: 100%
+  width: 100%;
 }
 .horizontal-menu .product {
-  margin: 0 10px
+  margin: 0 10px;
 }
 .containertype:nth-of-type(odd) {
-  flex-direction: row-reverse
+  flex-direction: row-reverse;
 }
 
 .containertype .products {
   display: grid;
   grid-template-columns: repeat(100, 1fr);
   overflow-x: scroll;
-  justify-content: flex-start
+  justify-content: flex-start;
 }
 .productscarousel {
   display: inline-flex;
   overflow-y: hidden;
-  padding: 0 30px
+  padding: 0 30px;
 }
-
 
 .products::-webkit-scrollbar {
   height: 0px;
@@ -74,26 +73,26 @@
   padding: 20px;
 }
 .framecont h2 {
-  font-size: 30px
+  font-size: 30px;
 }
 .framecont h4 {
   color: var(--gray-text);
-  font-size: 20px
+  font-size: 20px;
 }
 .framecont button {
   margin-top: 15px;
 }
-.framecont button:hover i{
-  margin-left: 25px
+.framecont button:hover i {
+  margin-left: 25px;
 }
-.frame img{
+.frame img {
   width: 100%;
   height: 100%;
 }
-.Men.containertype .frame{
-  color: #fff
+.Men.containertype .frame {
+  color: #fff;
 }
 .Men.containertype button {
   background-color: #fff;
-  color: #000
+  color: #000;
 }

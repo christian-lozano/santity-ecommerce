@@ -10,20 +10,23 @@ const Typeandtype = ({ props, children }) => {
       <div className="types">
         <Containertype
           limit={12}
+          slider={children}
           // products={allproducts.filter((x) => x.type === type1)}
           link={`shop/${link1}`}
           img={img1}
           title={type1}
-          subtitle="Products"
+          subtitle="Productos"
         />
-        {children}
+
         <Containertype
           limit={10}
+          slider={children}
+
           // products={allproducts.filter((x) => x.type === type2)}
           link={`shop/${link2}`}
           img={img2}
           title={type2}
-          subtitle="Products"
+          subtitle="Productos"
         />
       </div>
     </div>

@@ -1,9 +1,8 @@
-
 .switchdiv {
-  justify-content: space-between
+  justify-content: space-between;
 }
 .switchdiv.flexrow {
-  display: flex
+  display: flex;
 }
 .form-switch {
   display: inline-block;

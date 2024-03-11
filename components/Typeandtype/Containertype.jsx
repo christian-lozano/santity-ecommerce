@@ -3,11 +3,10 @@
 import React from "react"
 import Link from "next/link"
 
-
 import Appbtn from "@/components/carousel-home/Appbtn/Appbtn"
 
 const Containertype = (props) => {
-  const { img, title, subtitle, link, products, limit } = props
+  const { img, title, subtitle, link, products, limit, slider } = props
   // const productsrow = products?.slice(0, limit).map((product, i) => {
   //   return <Product product={product} key={product.id} />
   // })
@@ -22,7 +21,7 @@ const Containertype = (props) => {
             <h4>{subtitle}</h4>
             <Link href={`/website/${link}`}>
               <Appbtn
-                text={"View Products"}
+                text={"Ver Productos"}
                 icon="fal fa-chevron-right"
                 className="reverse"
               />
@@ -31,6 +30,7 @@ const Containertype = (props) => {
           <img src={img} alt="" />
         </div>
       </div>
+      {slider}
       {/* <Horizontalscroll /> */}
     </>
   )

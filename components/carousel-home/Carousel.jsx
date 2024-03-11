@@ -5,11 +5,12 @@ import React, { useEffect, useState } from "react"
 import Slide from "./Slide/Slide"
 import "./Carousel.css"
 
-const Carousel = (props) => {
+const Carousel = ({ dataSlider }) => {
+  // console.log(dataSlider.slider)
   const slides = [
     {
-      subtitle: "Shop Trending T-Shirts that are now on sale!",
       title: "T-SHIRTS SALE",
+      subtitle: "Shop Trending T-Shirts that are now on sale!",
       link: "/shop/shirts/sales",
       img: "https://i.imgur.com/0ASbjos.jpg",
       position: 1,
@@ -17,8 +18,8 @@ const Carousel = (props) => {
       btntext: "Shop Now",
     },
     {
-      subtitle: "Shop exclusive ladies bags now on ShopiumX",
       title: "LADIES BAGS",
+      subtitle: "Shop exclusive ladies bags now on ShopiumX",
       link: "/shop/bags",
       img: "https://imgur.com/O9BRrNL.jpg",
       position: 2,
@@ -36,14 +37,15 @@ const Carousel = (props) => {
     //      btntext: 'Discover Now'
     //    }
   ]
+
   const [timeduration] = useState(8000)
   const [play, setPlay] = useState(true)
   const [pos, setPos] = useState(0)
-  const slidesrow = slides?.map((slide, i) => {
+  const slidesrow = dataSlider.slider?.map((slide, i) => {
     return (
       <Slide
         className={`slide  ${slide.class} ${
-          pos % slides.length === i && "active"
+          pos % dataSlider.slider.length === i && "active"
         }`}
         slide={slide}
         pos={pos}
@@ -159,7 +161,6 @@ const Carousel = (props) => {
                 </svg>
               )}
             </button>
-
             <i
               onClick={() => setPlay(!play)}
               className={play ? "fal fa-pause" : "fal fa-play"}

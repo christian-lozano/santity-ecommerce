@@ -1,6 +1,6 @@
 "use client"
 
-import { NavLogo } from "@/components/Header/Nav/nav-logo"
+import { Logo } from "@/components/logo/logo"
 
 import { NavNavigation } from "./Nav/nav-navigation"
 import NavSearch from "./Nav/nav-search"
@@ -14,7 +14,7 @@ export function SiteHeader() {
       </NavTop>
       <div className=" max-w-6/6 mx-auto hidden   h-16 items-center justify-around  space-x-4 px-6 sm:space-x-0 xl:flex">
         <NavNavigation>
-          <NavLogo />
+          <Logo />
         </NavNavigation>
       </div>
     </header>

@@ -3,7 +3,7 @@ import Link from "next/link"
 import { siteConfig } from "@/config/site"
 import { Icons } from "@/components/icons"
 
-export function NavLogo() {
+export function Logo() {
   return (
     <div className=" mr-8 flex gap-6 md:gap-10">
       <Link href="/" className="flex items-center space-x-2">

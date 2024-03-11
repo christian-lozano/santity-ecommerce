@@ -31,6 +31,6 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "components/Typeandtype/Typeandtype.jsx"
-, "components/product/product.js"  ],
+, "components/product/product.js", "components/benefits/Benefit.jsx"  ],
   "exclude": ["node_modules"]
 }

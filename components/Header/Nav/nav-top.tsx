@@ -6,7 +6,7 @@ import { Edit, Search, ShoppingBag, X } from "lucide-react"
 import { useShoppingCart } from "use-shopping-cart"
 
 import { Button } from "@/components/ui/button"
-import { NavLogo } from "@/components/Header/Nav/nav-logo"
+import { Logo } from "@/components/logo/logo"
 import { ThemeToggle } from "@/components/theme-toggle"
 
 interface Props {
@@ -39,7 +39,7 @@ export default function NavTop({ children }: Props) {
         }
       </div>
       <div className="xl:hidden">
-        <NavLogo />
+        <Logo />
       </div>
       <div className="xl:flex xl:w-full   xl:justify-end  ">
         <div className=" xl:mr-36">
