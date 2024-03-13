@@ -20,7 +20,7 @@ export default function SemiFiltroHome({ dataSemifiltroHome }) {
           <div className="mt-3 flex h-full w-full flex-col justify-start xl:mt-0">
             <img src={el.img} alt="" width={350} height={350} className="" />
             <div className="flex flex-col  justify-center xl:block">
-              <h3 className="text-bold   text-2xl font-extrabold capitalize">
+              <h3 className="text-bold py-2 text-center  font-extrabold  capitalize xl:text-2xl">
                 {el.title}
               </h3>
 

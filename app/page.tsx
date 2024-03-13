@@ -239,6 +239,7 @@ export default async function Page({ searchParams }: Props) {
 
       <div className="conta">
         <Carousel dataSlider={slider[0]} />
+
         <HombreMujer />
         <MainFiltroGenero dataSemifiltroHome={dataSemifiltroHome} />
         <main className=" xl:px-6">
@@ -280,7 +281,32 @@ export default async function Page({ searchParams }: Props) {
           >
             <CarouselProduct products={productosNinos} />
           </Typeandtype> */}
-
+          <video
+            muted={true}
+            webkit-playsinline={true}
+            playsInline={true}
+            preload="auto"
+            autoPlay={true}
+            loop={true}
+            className="laptop:h-full hidden  w-[100vw] xl:block"
+          >
+            <source
+              src="https://cdn.shopify.com/videos/c/o/v/871dfa3ffa8e481087be3e5ae964adfe.mp4"
+              type="video/mp4"
+            />
+            <track
+              src="captions_en.vtt"
+              kind="captions"
+              srcLang="en"
+              label="english_captions"
+            />
+            <track
+              src="captions_es.vtt"
+              kind="captions"
+              srcLang="es"
+              label="spanish_captions"
+            />
+          </video>
           <section
             aria-labelledby="products-heading"
             className="flex pb-24 pt-6"

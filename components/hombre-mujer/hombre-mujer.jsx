@@ -4,8 +4,6 @@ import React from "react"
 
 import Appbtn from "../carousel-home/Appbtn/Appbtn"
 
-
-
 export default function HombreMujer() {
   return (
     <>
@@ -20,7 +18,9 @@ export default function HombreMujer() {
 
             <div className="opacidad-container  absolute flex    h-full w-full items-end justify-center ">
               <div className="absolute bottom-0 flex w-5/6 items-center justify-between  ">
-                <h4 className=" text-5xl font-extrabold text-white">Mujer</h4>
+                <h5 className="text-2xl font-extrabold text-white xl:text-5xl">
+                  Mujer
+                </h5>
                 <Appbtn
                   text={"Comprar"}
                   icon="fal fa-chevron-right"
@@ -38,7 +38,9 @@ export default function HombreMujer() {
 
             <div className="opacidad-container  absolute flex    h-full w-full items-end justify-center ">
               <div className="absolute bottom-0 flex w-5/6 items-center justify-between  ">
-                <h4 className=" text-5xl font-extrabold text-white">Hombre</h4>
+                <h5 className=" text-2xl font-extrabold text-white xl:text-5xl">
+                  Hombre
+                </h5>
                 <Appbtn
                   text={"Comprar"}
                   icon="fal fa-chevron-right"

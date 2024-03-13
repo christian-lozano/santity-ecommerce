@@ -26,7 +26,7 @@ export default function Cabecera({ dataCabeceraTab, handler }) {
             >
               <button
                 onClick={() => handleClick(el.titulo, i)}
-                className={`inline-block text-xl font-extrabold`}
+                className={`inline-block font-extrabold xl:text-xl`}
                 id="profile-tab"
                 data-tabs-target="#profile"
                 type="button"
