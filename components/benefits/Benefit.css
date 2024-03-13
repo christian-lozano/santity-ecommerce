@@ -6,8 +6,9 @@
   padding: 20px 15px;
   height: 150px;
   max-width: 100%;
+  margin: 60px 0px;
 
-  border-radius: 4px;
+  border-left: 0.1px solid black;
   transition: all 0.3s;
 }
 .benefit h3 {

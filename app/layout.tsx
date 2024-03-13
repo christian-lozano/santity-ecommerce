@@ -14,6 +14,8 @@ import { SiteHeader } from "@/components/Header/site-header"
 import { Providers } from "@/components/providers"
 import { SiteBlob } from "@/components/site-blob"
 
+
+
 export const metadata: Metadata = {}
 
 interface RootLayoutProps {

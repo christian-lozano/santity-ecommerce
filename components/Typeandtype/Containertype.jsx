@@ -6,7 +6,8 @@ import Link from "next/link"
 import Appbtn from "@/components/carousel-home/Appbtn/Appbtn"
 
 const Containertype = (props) => {
-  const { img, title, subtitle, link, products, limit, slider } = props
+  const { img, title, subtitle, link, products, limit, slider, textcolor } =
+    props
   // const productsrow = products?.slice(0, limit).map((product, i) => {
   //   return <Product product={product} key={product.id} />
   // })
@@ -17,8 +18,8 @@ const Containertype = (props) => {
       <div className={`${title} containertype`}>
         <div className="frame">
           <div className="framecont">
-            <h2>{title}</h2>
-            <h4>{subtitle}</h4>
+            <h2 className={`text-${textcolor}`}>{title}</h2>
+            <h4 className={`text-${textcolor}`}>{subtitle}</h4>
             <Link href={`/website/${link}`}>
               <Appbtn
                 text={"Ver Productos"}
@@ -30,7 +31,6 @@ const Containertype = (props) => {
           <img src={img} alt="" />
         </div>
       </div>
-      {slider}
       {/* <Horizontalscroll /> */}
     </>
   )

@@ -2,7 +2,7 @@ import Containertype from "./Containertype"
 import "./Typeandtype.css"
 
 const Typeandtype = ({ props, children }) => {
-  const { title, subtitle, type1, img1, link1, type2, img2, link2 } = props
+  const { title, subtitle, type, img, link, textcolor } = props
 
   return (
     <div className="typeandtype">
@@ -11,24 +11,15 @@ const Typeandtype = ({ props, children }) => {
         <Containertype
           limit={12}
           slider={children}
+          textcolor={textcolor}
           // products={allproducts.filter((x) => x.type === type1)}
-          link={`shop/${link1}`}
-          img={img1}
-          title={type1}
-          subtitle="Productos"
-        />
-
-        <Containertype
-          limit={10}
-          slider={children}
-
-          // products={allproducts.filter((x) => x.type === type2)}
-          link={`shop/${link2}`}
-          img={img2}
-          title={type2}
+          link={`shop/${link}`}
+          img={img}
+          title={type}
           subtitle="Productos"
         />
       </div>
+      {children}
     </div>
   )
 }

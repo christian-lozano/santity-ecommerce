@@ -14,38 +14,34 @@ interface Props {
   product: SanityProduct
 }
 
-export function ProductInfo({product}:Props) {
-
-
-  
-  const {addItem,incrementItem,cartDetails} = useShoppingCart()
+export function ProductInfo({ product }: Props) {
+  const { addItem, incrementItem, cartDetails } = useShoppingCart()
 
   const [selectSize, setSelectSize] = useState(product.tallas[0].talla)
 
-    
-  const {toast }= useToast()
- 
+  const { toast } = useToast()
+
   const isInCart = !!cartDetails?.[product._id]
 
   function addToCart() {
     const item = {
       ...product,
-      product_data:{
-        size:selectSize
-      }
+      product_data: {
+        size: selectSize,
+      },
     }
     isInCart ? incrementItem(item._id) : addItem(item)
     toast({
-      title:`${item.name} (${selectSize})`,
-      description:"Product added to cart",
-      action:(
+      title: `${item.name} (${selectSize})`,
+      description: "Product added to cart",
+      action: (
         <Link href={"/cart"}>
-            <Button variant={"link"} className="gap-x-5 whitespace-nowrap">
-              <span>Open Cart</span>
-              <ArrowRight className="h-5 w-5"/>
-            </Button>
+          <Button variant={"link"} className="gap-x-5 whitespace-nowrap">
+            <span>Open Cart</span>
+            <ArrowRight className="h-5 w-5" />
+          </Button>
         </Link>
-      )
+      ),
     })
   }
 
@@ -55,7 +51,7 @@ export function ProductInfo({product}:Props) {
 
       <div className="mt-3">
         <h2 className="sr-only">Product information</h2>
-        <p className="text-3xl tracking-tight">{formatCurrencyString({value:product.price , currency: product.currency})}</p>
+        <p className="text-3xl tracking-tight">S/{product.currency}</p>
       </div>
 
       <div className="mt-6">
@@ -67,9 +63,15 @@ export function ProductInfo({product}:Props) {
         <p>
           Size: <strong>{selectSize}</strong>
         </p>
-        {product.tallas.map(({talla,stock}) => (
-          <Button onClick={()=>setSelectSize(talla)} key={talla} disabled={stock <= 0 && true} variant={selectSize === talla ? "default" : "outline"}  className={ `${stock <= 0 && "line-through"} mr-2 mt-4`} >
-             {talla}
+        {product.tallas.map(({ talla, stock }) => (
+          <Button
+            onClick={() => setSelectSize(talla)}
+            key={talla}
+            disabled={stock <= 0 && true}
+            variant={selectSize === talla ? "default" : "outline"}
+            className={`${stock <= 0 && "line-through"} mr-2 mt-4`}
+          >
+            {talla}
           </Button>
         ))}
       </div>

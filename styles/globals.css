@@ -132,6 +132,16 @@ a {
   margin: 0;
   padding: 0;
 }
+.opacidad-container {
+  background-color: #1d1d1d5a;
+  padding-bottom: 30px;
+}
+.opacidad-container h4 {
+  font-size: 3rem;
+}
+h3.text-bold.text-2xl.font-extrabold {
+  margin: 0.5rem 0px;
+}
 * {
   box-sizing: border-box;
   position: relative;

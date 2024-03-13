@@ -10,13 +10,13 @@ import { formatCurrencyString } from "use-shopping-cart"
 import { SanityProduct } from "@/config/inventory"
 import { shimmer, toBase64 } from "@/lib/image"
 
-import Product from "./product/product"
+import Product from "../product/product"
 
 interface Props {
   products: SanityProduct[]
 }
 
-export function ProductGrid({ products }: Props) {
+export function ProductGridTab({ products }: Props) {
   if (products.length === 0) {
     return (
       <div className="mx-auto grid h-40 w-full place-items-center rounded-md border-2 border-dashed bg-gray-50 py-10 text-center dark:bg-gray-900">
@@ -31,7 +31,7 @@ export function ProductGrid({ products }: Props) {
   }
 
   return (
-    <div className=" grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-3 lg:col-span-3 lg:gap-x-8">
+    <div className="grid w-full grid-cols-2 gap-x-4 xl:container xl:flex xl:flex-wrap xl:justify-center xl:gap-4">
       {products.map((product) => (
         <Product products={product} />
       ))}
