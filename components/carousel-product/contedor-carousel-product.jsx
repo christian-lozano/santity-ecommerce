@@ -23,10 +23,11 @@ export default async function ContedorCarouselProduct({
           name,
           sku,
           images,
-          currency,
+          marca,
           price,
           description,
           genero,
+          descuento,
           "slug":slug.current
         }`)
 

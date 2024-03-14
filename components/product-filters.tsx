@@ -102,7 +102,7 @@ export function ProductFilters() {
                           ? params.delete(section.id)
                           : params.set(section.id, option.value)
 
-                        router.replace(`/?${params.toString()}`)
+                        router.replace(`tienda/?${params.toString()}`)
                       }}
                     />
                     <label

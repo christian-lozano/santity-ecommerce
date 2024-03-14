@@ -3,6 +3,7 @@ import Link from "next/link"
 import { urlForImage } from "@/sanity/lib/image"
 
 export default function Product({ products }) {
+  console.log(products)
   return (
     <>
       <Link
@@ -17,16 +18,21 @@ export default function Product({ products }) {
             src={urlForImage(products.images[0].asset._ref).url()}
             alt=""
           />
+          {products.descuento && (
+            <div className="absolute right-0 top-4 bg-black px-3 py-1">
+              <h4 className=" mt-1 text-xs text-white ">
+                -{products.descuento}%
+              </h4>
+            </div>
+          )}
         </div>
+        <h3 className="mt-4 font-medium capitalize ">
+          {products.marca} - {products.genero}
+        </h3>
         <h3 className="mt-4 font-medium ">{products.name}</h3>
-        {/* <h3 className="mt-4 font-medium">{product.genero}</h3> */}
 
-        <p className="mt-2 font-medium">
-          {/* {formatCurrencyString({
-              currency: product.currency,
-              value: product.price,
-            })} */}
-        </p>
+        <p className="mt-2 font-medium">S/{products.price}</p>
+        {/* <p className="mt-2 font-medium">S/{products.descuento}</p> */}
       </Link>
     </>
   )

@@ -288,7 +288,7 @@ export default async function Page({ searchParams }: Props) {
             preload="auto"
             autoPlay={true}
             loop={true}
-            className="laptop:h-full hidden  w-[100vw] xl:block"
+            className="laptop:h-full   w-[100vw] xl:block"
           >
             <source
               src="https://cdn.shopify.com/videos/c/o/v/871dfa3ffa8e481087be3e5ae964adfe.mp4"

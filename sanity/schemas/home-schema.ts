@@ -25,7 +25,6 @@ export const home = defineType({
               title: "Image",
               name: "img",
               type: "image",
-
               options: {
                 hotspot: true, // <-- Defaults to false
               },
