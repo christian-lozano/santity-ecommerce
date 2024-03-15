@@ -31,7 +31,7 @@ export function ProductGridTab({ products }: Props) {
   }
 
   return (
-    <div className="grid w-full grid-cols-2 gap-x-4 xl:container xl:flex xl:flex-wrap xl:justify-center xl:gap-4">
+    <div className="grid w-full grid-cols-2 gap-x-4 xl:container xl:grid xl:grid-cols-3 xl:justify-center xl:gap-4">
       {products.map((product) => (
         <Product products={product} />
       ))}

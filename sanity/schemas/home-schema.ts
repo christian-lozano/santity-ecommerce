@@ -18,6 +18,7 @@ export const home = defineType({
       type: "array",
       of: [
         {
+          title: "Slider",
           type: "object",
           name: "Slide",
           fields: [

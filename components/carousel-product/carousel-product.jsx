@@ -9,8 +9,8 @@ import Product from "../product/product"
 const responsive = {
   desktop: {
     breakpoint: { max: 3000, min: 1024 },
-    items: 6,
-    slidesToSlide: 6, // optional, default to 1.
+    items: 4,
+    slidesToSlide: 4, // optional, default to 1.
   },
   tablet: {
     breakpoint: { max: 1024, min: 768 },
@@ -23,7 +23,6 @@ const responsive = {
     slidesToSlide: 2, // optional, default to 1.
   },
 }
-
 
 const CarouselProduct = ({ products }) => {
   return (

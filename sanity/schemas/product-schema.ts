@@ -9,6 +9,7 @@ export const product = defineType({
       name: "name",
       title: "Name",
       type: "string",
+
       validation: (rule) => rule.required(),
     }),
 
@@ -79,6 +80,7 @@ export const product = defineType({
       validation: (rule) => rule.required(),
       of: [
         {
+          title: "Tallas y Stock",
           type: "object",
           name: "Tallas y Stock ",
           fields: [

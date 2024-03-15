@@ -1,12 +1,16 @@
 "use client"
 
+import { useState } from "react"
+
 import { Logo } from "@/components/logo/logo"
+
 
 import { NavNavigation } from "./Nav/nav-navigation"
 import NavSearch from "./Nav/nav-search"
 import NavTop from "./Nav/nav-top"
 
 export function SiteHeader() {
+
   return (
     <header className="sticky top-0 z-40   w-full items-center justify-around  border-b border-slate-700/20 bg-background xl:block">
       <NavTop>
@@ -17,6 +21,8 @@ export function SiteHeader() {
           <Logo />
         </NavNavigation>
       </div>
+
+  
     </header>
   )
 }
