@@ -51,7 +51,7 @@ export function ProductInfo({ product }: Props) {
 
       <div className="mt-3">
         <h2 className="sr-only">Product information</h2>
-        <p className="text-3xl tracking-tight">S/{product.currency}</p>
+        <p className="text-3xl tracking-tight">S/{product.price}</p>
       </div>
 
       <div className="mt-6">
@@ -61,7 +61,7 @@ export function ProductInfo({ product }: Props) {
 
       <div className="mt-4">
         <p>
-          Size: <strong>{selectSize}</strong>
+          talla: <strong>{selectSize}</strong>
         </p>
         {product.tallas.map(({ talla, stock }) => (
           <Button
@@ -81,9 +81,9 @@ export function ProductInfo({ product }: Props) {
           <Button
             onClick={addToCart}
             type="button"
-            className="w-full bg-violet-600 py-6 text-base font-medium text-white hover:bg-violet-700 focus:outline-none focus:ring-2 focus:ring-violet-500"
+            className="w-full bg-black py-6 text-base font-medium text-white hover:bg-violet-700 focus:outline-none focus:ring-2 focus:ring-violet-500 dark:bg-white dark:text-black"
           >
-            Add to cart
+            Agregar Al Carrito
           </Button>
         </div>
       </form>

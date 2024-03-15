@@ -13,7 +13,7 @@ import { Checkbox } from "@/components/ui/checkbox"
 const filters = [
   {
     id: "category",
-    name: "Category",
+    name: "Categoría",
     options: [
       { value: "calzado", label: "calzado" },
       { value: "zapatillas", label: "zapatillas" },
@@ -35,7 +35,7 @@ const filters = [
   },
   {
     id: "size",
-    name: "Size",
+    name: "Talla",
     options: [
       { value: "xs", label: "X-Small" },
       { value: "s", label: "Small" },
@@ -80,7 +80,7 @@ export function ProductFilters() {
               </span>
             </AccordionTrigger>
             <AccordionContent>
-              <div className="space-y-4">
+              <div className=" space-y-4">
                 {section.options.map((option, optionIdx) => (
                   <div
                     key={option.value}

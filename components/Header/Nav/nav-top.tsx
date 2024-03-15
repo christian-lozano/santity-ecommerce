@@ -49,6 +49,17 @@ export default function NavTop({ children }: Props) {
       <div className="xl:flex xl:w-full   xl:justify-end  ">
         <div className=" xl:mr-36">
           <div className="flex items-center space-x-1">
+            {/* dark mode */}
+            <ThemeToggle />
+
+            {/* icono carrito */}
+            <Link href="/cart">
+              <Button size="sm" variant="ghost">
+                <ShoppingBag className="h-5 w-5" />
+                <span className="ml-2 text-sm font-bold">{cartCount}</span>
+                <span className="sr-only">Cart</span>
+              </Button>
+            </Link>
             {/* icono Buscador */}
 
             <Button
@@ -59,16 +70,6 @@ export default function NavTop({ children }: Props) {
               <Search className={"h-5 xl:w-5"} />
               <span className="sr-only">Buscar</span>
             </Button>
-
-            {/* icono carrito */}
-            <Link href="/cart">
-              <Button size="sm" variant="ghost">
-                <ShoppingBag className="h-5 w-5" />
-                <span className="ml-2 text-sm font-bold">{cartCount}</span>
-                <span className="sr-only">Cart</span>
-              </Button>
-            </Link>
-            <ThemeToggle />
 
             {/* burger menu */}
             <button className="xl:hidden " onClick={() => setOpen(!open)}>

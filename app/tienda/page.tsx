@@ -63,6 +63,8 @@ export default async function Page({ searchParams }: Props) {
     price,
     description,
     genero,
+    marca,
+    descuento,
     "slug":slug.current
   }`)
 
@@ -74,17 +76,18 @@ export default async function Page({ searchParams }: Props) {
         <h1 className="text-4xl font-extrabold tracking-normal">{siteConfig.name}</h1>
         <p className="mx-auto mt-4 max-w-3xl text-base">{siteConfig.description}</p>
       </div> */}
+      <div className="sticky top-[80px]  z-20    h-full w-full  px-6  xl:top-[101px] ">
+        <div className=" flex  w-full items-center justify-between  bg-white py-4   dark:bg-background ">
+          <h1 className="text-xl font-bold tracking-tight sm:text-2xl">
+            {products.length}
+            <span className="ml-2">Producto{products.length > 1 && "s"}</span>
+          </h1>
+          {/* Product Sort */}
+          <ProductSort />
+        </div>
+      </div>
       <div>
-        <main className="mx-auto max-w-6xl px-6">
-          <div className="mt-5 flex items-center justify-between border-b border-gray-200 pb-4 dark:border-gray-800">
-            <h1 className="text-xl font-bold tracking-tight sm:text-2xl">
-              {products.length} <span className="ml-2">Productos</span>{" "}
-              {products.length === 1 ? "" : "s"}
-            </h1>
-            {/* Product Sort */}
-            <ProductSort></ProductSort>
-          </div>
-
+        <main className=" w-full px-6">
           <section
             aria-labelledby="products-heading"
             className="flex pb-24 pt-6"
@@ -96,13 +99,15 @@ export default async function Page({ searchParams }: Props) {
               className={cn(
                 "grid grid-cols-1 gap-x-8 gap-y-10",
                 products.length > 0
-                  ? "lg:grid-cols-4"
+                  ? "lg:grid-cols-[1fr_3fr]"
                   : "lg:grid-cols-[1fr_3fr]"
               )}
             >
-              <div className="hidden lg:block">{/* Product filters */}</div>
-              {/* Product filters */}
-              <ProductFilters />
+              <div className="hidden lg:block">
+                {/* Product filters */}
+
+                <ProductFilters />
+              </div>
             </div>
             <ProductGrid products={products} />
             {/* Product grid */}
