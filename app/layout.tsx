@@ -3,6 +3,7 @@ import Image from "next/image"
 import { client } from "@/sanity/lib/client"
 import { urlForImage } from "@/sanity/lib/image"
 import { groq } from "next-sanity"
+import { CartProvider } from "react-use-cart"
 
 import { siteConfig } from "@/config/site"
 import { fontSans } from "@/lib/fonts"
@@ -35,8 +36,11 @@ export default async function RootLayout({ children }: RootLayoutProps) {
         >
           <Providers>
             <div className="relative flex min-h-screen flex-col">
-              <Providers>{children}</Providers>
-              <SiteBlob></SiteBlob>
+              <Providers>
+            
+                {children}
+              </Providers>
+              <SiteBlob/>
             </div>
           </Providers>
         </body>

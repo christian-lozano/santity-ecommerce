@@ -4,7 +4,7 @@ import { urlForImage } from "@/sanity/lib/image"
 
 export default function Product({ products }) {
   const [activeView, setActiveView] = useState(false)
-  console.log(products)
+
   return (
     <>
       <Link

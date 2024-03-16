@@ -23,7 +23,7 @@ export default function MainTab({ dataCabeceraTab, dataProductTab }) {
         break
     }
   }
-  console.log(dataTab)
+
   return (
     <div className="mt-20  flex h-full w-full justify-center">
       <div className="flex  flex-col ">

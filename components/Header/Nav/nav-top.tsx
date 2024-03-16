@@ -1,9 +1,9 @@
 "use client"
 
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import Link from "next/link"
 import { Edit, Search, ShoppingBag, X } from "lucide-react"
-import { useShoppingCart } from "use-shopping-cart"
+import { useCart } from "react-use-cart"
 
 import { Button } from "@/components/ui/button"
 import { Logo } from "@/components/logo/logo"
@@ -15,12 +15,17 @@ interface Props {
   children: JSX.Element[] | JSX.Element
 }
 export default function NavTop({ children }: Props) {
-  const { cartCount } = useShoppingCart()
   const [search, setActiveSearch] = useState<boolean>(false)
   const [open, setOpen] = useState(false)
   const handleSidebarToggle = (isOpen: boolean) => {
     setOpen(isOpen)
   }
+  const { totalItems } = useCart()
+  const [client, setClient] = useState(false)
+  useEffect(() => {
+    setClient(true)
+  }, [])
+
   return (
     <div className="flex items-center justify-around xl:block ">
       {/* Buscador */}
@@ -53,10 +58,12 @@ export default function NavTop({ children }: Props) {
             <ThemeToggle />
 
             {/* icono carrito */}
-            <Link href="/cart">
+            <Link href="/carrito">
               <Button size="sm" variant="ghost">
                 <ShoppingBag className="h-5 w-5" />
-                <span className="ml-2 text-sm font-bold">{cartCount}</span>
+                <span className="ml-2 text-sm font-bold">
+                  {client && totalItems}
+                </span>
                 <span className="sr-only">Cart</span>
               </Button>
             </Link>

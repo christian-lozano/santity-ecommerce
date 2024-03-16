@@ -1,6 +1,6 @@
 "use client"
 
-import { CartProvider } from "use-shopping-cart"
+import { CartProvider } from "react-use-cart"
 
 import { Toaster } from "@/components/ui/toaster"
 import { TailwindIndicator } from "@/components/tailwind-indicator"
@@ -11,11 +11,13 @@ interface Props {
 }
 
 export function Providers({ children }: Props) {
-  return <CartProvider currency="PEN" shouldPersist cartMode="checkout-session" stripe="" >
-    <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-      <Toaster/>
-         {children}
-      <TailwindIndicator/>
-    </ThemeProvider>
+  return (
+    <CartProvider>
+      <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+        <Toaster />
+        {children}
+        <TailwindIndicator />
+      </ThemeProvider>
     </CartProvider>
+  )
 }

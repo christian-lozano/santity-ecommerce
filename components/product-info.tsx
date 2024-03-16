@@ -2,7 +2,9 @@
 
 import { useState } from "react"
 import Link from "next/link"
+import { urlForImage } from "@/sanity/lib/image"
 import { ArrowRight } from "lucide-react"
+import { useCart } from "react-use-cart"
 import { formatCurrencyString, useShoppingCart } from "use-shopping-cart"
 
 import { SanityProduct } from "@/config/inventory"
@@ -15,29 +17,39 @@ interface Props {
 }
 
 export function ProductInfo({ product }: Props) {
-  const { addItem, incrementItem, cartDetails } = useShoppingCart()
+  console.log(product)
 
   const [selectSize, setSelectSize] = useState(product.tallas[0].talla)
 
   const { toast } = useToast()
 
-  const isInCart = !!cartDetails?.[product._id]
-
-  function addToCart() {
+  const { addItem } = useCart()
+  const addToCart = () => {
     const item = {
       ...product,
       product_data: {
         size: selectSize,
       },
     }
-    isInCart ? incrementItem(item._id) : addItem(item)
+
+    addItem({
+      id: String(`${selectSize}`),
+      name: product.name,
+      idsanity: product.id,
+      img: product.image,
+      title: product.name,
+      image: product.images[0].asset?._ref,
+      objectID: product.sku,
+      price: Number(product.price),
+      talla: String(`${selectSize}`),
+    })
     toast({
       title: `${item.name} (${selectSize})`,
-      description: "Product added to cart",
+      description: "Producto Agregado al Carrito",
       action: (
-        <Link href={"/cart"}>
+        <Link href={"/carrito"}>
           <Button variant={"link"} className="gap-x-5 whitespace-nowrap">
-            <span>Open Cart</span>
+            <span>Abrir Carrito</span>
             <ArrowRight className="h-5 w-5" />
           </Button>
         </Link>
