@@ -16,7 +16,7 @@ export default function Carrito() {
   const { items, removeItem, cartTotal } = useCart()
   return (
     <div>
-      <div className="py-16">
+      <div className=" pt-20">
         <h1 className="mb-10 text-center text-2xl font-bold">CARRITO</h1>
         <div className="mx-auto max-w-5xl justify-center px-1 md:flex md:space-x-6 xl:px-0 2xl:max-w-7xl">
           <div className="rounded-lg md:w-2/3">
@@ -28,8 +28,9 @@ export default function Carrito() {
                 >
                   <div className="flex w-full items-center space-x-2 sm:space-x-4">
                     <img
-                      className="h-24 w-24 shrink-0 rounded object-cover outline-none dark:border-transparent dark:bg-gray-500 sm:h-32 sm:w-32"
+                      className="shrink-0 rounded object-cover outline-none dark:border-transparent dark:bg-gray-500 sm:h-32 sm:w-32"
                       src={urlForImage(el.image).url()}
+                      width={150}
                       alt="Polaroid camera"
                     />
                     <div className="flex h-full w-full items-center justify-center">
@@ -140,7 +141,7 @@ export default function Carrito() {
           {/* precios */}
 
           {domLoaded && (
-            <div className="sticky mt-6 h-full self-start rounded-lg border bg-white p-6 shadow-md dark:bg-black md:mt-0 md:w-1/3 2xl:top-20">
+            <div className="sticky bottom-[1px] mt-6 h-full self-start rounded-lg border bg-white p-6 shadow-md dark:bg-black md:mt-0 md:w-1/3 2xl:top-20">
               <div className="mb-2 flex justify-between">
                 <p>Subtotal</p>
                 <p>S/{cartTotal}</p>
@@ -157,11 +158,13 @@ export default function Carrito() {
                   {/* <p className="text-sm text-gray-700">including VAT</p> */}
                 </div>
               </div>
-              <div className="fixed bottom-4 left-0 flex w-full justify-center md:relative">
-                <Button className="mt-6 w-full cursor-pointer bg-[#ae946d] py-3  text-center text-lg  font-bold text-white hover:bg-[#b99d73]">
-                  PAGAR
-                </Button>
-              </div>
+              <Link href={"/pagar"}>
+                <div className=" bottom-4 left-0 flex w-full justify-center md:relative">
+                  <Button className="mt-6 w-full cursor-pointer bg-white py-3 text-center  text-lg font-bold  text-black  hover:bg-[#b99d73]">
+                    PAGAR
+                  </Button>
+                </div>
+              </Link>
             </div>
           )}
         </div>

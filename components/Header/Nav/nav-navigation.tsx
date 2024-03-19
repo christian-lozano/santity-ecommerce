@@ -45,7 +45,7 @@ export function NavNavigation({ children }: Props) {
   ]
 
   return (
-    <ul className="ml-5 grid grid-flow-col items-center gap-x-32">
+    <ul className=" grid grid-flow-col items-center gap-x-32">
       {dataNavigation.map((el, index) => (
         <>
           <Link href={el.url} key={el.id}>
