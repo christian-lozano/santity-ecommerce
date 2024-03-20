@@ -42,6 +42,7 @@ export function ProductInfo({ product }: Props) {
       objectID: product.sku,
       price: Number(product.price),
       talla: String(`${selectSize}`),
+      slug: product.slug,
     })
     toast({
       title: `${item.name} (${selectSize})`,

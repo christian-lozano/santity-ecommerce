@@ -1,46 +1,59 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
+import Link from "next/link"
 import { Loader2 } from "lucide-react"
+import { useCart } from "react-use-cart"
 import { formatCurrencyString, useShoppingCart } from "use-shopping-cart"
 
 import { Button } from "@/components/ui/button"
 
 export function CartSummary() {
   function onCheckout() {}
+  const { cartTotal } = useCart()
 
+  const [clientState, setClientState] = useState(false)
+  useEffect(() => {
+    setClientState(true)
+  }, [])
   return (
-    <section
-      aria-labelledby="summary-heading"
-      className="mt-16 rounded-lg border-2 border-gray-200 bg-gray-50 px-4 py-6 shadow-md dark:border-gray-900 dark:bg-black sm:p-6 lg:col-span-5 lg:mt-0 lg:p-8"
-    >
-      <h2 id="summary-heading" className="text-lg font-medium">
-        Order summary
-      </h2>
+    <>
+      {clientState && (
+        <section
+          aria-labelledby="summary-heading"
+          className="sticky bottom-0 mt-16 rounded-lg border-2 border-gray-200 bg-gray-50 px-4 py-6 shadow-md dark:border-gray-900 dark:bg-black sm:p-6 lg:col-span-5 lg:mt-0 lg:p-8 xl:top-0"
+        >
+          <h2 id="summary-heading" className="text-lg font-medium">
+            Resumen de Pedido
+          </h2>
 
-      <dl className="mt-6 space-y-4">
-        <div className="flex items-center justify-between">
-          <dt className="text-sm">Subtotal</dt>
-          <dd className="text-sm font-medium">Subtotal Amount</dd>
-        </div>
-        <div className="flex items-center justify-between border-t border-gray-200 pt-4 dark:border-gray-600">
-          <dt className="flex items-center text-sm">
-            <span>Shipping estimate</span>
-          </dt>
-          <dd className="text-sm font-medium">Shipping Amount</dd>
-        </div>
-        <div className="flex items-center justify-between border-t border-gray-200 pt-4 dark:border-gray-600">
-          <dt className="text-base font-medium">Order total</dt>
-          <dd className="text-base font-medium">Order Amount</dd>
-        </div>
-      </dl>
+          <dl className="mt-6 space-y-4">
+            <div className="flex items-center justify-between">
+              <dt className="text-sm">Subtotal</dt>
+              <dd className="text-sm font-medium">S/{cartTotal}</dd>
+            </div>
+            {/* <div className="flex items-center justify-between border-t border-gray-200 pt-4 dark:border-gray-600">
+                <dt className="flex items-center text-sm">
+                  <span>Costo de Envió</span>
+                </dt>
+                <dd className="text-sm font-medium">S/5</dd>
+              </div> */}
+            <div className="flex items-center justify-between border-t border-gray-200 pt-4 dark:border-gray-600">
+              <dt className="text-base font-medium">Total a Pagar</dt>
+              <dd className="text-base font-medium">S/{cartTotal}</dd>
+            </div>
+          </dl>
 
-      <div className="mt-6">
-        <Button className="w-full">
-          <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-          Loading...
-        </Button>
-      </div>
-    </section>
+          <div className="mt-6">
+            <Link href={"/pagar"}>
+              <Button className="w-full font-semibold">
+                {/* <Loader2 className="mr-2 h-4 w-4 animate-spin" /> */}
+                Pagar
+              </Button>
+            </Link>
+          </div>
+        </section>
+      )}
+    </>
   )
 }

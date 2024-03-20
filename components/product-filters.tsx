@@ -63,7 +63,7 @@ export function ProductFilters() {
   const router = useRouter()
   const searchValues = Array.from(searchParams.entries())
   return (
-    <form className="sticky top-20">
+    <form className=" sticky top-20">
       <h3 className="sr-only">Categories</h3>
 
       {filters.map((section, i) => (
