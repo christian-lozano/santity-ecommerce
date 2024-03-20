@@ -35,12 +35,12 @@ export function NavNavigation({ children }: Props) {
     {
       id: "01",
       page: "Nuestras Tiendas",
-      url: "/",
+      url: "/nuestras-tiendas",
     },
     {
       id: "01",
       page: "Outlet",
-      url: "/",
+      url: "/tienda",
     },
   ]
 

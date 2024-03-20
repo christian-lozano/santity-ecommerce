@@ -12,12 +12,20 @@ import { getSizeName } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { useToast } from "@/components/ui/use-toast"
 
+import ContedorCarouselProduct from "./carousel-product/contedor-carousel-product"
+
 interface Props {
   product: SanityProduct
 }
 
 export function ProductInfo({ product }: Props) {
   console.log(product)
+
+  const precio = product.price
+
+  const operation = (Number(product.descuento) / 100) * Number(precio)
+
+  const resultado = Number(precio) - operation
 
   const [selectSize, setSelectSize] = useState(product.tallas[0].talla)
 
@@ -33,14 +41,14 @@ export function ProductInfo({ product }: Props) {
     }
 
     addItem({
-      id: String(`${selectSize}`),
+      id: String(`${selectSize}_${product.id}`),
       name: product.name,
       idsanity: product.id,
       img: product.image,
       title: product.name,
       image: product.images[0].asset?._ref,
       objectID: product.sku,
-      price: Number(product.price),
+      price: Number(resultado),
       talla: String(`${selectSize}`),
       slug: product.slug,
     })
@@ -64,7 +72,12 @@ export function ProductInfo({ product }: Props) {
 
       <div className="mt-3">
         <h2 className="sr-only">Product information</h2>
-        <p className="text-3xl tracking-tight">S/{product.price}</p>
+        <div className="flex">
+          <p className="ml-3 mr-2 text-3xl font-semibold tracking-tight text-[#767677] line-through">
+            S/{product.price}
+          </p>
+          <p className="text-3xl tracking-tight ">S/{resultado}</p>
+        </div>
       </div>
 
       <div className="mt-6">
@@ -94,7 +107,7 @@ export function ProductInfo({ product }: Props) {
           <Button
             onClick={addToCart}
             type="button"
-            className="w-full bg-black py-6 text-base font-medium text-white hover:bg-violet-700 focus:outline-none focus:ring-2 focus:ring-violet-500 dark:bg-white dark:text-black"
+            className="hover:bg-violet-700 focus:ring-violet-500 w-full bg-black py-6 text-base font-medium text-white focus:outline-none focus:ring-2 dark:bg-white dark:text-black"
           >
             Agregar Al Carrito
           </Button>

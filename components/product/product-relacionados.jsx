@@ -2,13 +2,7 @@ import React, { useState } from "react"
 import Link from "next/link"
 import { urlForImage } from "@/sanity/lib/image"
 
-export default function Product({ products }) {
-  console.log(products)
-  const precio = products.price
-
-  const operation = (Number(products.descuento) / 100) * Number(precio)
-
-  const resultado = Number(precio) - operation
+export default function ProductRelacionados({ products }) {
   return (
     <>
       <Link
@@ -18,8 +12,8 @@ export default function Product({ products }) {
       >
         <div className="aspect-h-1 aspect-w-1 overflow-hidden rounded-lg    group-hover:opacity-75 ">
           <img
-            width={2000}
-            height={2000}
+            width={800}
+            height={800}
             className="relative "
             src={urlForImage(products.images[0].asset._ref).url()}
             alt=""
@@ -37,13 +31,8 @@ export default function Product({ products }) {
           {products.marca} - {products.genero}
         </h3>
         <h3 className="mt-4 font-medium ">{products.name}</h3>
-        <div className="flex">
-          <span className="mr-2 mt-2 font-semibold text-[#767677] line-through">
-            S/{products.price}
-          </span>
-          <p className="mt-2 font-semibold">S/{resultado} </p>
-        </div>
 
+        <p className="mt-2 font-medium">S/{products.price}</p>
         {/* <p className="mt-2 font-medium">S/{products.descuento}</p> */}
       </Link>
       {/* <button

@@ -55,7 +55,10 @@ export function CartItems() {
                   <div>
                     <div className="flex justify-between">
                       <h3 className="text-sm">
-                        <Link href={`/products/slug`} className="font-medium">
+                        <Link
+                          href={`/products/${el.slug}`}
+                          className="font-medium"
+                        >
                           {el.name}
                         </Link>
                       </h3>
@@ -63,6 +66,7 @@ export function CartItems() {
                     <p className="mt-1 text-sm font-medium">
                       Precio: S/{el.price}
                     </p>
+
                     <p className="mt-1 text-sm font-medium">
                       Talla: {/* @ts-ignore */}
                       <strong>{el.talla}</strong>

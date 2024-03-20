@@ -3,6 +3,7 @@ import { groq } from "next-sanity"
 
 import { SanityProduct } from "@/config/inventory"
 import { SiteHeader } from "@/components/Header/site-header"
+import CarouselProductRelacionados from "@/components/carousel-product/carousel-product-relacionados"
 import { ProductGallery } from "@/components/product-gallery"
 import { ProductInfo } from "@/components/product-info"
 
@@ -20,6 +21,7 @@ export default async function Page({ params }: Props) {
     "id":_id,
     name,
     sku,
+    marca,
     images,
     price,
     currency,
@@ -27,9 +29,41 @@ export default async function Page({ params }: Props) {
     sizes,
     categories,
     colors,
+    genero,
+    descuento,
     tallas,
     "slug":slug.current
   }`)
+  const productosGenero = async () => {
+    const order = `| order(_id) [0...10]`
+
+    const productFilter = `_type == "product"`
+
+    const generoFilterHombre = `${product.genero}`
+      ? `&& genero match "${product.genero}"&& marca match "${product.marca}"`
+      : ""
+
+    const filter = `*[${productFilter}${generoFilterHombre}]`
+
+    // await seedSanityData()
+    const products = await client.fetch(`${filter} ${order} {
+          _id,
+          _createdAt,
+          name,
+          sku,
+          images,
+          marca,
+          price,
+          description,
+          descuento,
+          genero,
+          descuento,
+          "slug":slug.current
+        }`)
+
+    return products
+  }
+  const products = await productosGenero()
   return (
     <>
       <SiteHeader />
@@ -44,6 +78,12 @@ export default async function Page({ params }: Props) {
           </div>
         </div>
       </main>
+      <div>
+        <h5 className="text-center text-2xl font-extrabold">
+          Productos Relacionados
+        </h5>
+        <CarouselProductRelacionados products={products} />
+      </div>
     </>
   )
 }

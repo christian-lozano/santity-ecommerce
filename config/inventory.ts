@@ -36,6 +36,8 @@ interface ApiData {
 }
 
 export interface SanityProduct extends Omit<InventoryProduct, "images"> {
+  descuento: string
+  marca: any
   _id: string
   _createdAt: Date
   slug: string

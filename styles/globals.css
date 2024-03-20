@@ -377,3 +377,17 @@ select:focus {
 
   margin-right: 1px;
 }
+
+/* espaciado multi menu mobil return  */
+
+.first-back-btn svg,
+.second-back-btn svg {
+  margin-right: 0.5rem;
+  cursor: pointer;
+}
+
+.first-back-btn,
+.second-back-btn {
+  display: flex;
+  padding: 1rem;
+}
