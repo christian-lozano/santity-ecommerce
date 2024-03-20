@@ -32,25 +32,7 @@ export default function PaginaPagar() {
     distrito: "",
     //   adicional: '',
   })
-  // const changeHandlerSelectProvincia = (e) => {
-  //   setProvincia(e)
-  //   setAllValues({ ...allValues, provincia: e })
-  //   if (
-  //     allValues.nombre.length >= 5 &&
-  //     allValues.apellido.length >= 5 &&
-  //     allValues.email.length >= 5 &&
-  //     allValues.documento.length >= 5 &&
-  //     allValues.telefono.length >= 5 &&
-  //     allValues.direccion.length >= 5 &&
-  //     // provincia.length >= 2 &&
-  //     distrito.length >= 2
-  //     // allValues.adicional.length >= 3
-  //   ) {
-  //     setValidate(true)
-  //   } else {
-  //     setValidate(false)
-  //   }
-  // }
+
   const changeHandlerSelectDistrito = (e) => {
     setDistrito(e)
     setAllValues({ ...allValues, provincia: e })
@@ -215,19 +197,12 @@ export default function PaginaPagar() {
 
           <p className="mt-8 text-lg font-medium">Métodos de envío</p>
           <form className="mt-5 grid gap-6">
-            <div className="relative">
-              <input
-                className="peer hidden"
-                id="radio_2"
-                type="radio"
-                name="radio"
-                defaultChecked={true}
-              />
-              <span className="absolute right-4 top-1/2 box-content block h-3 w-3 -translate-y-1/2 rounded-full border-8 border-gray-300 bg-white peer-checked:border-gray-700"></span>
+            <div className="relative ">
               <label
                 className="Select-none flex cursor-pointer rounded-lg border border-gray-300 p-4 peer-checked:border-2 peer-checked:border-gray-700 peer-checked:bg-gray-50"
                 htmlFor="radio_2"
               >
+                <span className="absolute right-4 top-1/2 box-content block h-5 w-5 -translate-y-1/2 rounded-full border-8 border-gray-300 bg-black peer-checked:border-gray-700 dark:bg-white"></span>
                 <div className="ml-5">
                   <span className="mt-2 font-semibold">
                     Envio previa coordinación

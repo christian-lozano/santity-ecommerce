@@ -278,6 +278,7 @@ button {
 .googlepay div {
   width: 100%;
 }
+
 .accordionsummary i {
   font-size: 14px;
 }
@@ -298,7 +299,11 @@ button {
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
+
   margin: 0;
+}
+input {
+  padding-left: 1rem;
 }
 
 /* Firefox */

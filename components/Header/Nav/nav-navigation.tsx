@@ -15,17 +15,17 @@ export function NavNavigation({ children }: Props) {
     {
       id: "01",
       page: "Hombre",
-      url: "/",
+      url: "/tienda?genero=hombre",
     },
     {
       id: "01",
       page: "Mujer",
-      url: "/",
+      url: "/tienda?genero=mujer",
     },
     {
       id: "01",
       page: "Niños",
-      url: "/",
+      url: "/tienda?genero=niños",
     },
     {
       id: "01",

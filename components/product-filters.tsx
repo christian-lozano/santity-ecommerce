@@ -16,8 +16,8 @@ const filters = [
     name: "Categoría",
     options: [
       { value: "calzado", label: "calzado" },
-      { value: "zapatillas", label: "zapatillas" },
-      { value: "hombre", label: "hombre" },
+      { value: "accesorios", label: "accesorios" },
+      { value: "ropa", label: "ropa" },
       { value: "scarves", label: "Scarves" },
       { value: "wallets", label: "Wallets" },
     ],

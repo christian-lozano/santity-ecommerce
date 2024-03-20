@@ -131,7 +131,6 @@ export default async function Page({ searchParams }: Props) {
     const {
       date = "desc",
       price,
-
       search,
     } = searchParams
 

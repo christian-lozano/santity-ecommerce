@@ -36,11 +36,8 @@ export default async function RootLayout({ children }: RootLayoutProps) {
         >
           <Providers>
             <div className="relative flex min-h-screen flex-col">
-              <Providers>
-            
-                {children}
-              </Providers>
-              <SiteBlob/>
+              <Providers>{children}</Providers>
+              <SiteBlob />
             </div>
           </Providers>
         </body>
