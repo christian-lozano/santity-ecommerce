@@ -3,12 +3,13 @@ import ContedorCarouselProduct from "@/components/carousel-product/contedor-caro
 import SemiFiltroHome from "./semi-filtro-home"
 
 export default function MainFiltroGenero({ dataSemifiltroHome }) {
+
   return (
     <div className=" flex h-full   w-full flex-col justify-around">
       {/* <div className="flex h-20 w-full justify-center text-4xl font-extrabold">
         <h2>Categorías</h2>
       </div> */}
-      {dataSemifiltroHome.map((el) => (
+      {dataSemifiltroHome.semifiltro.map((el) => (
         <>
           <SemiFiltroHome dataSemifiltroHome={el} />
 

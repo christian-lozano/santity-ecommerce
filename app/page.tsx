@@ -11,6 +11,8 @@ import HombreMujer from "@/components/hombre-mujer/hombre-mujer"
 import MainFiltroGenero from "@/components/hombre-mujer/main-filtro-genero"
 import MainTab from "@/components/tabs-home-genero/main-tab"
 
+import "@/styles/globals.css"
+
 interface Props {
   searchParams: {
     date?: string
@@ -168,6 +170,12 @@ export default async function Page({ searchParams }: Props) {
       bannergenero
     }`
   )
+  const categoriaSlider = await client.fetch<SanitySlider[]>(
+    groq`*[_type == "home"] {
+      semifiltro
+    }`
+  )
+  console.log(categoriaSlider[0])
 
   //filtro y cantidad
   const productosHombre = await productosGenero("hombre", "6")
@@ -226,7 +234,7 @@ export default async function Page({ searchParams }: Props) {
           btnText: "Comprar ",
         },
         {
-          img: "  https://thebox.com.pe/cdn/shop/files/MUJER_BOTON_WEB_4.png?v=1700524998",
+          img: "https://thebox.com.pe/cdn/shop/files/MUJER_Boton_WEB_SANDALIAS.png?v=1703691720",
           title: "zapatillas",
           btnText: "Comprar ",
         },
@@ -246,7 +254,7 @@ export default async function Page({ searchParams }: Props) {
         <Carousel dataSlider={slider[0]} />
 
         <HombreMujer bannerGenero={bannerGenero[0]} />
-        <MainFiltroGenero dataSemifiltroHome={dataSemifiltroHome} />
+        <MainFiltroGenero dataSemifiltroHome={categoriaSlider[0]} />
         <main className=" xl:px-6">
           {/* <Typeandtype
             props={{

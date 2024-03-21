@@ -10,7 +10,7 @@ import { SiteHeader } from "@/components/Header/site-header"
 import { ProductFilters } from "@/components/product-filters"
 import { ProductGrid } from "@/components/product-grid"
 import { ProductSort } from "@/components/product-sort"
-
+import "@/styles/globals.css"
 interface Props {
   searchParams: {
     date?: string

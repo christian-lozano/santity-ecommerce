@@ -15,7 +15,7 @@ import { SiteHeader } from "@/components/Header/site-header"
 import { Providers } from "@/components/providers"
 import { SiteBlob } from "@/components/site-blob"
 
-// import "@/styles/globals.css"
+
 
 export const metadata: Metadata = {}
 
@@ -26,7 +26,7 @@ interface RootLayoutProps {
 export default async function RootLayout({ children }: RootLayoutProps) {
   return (
     <>
-      <html lang="en" suppressHydrationWarning>
+      <html lang="es" suppressHydrationWarning>
         <head />
         <body
           className={cn(

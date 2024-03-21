@@ -4,7 +4,7 @@ import {
 } from "next/font/google"
 
 export const fontSans = FontSans({
-  subsets: ["latin"],
+  subsets: ["latin-ext"],
   variable: "--font-sans",
 })
 

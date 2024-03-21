@@ -6,7 +6,7 @@ import { SiteHeader } from "@/components/Header/site-header"
 import CarouselProductRelacionados from "@/components/carousel-product/carousel-product-relacionados"
 import { ProductGallery } from "@/components/product-gallery"
 import { ProductInfo } from "@/components/product-info"
-
+import "@/styles/globals.css"
 interface Props {
   params: {
     slug: string

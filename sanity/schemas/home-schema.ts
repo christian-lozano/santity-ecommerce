@@ -151,7 +151,7 @@ export const home = defineType({
             },
             // array images
             {
-              name: "Categorias",
+              name: "categorias",
               title: "Categorías",
               type: "array",
               of: [
