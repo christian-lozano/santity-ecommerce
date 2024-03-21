@@ -29,37 +29,35 @@ export const home = defineType({
               options: {
                 hotspot: true, // <-- Defaults to false
               },
-              fields: [
-                {
-                  title: "Titulo",
-                  name: "titulo",
-                  type: "string",
-                  validation: (rule) => rule.required(),
-                },
-                {
-                  title: "Subtitulo",
-                  name: "subtitulo",
-                  type: "string",
-                  validation: (rule) => rule.required(),
-                },
-                {
-                  title: "Btntext",
-                  name: "btntext",
-                  type: "string",
-                  validation: (rule) => rule.required(),
-                },
-                {
-                  title: "Link",
-                  name: "link",
-                  type: "string",
-                  validation: (rule) => rule.required(),
-                },
-                {
-                  title: "Image PNG 2000x2000",
-                  name: "img2",
-                  type: "image",
-                },
-              ],
+            },
+            {
+              title: "Titulo",
+              name: "titulo",
+              type: "string",
+              validation: (rule) => rule.required(),
+            },
+            {
+              title: "Subtitulo",
+              name: "subtitulo",
+              type: "string",
+              validation: (rule) => rule.required(),
+            },
+            {
+              title: "Btntext",
+              name: "btntext",
+              type: "string",
+              validation: (rule) => rule.required(),
+            },
+            {
+              title: "Link",
+              name: "link",
+              type: "string",
+              validation: (rule) => rule.required(),
+            },
+            {
+              title: "Image PNG 2000x2000",
+              name: "img2",
+              type: "image",
             },
           ],
         },
@@ -76,32 +74,24 @@ export const home = defineType({
           name: "bannergenero",
           fields: [
             {
-              title: "Image",
+              title: "Imagen Principal",
               name: "img",
               type: "image",
               options: {
                 hotspot: true, // <-- Defaults to false
               },
-              fields: [
-                {
-                  title: "Titulo",
-                  name: "titulo",
-                  type: "string",
-                  validation: (rule) => rule.required(),
-                },
-                {
-                  title: "Btntext",
-                  name: "btntext",
-                  type: "string",
-                  validation: (rule) => rule.required(),
-                },
-                {
-                  title: "Link",
-                  name: "link",
-                  type: "string",
-                  validation: (rule) => rule.required(),
-                },
-              ],
+            },
+            {
+              title: "Titulo",
+              name: "titulo",
+              type: "string",
+              validation: (rule) => rule.required(),
+            },
+            {
+              title: "Link",
+              name: "link",
+              type: "string",
+              validation: (rule) => rule.required(),
             },
           ],
         },
@@ -194,6 +184,12 @@ export const home = defineType({
           ],
         },
       ],
+    },
+    {
+      title: "Video Url",
+      name: "videohome",
+      type: "string",
+      validation: (rule) => rule.required(),
     },
   ],
 })

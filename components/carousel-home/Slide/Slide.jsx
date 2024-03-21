@@ -9,29 +9,27 @@ import Link from "next/link"
 import { urlForImage } from "@/sanity/lib/image"
 
 const Slide = (props) => {
+
   const { className } = props
 
   return (
     <div className={className}>
-      {props.slide.img.img2 && (
+      {props.slide.img2 && (
         <div className="img2 ">
           {/* <img src={props.slide.img.asset._ref} className="" alt="" /> */}
-          <img
-            src={urlForImage(props.slide.img.img2.asset._ref).url()}
-            alt=""
-          />
+          <img src={urlForImage(props.slide.img2.asset._ref).url()} alt="" />
         </div>
       )}
       <div className="slidecont">
         <div className="slidetitles">
-          <h3 className=" text-white">{props.slide.img.subtitulo}</h3>
+          <h3 className=" text-white">{props.slide.subtitulo}</h3>
           <h1 className="text-2xl font-bold uppercase text-white">
-            {props.slide.img.titulo}
+            {props.slide.titulo}
           </h1>
         </div>
-        <Link href={props.slide.img.link}>
+        <Link href={props.slide.link}>
           <Appbtn
-            text={props.slide.img.btntext}
+            text={props.slide.btntext}
             className="capitalize"
             icon="fal fa-chevron-right"
           />

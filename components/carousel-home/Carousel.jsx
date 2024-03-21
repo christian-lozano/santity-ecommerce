@@ -6,38 +6,6 @@ import Slide from "./Slide/Slide"
 import "./Carousel.css"
 
 const Carousel = ({ dataSlider }) => {
-  // console.log(dataSlider.slider)
-  const slides = [
-    {
-      title: "T-SHIRTS SALE",
-      subtitle: "Shop Trending T-Shirts that are now on sale!",
-      link: "/shop/shirts/sales",
-      img: "https://i.imgur.com/0ASbjos.jpg",
-      position: 1,
-      class: "white",
-      btntext: "Shop Now",
-    },
-    {
-      title: "LADIES BAGS",
-      subtitle: "Shop exclusive ladies bags now on ShopiumX",
-      link: "/shop/bags",
-      img: "https://imgur.com/O9BRrNL.jpg",
-      position: 2,
-      img2: "https://res.cloudinary.com/da868wsih/image/upload/v1709318809/fritz_sport/ecommerce/home/slider_desktop/1_sctc0r.png",
-      class: "leftimg",
-      btntext: "Shop Now",
-    },
-    //    {
-    //      title: 'New Arrivals 2021',
-    //      subtitle: 'Discover New Arrivals',
-    //      link: '/new-arrivals',
-    //      img: 'https://i.imgur.com/hdeCel6.jpg',
-    //      position: 3,
-    //      class: 'center',
-    //      btntext: 'Discover Now'
-    //    }
-  ]
-
   const [timeduration] = useState(8000)
   const [play, setPlay] = useState(true)
   const [pos, setPos] = useState(0)
@@ -52,11 +20,11 @@ const Carousel = ({ dataSlider }) => {
       />
     )
   })
-  const carouselnavrow = slides.map((slide, i) => {
+  const carouselnavrow = dataSlider.slider.map((slide, i) => {
     return (
       <div
         className={`carouselitem ${
-          pos % slides.length === i && "activecarouselitem"
+          pos % dataSlider.slider.length === i && "activecarouselitem"
         }`}
         onClick={() => {
           setPos(i)

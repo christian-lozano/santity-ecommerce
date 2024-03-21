@@ -7,8 +7,6 @@ import { urlForImage } from "@/sanity/lib/image"
 import Appbtn from "../carousel-home/Appbtn/Appbtn"
 
 export default function SemiFiltroHome({ dataSemifiltroHome }) {
-  console.log(dataSemifiltroHome)
-
   return (
     <div className=" h-full w-full items-start justify-center gap-x-5 xl:flex ">
       <Link href={dataSemifiltroHome.link}>
@@ -22,7 +20,7 @@ export default function SemiFiltroHome({ dataSemifiltroHome }) {
         </picture>
       </Link>
       <div className="flex h-full  items-center justify-center gap-1 xl:items-start xl:gap-x-8  ">
-        {dataSemifiltroHome.Categorias.map((el) => (
+        {dataSemifiltroHome.categorias.map((el) => (
           <div
             key={el._key}
             className="mt-3 flex h-full w-full flex-col justify-start xl:mt-0 "

@@ -12,6 +12,9 @@ import MainFiltroGenero from "@/components/hombre-mujer/main-filtro-genero"
 import MainTab from "@/components/tabs-home-genero/main-tab"
 
 import "@/styles/globals.css"
+import { urlForImage } from "@/sanity/lib/image"
+
+import VideoHome from "@/components/video/video"
 
 interface Props {
   searchParams: {
@@ -175,7 +178,9 @@ export default async function Page({ searchParams }: Props) {
       semifiltro
     }`
   )
-  console.log(categoriaSlider[0])
+  const homeVideo = await client.fetch<SanitySlider[]>(groq`*[_type == "home"] {
+    videohome
+  }`)
 
   //filtro y cantidad
   const productosHombre = await productosGenero("hombre", "6")
@@ -241,13 +246,9 @@ export default async function Page({ searchParams }: Props) {
       ],
     },
   ]
+
   return (
     <div>
-      {/* <div className="px-4 pt-20 text-center">
-        <h1 className="text-4xl font-extrabold tracking-normal">{siteConfig.name}</h1>
-        <p className="mx-auto mt-4 max-w-3xl text-base">{siteConfig.description}</p>
-      </div> */}
-
       <SiteHeader />
 
       <div className="conta">
@@ -256,70 +257,7 @@ export default async function Page({ searchParams }: Props) {
         <HombreMujer bannerGenero={bannerGenero[0]} />
         <MainFiltroGenero dataSemifiltroHome={categoriaSlider[0]} />
         <main className=" xl:px-6">
-          {/* <Typeandtype
-            props={{
-              title: "Men and Women",
-              subtitle: "Shop men and women clothing!",
-              type: "Hombre",
-              link: "men",
-              textcolor: "white",
-              img: "https://i.imgur.com/O9BRrNL.jpg",
-            }}
-          >
-            <CarouselProduct products={productosHombre} />
-          </Typeandtype>
-
-          <Typeandtype
-            props={{
-              title: "Men and Women",
-              subtitle: "Shop men and women clothing!",
-              type: "Mujer",
-              link: "women",
-              textcolor: "black",
-              img: "https://i.imgur.com/J1K8pVr.jpg",
-            }}
-          >
-            <CarouselProduct products={productosMujer} />
-          </Typeandtype>
-
-          <Typeandtype
-            props={{
-              title: "Men and Women",
-              subtitle: "Shop men and women clothing!",
-              type: "Mujer",
-              link: "women",
-              textcolor: "black",
-              img: "https://i.imgur.com/J1K8pVr.jpg",
-            }}
-          >
-            <CarouselProduct products={productosNinos} />
-          </Typeandtype> */}
-          <video
-            muted={true}
-            webkit-playsinline={true}
-            playsInline={true}
-            preload="auto"
-            autoPlay={true}
-            loop={true}
-            className="laptop:h-full   w-[100vw] xl:block"
-          >
-            <source
-              src="https://cdn.shopify.com/videos/c/o/v/871dfa3ffa8e481087be3e5ae964adfe.mp4"
-              type="video/mp4"
-            />
-            <track
-              src="captions_en.vtt"
-              kind="captions"
-              srcLang="en"
-              label="english_captions"
-            />
-            <track
-              src="captions_es.vtt"
-              kind="captions"
-              srcLang="es"
-              label="spanish_captions"
-            />
-          </video>
+          <VideoHome url={homeVideo[0]} />
           <section
             aria-labelledby="products-heading"
             className="flex pb-24 pt-6"
