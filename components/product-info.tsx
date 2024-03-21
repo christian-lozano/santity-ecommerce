@@ -19,7 +19,7 @@ interface Props {
 }
 
 export function ProductInfo({ product }: Props) {
-  console.log(product)
+
 
   const precio = product.price
 

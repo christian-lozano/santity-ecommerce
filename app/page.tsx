@@ -1,7 +1,6 @@
 import { client } from "@/sanity/lib/client"
 import { groq } from "next-sanity"
 
-
 import { SanityProduct, SanitySlider } from "@/config/inventory"
 import Footer from "@/components/Footer/Footer"
 import { SiteHeader } from "@/components/Header/site-header"
@@ -128,11 +127,7 @@ const dataCabeceraTab = [
 
 export default async function Page({ searchParams }: Props) {
   const productosGenero = async (genero: String, cantidad: String) => {
-    const {
-      date = "desc",
-      price,
-      search,
-    } = searchParams
+    const { date = "desc", price, search } = searchParams
 
     const order = `| order(_id) [0...${cantidad}]`
 
@@ -163,7 +158,16 @@ export default async function Page({ searchParams }: Props) {
     return products
   }
 
-  const slider = await client.fetch<SanitySlider[]>(groq`*[_type == "home"]`)
+  const slider = await client.fetch<SanitySlider[]>(
+    groq`*[_type == "home"] {
+      slider
+    }`
+  )
+  const bannerGenero = await client.fetch<SanitySlider[]>(
+    groq`*[_type == "home"] {
+      bannergenero
+    }`
+  )
 
   //filtro y cantidad
   const productosHombre = await productosGenero("hombre", "6")
@@ -241,7 +245,7 @@ export default async function Page({ searchParams }: Props) {
       <div className="conta">
         <Carousel dataSlider={slider[0]} />
 
-        <HombreMujer />
+        <HombreMujer bannerGenero={bannerGenero[0]} />
         <MainFiltroGenero dataSemifiltroHome={dataSemifiltroHome} />
         <main className=" xl:px-6">
           {/* <Typeandtype
