@@ -5,6 +5,7 @@ import Link from "next/link"
 import { urlForImage } from "@/sanity/lib/image"
 
 export default function HombreMujer({ bannerGenero }) {
+  console.log(bannerGenero)
   return (
     <>
       <div className="mt-20">
@@ -17,10 +18,10 @@ export default function HombreMujer({ bannerGenero }) {
                   src={urlForImage(el.img.asset._ref).url()}
                   alt=""
                 />
-                <div className="opacidad-container  absolute flex    h-full w-full items-end justify-center ">
-                  <div className="absolute bottom-0 flex w-5/6 items-center justify-between  ">
-                    <h5 className="text-2xl font-extrabold text-white xl:text-5xl">
-                      {el.img.titulo}
+                <div className="opacidad-container  absolute flex    h-full w-full items-center justify-center ">
+                  <div className="flex w-5/6 items-center justify-center  ">
+                    <h5 className="text-4xl  font-extrabold text-white xl:text-5xl">
+                      {el.titulo}
                     </h5>
                   </div>
                 </div>
