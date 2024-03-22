@@ -20,7 +20,7 @@ export default function HombreMujer({ bannerGenero }) {
                 />
                 <div className="opacidad-container  absolute flex    h-full w-full items-center justify-center ">
                   <div className="flex w-5/6 items-center justify-center  ">
-                    <h5 className="text-4xl  font-extrabold text-white xl:text-5xl">
+                    <h5 className="text-4xl font-extrabold text-white xl:text-5xl">
                       {el.titulo}
                     </h5>
                   </div>
