@@ -9,7 +9,7 @@ const Column = (props) => {
   const icons = [
     "https://i.imgur.com/4JoWdxf.png",
     "https://i.imgur.com/oWHKLnj.jpg",
-    "https://i.imgur.com/SCFSSVs.png",
+    // "https://i.imgur.com/SCFSSVs.png",
     "https://i.imgur.com/kuSZEpB.png",
   ]
   const { column, logo } = props

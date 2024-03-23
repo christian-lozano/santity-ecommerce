@@ -3,30 +3,29 @@
 import Column from "./Column/Column"
 import "./Footer.css"
 
-
 const columns = [
   // {
   //   title: "Shop",
   //   links: ["alllinks"],
   // },
   {
-    title: "Account",
+    title: "Paginas",
     links: [
       {
-        text: "My Account",
-        link: "/account",
+        text: "Hombre",
+        link: "/tienda?genero=hombre",
       },
       {
-        text: "Purchases",
-        link: "/orders",
+        text: "Mujer",
+        link: "/tienda?genero=mujer",
       },
       {
-        text: "Cart",
-        link: "/cart",
+        text: "Niños",
+        link: "/tienda?genero=niños",
       },
       {
-        text: "Saved",
-        link: "/saved",
+        text: "Carrito",
+        link: "/tienda?genero=carrito",
       },
     ],
   },
@@ -34,36 +33,32 @@ const columns = [
     title: "Help",
     links: [
       {
-        text: "Track Order",
-        link: "/track",
+        text: "Problemas con mi Pedido",
+        link: "https://api.whatsapp.com/send/?phone=51983478551&text&type=phone_number&app_absent=0",
       },
       {
-        text: "Shipping and Returns",
-        link: "/shipping",
+        text: "Hacer una Devolución",
+        link: "https://api.whatsapp.com/send/?phone=51983478551&text&type=phone_number&app_absent=0",
       },
       {
-        text: "Customer Service",
-        link: "/customerservice",
+        text: "Talla Incorrecta",
+        link: "https://api.whatsapp.com/send/?phone=51983478551&text&type=phone_number&app_absent=0",
       },
     ],
   },
   {
-    title: "Policies",
+    title: "Políticas",
     links: [
       {
-        text: "About",
-        link: "about",
-      },
-      {
-        text: "Privacy Policy",
+        text: "Políticas de Privacidad",
         link: "privacy",
       },
       {
-        text: "Contact",
-        link: "contact",
+        text: "Contactados",
+        link: "https://api.whatsapp.com/send/?phone=51983478551&text&type=phone_number&app_absent=0",
       },
       {
-        text: "Terms & Conditions",
+        text: "Términos & Condiciones",
         link: "terms",
       },
     ],

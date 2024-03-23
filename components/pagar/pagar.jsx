@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from "react"
 import Link from "next/link"
 import { urlForImage } from "@/sanity/lib/image"
+import { Option, Select } from "@material-tailwind/react"
 import { useCart } from "react-use-cart"
 
 export default function PaginaPagar() {
@@ -360,13 +361,13 @@ export default function PaginaPagar() {
                   placeholder="Dirección"
                   onChange={(e) => changeHandler(e)}
                 />
-                <div className="pointer-events-none absolute inset-y-0 left-0 inline-flex items-center px-3">
+                {/* <div className="pointer-events-none absolute inset-y-0 left-0 inline-flex items-center px-3">
                   <img
                     className="h-4 w-4 object-contain"
                     src="https://flagpack.xyz/_nuxt/b15bfeb63d8381b63973169f3dbaffc3.svg"
                     alt=""
                   />
-                </div>
+                </div> */}
               </div>
             </div>
             {/* boleta factura */}
@@ -383,10 +384,10 @@ export default function PaginaPagar() {
                       checked={allValues.comprobante === "Boleta"}
                       value="Boleta"
                       type="radio"
-                      class="before:content[''] peer relative h-5 w-5 cursor-pointer appearance-none rounded-full border border-blue-gray-200 text-gray-900 transition-all before:absolute before:left-2/4 before:top-2/4 before:block before:h-12 before:w-12 before:-translate-x-2/4 before:-translate-y-2/4 before:rounded-full before:bg-blue-gray-500 before:opacity-0 before:transition-opacity checked:border-gray-900 checked:before:bg-gray-900 hover:before:opacity-10"
+                      class="before:content[''] peer relative h-5 w-5 cursor-pointer appearance-none rounded-full border border-blue-gray-200  transition-all before:absolute before:left-2/4 before:top-2/4 before:block before:h-12 before:w-12 before:-translate-x-2/4 before:-translate-y-2/4 before:rounded-full before:bg-blue-gray-500 before:opacity-0 before:transition-opacity checked:border-gray-900 checked:before:bg-gray-900 hover:before:opacity-10"
                       id="react"
                     />
-                    <span class="pointer-events-none absolute left-2/4 top-2/4 -translate-x-2/4 -translate-y-2/4 text-gray-900 opacity-0 transition-opacity peer-checked:opacity-100">
+                    <span class="pointer-events-none absolute left-2/4 top-2/4 -translate-x-2/4 -translate-y-2/4  opacity-0 transition-opacity peer-checked:opacity-100">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         class="h-3.5 w-3.5"
@@ -420,10 +421,10 @@ export default function PaginaPagar() {
                       checked={allValues.comprobante === "Factura"}
                       value="Factura"
                       type="radio"
-                      class="before:content[''] peer relative h-5 w-5 cursor-pointer appearance-none rounded-full border border-blue-gray-200 text-gray-900 transition-all before:absolute before:left-2/4 before:top-2/4 before:block before:h-12 before:w-12 before:-translate-x-2/4 before:-translate-y-2/4 before:rounded-full before:bg-blue-gray-500 before:opacity-0 before:transition-opacity checked:border-gray-900 checked:before:bg-gray-900 hover:before:opacity-10"
+                      class="before:content[''] peer relative h-5 w-5 cursor-pointer appearance-none rounded-full border border-blue-gray-200  transition-all before:absolute before:left-2/4 before:top-2/4 before:block before:h-12 before:w-12 before:-translate-x-2/4 before:-translate-y-2/4 before:rounded-full before:bg-blue-gray-500 before:opacity-0 before:transition-opacity checked:border-gray-900 checked:before:bg-gray-900 hover:before:opacity-10"
                       id="factura"
                     />
-                    <span class="pointer-events-none absolute left-2/4 top-2/4 -translate-x-2/4 -translate-y-2/4 text-gray-900 opacity-0 transition-opacity peer-checked:opacity-100">
+                    <span class="pointer-events-none absolute left-2/4 top-2/4 -translate-x-2/4 -translate-y-2/4  opacity-0 transition-opacity peer-checked:opacity-100">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         class="h-3.5 w-3.5"
@@ -477,53 +478,50 @@ export default function PaginaPagar() {
 
             {/* info */}
             <div className="flex flex-col sm:flex-row">
-              {/* <label
-              htmlFor="card-holder"
-              className="mt-4 mb-2 block text-sm font-medium w-full"
-            >
-              <Select
-                nonce={undefined}
-                name="provincia"
-                label="Provincia"
-                className={` ${
-                  provincia.length === 0 &&
-                  'border-red-200 focus:border-red-200 '
-                }`}
-                onResize={undefined}
-                onResizeCapture={undefined}
-                onChange={(e) => changeHandlerSelectProvincia(String(e))}
-              >
-                <Option value="Amazonas">Amazonas</Option>
-                <Option value="Ancash">Ancash</Option>
-                <Option value="Apurímac">Apurímac</Option>
-                <Option value="Arequipa">Arequipa</Option>
-                <Option value="Ayacucho">Ayacucho</Option>
-                <Option value="Cajamarca">Cajamarca</Option>
-                <Option value="Callao">Callao</Option>
-                <Option value="Cuzco">Cuzco </Option>
-                <Option value="Huancavelica">Huancavelica</Option>
-                <Option value="Huánuco">Huánuco</Option>
-                <Option value="Ica">Ica</Option>
-                <Option value="Junín">Junín</Option>
-                <Option value="La_Libertad">La Libertad</Option>
-                <Option value="Lambayeque">Lambayeque</Option>
-                <Option value="Lima">Lima</Option>
-                <Option value="Loreto">Loreto</Option>
-                <Option value="Madre_de_Dios">Madre de Dios</Option>
-                <Option value="Moquegua">Moquegua</Option>
-                <Option value="Pasco">Pasco</Option>
-                <Option value="Piura">Piura</Option>
-                <Option value="Puno">Puno</Option>
-                <Option value="San_Martín">San Martín</Option>
-                <Option value="Tacna">Tacna</Option>
-                <Option value="Tumbes">Tumbes</Option>
-                <Option value="Ucayali">Ucayali</Option>
-              </Select>
-            </label> */}
               <label
                 htmlFor="card-holder"
+                className="mb-2 mt-4 block w-full text-sm  font-medium "
+              >
+                <Select
+                  nonce={undefined}
+                  name="provincia"
+                  label="Provincia"
+                  className={`border  ${provincia.length === 0 && " "}`}
+                  onResize={undefined}
+                  onResizeCapture={undefined}
+                  onChange={(e) => changeHandlerSelectProvincia(String(e))}
+                >
+                  <Option value="Amazonas">Amazonas</Option>
+                  <Option value="Ancash">Ancash</Option>
+                  <Option value="Apurímac">Apurímac</Option>
+                  <Option value="Arequipa">Arequipa</Option>
+                  <Option value="Ayacucho">Ayacucho</Option>
+                  <Option value="Cajamarca">Cajamarca</Option>
+                  <Option value="Callao">Callao</Option>
+                  <Option value="Cuzco">Cuzco </Option>
+                  <Option value="Huancavelica">Huancavelica</Option>
+                  <Option value="Huánuco">Huánuco</Option>
+                  <Option value="Ica">Ica</Option>
+                  <Option value="Junín">Junín</Option>
+                  <Option value="La_Libertad">La Libertad</Option>
+                  <Option value="Lambayeque">Lambayeque</Option>
+                  <Option value="Lima">Lima</Option>
+                  <Option value="Loreto">Loreto</Option>
+                  <Option value="Madre_de_Dios">Madre de Dios</Option>
+                  <Option value="Moquegua">Moquegua</Option>
+                  <Option value="Pasco">Pasco</Option>
+                  <Option value="Piura">Piura</Option>
+                  <Option value="Puno">Puno</Option>
+                  <Option value="San_Martín">San Martín</Option>
+                  <Option value="Tacna">Tacna</Option>
+                  <Option value="Tumbes">Tumbes</Option>
+                  <Option value="Ucayali">Ucayali</Option>
+                </Select>
+              </label>
+              {/* <label
+                htmlFor="card-holder"
                 className="mb-2  mt-5 block w-full text-sm font-medium"
-              ></label>
+              ></label> */}
             </div>
             {/* <label
             htmlFor="card-holder"
@@ -551,21 +549,17 @@ export default function PaginaPagar() {
               <div className="border-b-2 pb-2">
                 <div className="mt-6 border-y py-2">
                   <div className="flex items-center justify-between">
-                    <p className="text-sm font-medium text-gray-900">
-                      Subtotal
-                    </p>
-                    <p className="font-semibold text-gray-900">S/{cartTotal}</p>
+                    <p className="text-sm font-medium ">Subtotal</p>
+                    <p className="font-semibold ">S/{cartTotal}</p>
                   </div>
                   {/* <div className="flex items-center justify-between">
-                  <p className="text-sm font-medium text-gray-900">Envío</p>
-                  <p className="font-semibold text-gray-900">S/8.00</p>
+                  <p className="text-sm font-medium ">Envío</p>
+                  <p className="font-semibold ">S/8.00</p>
                 </div> */}
                 </div>
                 <div className="mt-6 flex items-center justify-between ">
-                  <p className="text-sm font-medium text-gray-900">Total</p>
-                  <p className="text-2xl font-semibold text-gray-900">
-                    S/{cartTotal}
-                  </p>
+                  <p className="text-sm font-medium ">Total</p>
+                  <p className="text-2xl font-semibold ">S/{cartTotal}</p>
                 </div>
               </div>
             )}

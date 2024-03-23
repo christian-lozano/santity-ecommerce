@@ -14,7 +14,6 @@ import MainTab from "@/components/tabs-home-genero/main-tab"
 import "@/styles/globals.css"
 import { urlForImage } from "@/sanity/lib/image"
 
-import LibroReclamaciones from "@/components/libro-reclamaciones/libro-reclamaciones"
 import VideoHome from "@/components/video/video"
 
 interface Props {
@@ -276,7 +275,6 @@ export default async function Page({ searchParams }: Props) {
         </main>
       </div>
       <Footer />
-      <LibroReclamaciones />
     </div>
   )
 }
