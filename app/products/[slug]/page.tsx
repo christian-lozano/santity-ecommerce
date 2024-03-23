@@ -7,6 +7,7 @@ import CarouselProductRelacionados from "@/components/carousel-product/carousel-
 import { ProductGallery } from "@/components/product-gallery"
 import { ProductInfo } from "@/components/product-info"
 import "@/styles/globals.css"
+import Footer from "@/components/Footer/Footer"
 interface Props {
   params: {
     slug: string
@@ -84,6 +85,8 @@ export default async function Page({ params }: Props) {
         </h5>
         <CarouselProductRelacionados products={products} />
       </div>
+      <Footer />
+
     </>
   )
 }

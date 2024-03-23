@@ -3,7 +3,6 @@ import Link from "next/link"
 import { urlForImage } from "@/sanity/lib/image"
 
 export default function Product({ products }) {
-
   const precio = products.price
 
   const operation = (Number(products.descuento) / 100) * Number(precio)

@@ -6,7 +6,6 @@ import { Dialog, DialogBody, DialogHeader } from "@material-tailwind/react"
 
 import { Button } from "@/components/ui/button"
 
-
 const dataNuestrasEmpresas = [
   {
     img: "https://lh5.googleusercontent.com/p/AF1QipNc0m8OUrP-oiueHkxwr2q8Rc2Hstqf9rM7uQl5=s450-k-no",
@@ -113,13 +112,13 @@ export default function NuestrasTiendas() {
             </section>
           </div>
           {/*  */}
-          <p className="my-10 text-center text-xl font-semibold text-black dark:text-white sm:mt-16 sm:text-xl xl:mb-32 xl:mt-20 xl:text-3xl">
+          <h5 className=" text-center text-xl font-semibold text-black dark:text-white sm:mt-16 sm:text-xl xl:mb-32 xl:mt-20 xl:text-3xl">
             Conoce la Ubicación y <br /> Nuestros Horarios de Atención
-          </p>
+          </h5>
           <div className="-mx-4 -mb-10 -mt-4 flex flex-wrap px-1 sm:-m-4 sm:px-5">
             {/* Tumbes */}
             {dataNuestrasEmpresas.map((el) => (
-              <div className="mx-auto mb-6 flex max-w-sm flex-col items-center justify-center p-0 md:mb-0 md:w-1/3">
+              <div className="mx-auto mb-6 mt-10 flex max-w-sm flex-col items-center justify-center p-0 md:mb-0 md:w-1/3">
                 <div className="relative flex max-w-[24rem] flex-col rounded-xl  bg-clip-border text-gray-700 shadow-md">
                   <div className="relative m-0 overflow-hidden rounded-none bg-transparent bg-clip-border text-gray-700 shadow-none">
                     <img
@@ -137,20 +136,20 @@ export default function NuestrasTiendas() {
                   </div>
                   <div className="flex items-center justify-between p-6">
                     <div className="flex w-full justify-around">
-                      <Button
-                        className="rounded-lg bg-black px-5 py-2 text-white dark:bg-white dark:text-black"
+                      <button
+                        className=" bg-black p-5 py-2 capitalize text-white dark:bg-white dark:text-black"
                         onClick={handleOpen}
                       >
                         Ver Horarios
-                      </Button>
+                      </button>
                       <Link
                         href={el.ubicacion}
                         target="_blank"
                         rel="noreferrer"
                       >
-                        <Button className="rounded-lg bg-black px-5 py-2 text-white dark:bg-white dark:text-black">
+                        <button className=" bg-black p-5 py-2 capitalize text-white dark:bg-white dark:text-black">
                           Ver Ubicación
-                        </Button>
+                        </button>
                       </Link>
 
                       <Dialog

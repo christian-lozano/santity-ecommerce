@@ -1100,7 +1100,7 @@ let options = [
     icon: <i className="fa fa-graduation-cap"></i>,
     hideBorder: false,
     disabled: false,
-    to: "/tienda?pwa_ecom_ui_template_products%5BrefinementList%5D%5Bprice.discount_level%5D%5B0%5D=60",
+    to: "/tienda?price=asc",
   },
 ]
 

@@ -1,9 +1,8 @@
 "use client"
 
-import React from "react"
-
 import Column from "./Column/Column"
 import "./Footer.css"
+
 
 const columns = [
   // {

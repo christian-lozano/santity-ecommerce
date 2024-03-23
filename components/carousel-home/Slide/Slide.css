@@ -48,7 +48,8 @@
 .slidecont > * {
   transition: all 0.3s;
 }
-.slide img {
+.slide img,
+.img-main {
   width: 100%;
   height: 100%;
   position: absolute;

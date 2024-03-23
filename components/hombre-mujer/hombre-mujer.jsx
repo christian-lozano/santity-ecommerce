@@ -5,7 +5,6 @@ import Link from "next/link"
 import { urlForImage } from "@/sanity/lib/image"
 
 export default function HombreMujer({ bannerGenero }) {
-  console.log(bannerGenero)
   return (
     <>
       <div className="mt-20">

@@ -54,7 +54,7 @@ export const product = defineType({
     },
     {
       name: "images",
-      title: "Images",
+      title: "Images (jpg,png,webp) 2000x2000",
       type: "array",
       of: [{ type: "image" }],
     },
@@ -67,9 +67,9 @@ export const product = defineType({
     },
     {
       name: "color",
-      title: "Colores",
-      type: "array",
-      of: [{ type: "string" }],
+      title: "Color",
+      type: "string",
+
       validation: (rule) => rule.required(),
     },
     {

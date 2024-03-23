@@ -1,3 +1,4 @@
+import Footer from "@/components/Footer/Footer"
 import { SiteHeader } from "@/components/Header/site-header"
 import NuestrasTiendas from "@/components/nuestras-tiendas/nuestras-tiendas"
 import "@/styles/globals.css"
@@ -6,6 +7,8 @@ export default function page() {
     <div>
       <SiteHeader />
       <NuestrasTiendas />
+      <Footer />
+
     </div>
   )
 }

@@ -12,10 +12,9 @@ import { cn } from "@/lib/utils"
 import { SheetFooter } from "@/components/ui/sheet"
 import Footer from "@/components/Footer/Footer"
 import { SiteHeader } from "@/components/Header/site-header"
+import IconWhatapp from "@/components/icon-whatsapp/icon-whatapp"
 import { Providers } from "@/components/providers"
 import { SiteBlob } from "@/components/site-blob"
-
-
 
 export const metadata: Metadata = {}
 
@@ -40,6 +39,7 @@ export default async function RootLayout({ children }: RootLayoutProps) {
               <SiteBlob />
             </div>
           </Providers>
+          <IconWhatapp></IconWhatapp>
         </body>
       </html>
     </>

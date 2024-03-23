@@ -12,6 +12,7 @@ export const home = defineType({
       type: "string",
       initialValue: "Home Page",
     }),
+    // slider
     {
       name: "slider",
       title: "Slider",
@@ -23,12 +24,34 @@ export const home = defineType({
           name: "Slide",
           fields: [
             {
-              title: "Image",
-              name: "img",
+              title: "Image Desktop (jpg,png,webp) 1920x840",
+              name: "imgdeskt",
               type: "image",
               options: {
                 hotspot: true, // <-- Defaults to false
               },
+            },
+            {
+              title: "Image Tablet (jpg,png,webp) 960x960",
+              name: "imgtab",
+              type: "image",
+              options: {
+                hotspot: true, // <-- Defaults to false
+              },
+            },
+            {
+              title: "Image Mobil (jpg,png,webp) 600x771",
+              name: "imgmob",
+              type: "image",
+              options: {
+                hotspot: true, // <-- Defaults to false
+              },
+            },
+            {
+              title: "Url Slider",
+              name: "urlslider",
+              type: "string",
+              validation: (rule) => rule.required(),
             },
             {
               title: "Titulo",
@@ -40,6 +63,13 @@ export const home = defineType({
               title: "Subtitulo",
               name: "subtitulo",
               type: "string",
+              validation: (rule) => rule.required(),
+            },
+            {
+              title: "Activar Botón con titulo",
+              name: "activebuttontitle",
+              type: "boolean",
+              initialValue: false,
               validation: (rule) => rule.required(),
             },
             {
@@ -74,7 +104,7 @@ export const home = defineType({
           name: "bannergenero",
           fields: [
             {
-              title: "Imagen Principal",
+              title: "Imagen Principal (jpg,png,webp) 720x480",
               name: "img",
               type: "image",
               options: {
@@ -120,19 +150,13 @@ export const home = defineType({
               validation: (rule) => rule.required(),
             },
             {
-              title: "Slider Titulo",
-              name: "slidertitle",
-              type: "string",
-              validation: (rule) => rule.required(),
-            },
-            {
               title: "Link",
               name: "link",
               type: "string",
               validation: (rule) => rule.required(),
             },
             {
-              title: "Imagen Principal",
+              title: "Imagen Principal (jpg,png,webp) 470x399",
               name: "img",
               type: "image",
               options: {
@@ -151,7 +175,7 @@ export const home = defineType({
                   name: "bannergenero",
                   fields: [
                     {
-                      title: "Imagen Categoría",
+                      title: "Imagen Categoría (jpg,png,webp) 253x399",
                       name: "img",
                       type: "image",
                       options: {

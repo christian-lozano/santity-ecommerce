@@ -10,7 +10,9 @@ import { SiteHeader } from "@/components/Header/site-header"
 import { ProductFilters } from "@/components/product-filters"
 import { ProductGrid } from "@/components/product-grid"
 import { ProductSort } from "@/components/product-sort"
+
 import "@/styles/globals.css"
+
 interface Props {
   searchParams: {
     date?: string
@@ -40,9 +42,9 @@ export default async function Page({ searchParams }: Props) {
   const order = `${priceOrder}${dateOrder}`
 
   const productFilter = `_type == "product"`
-  const colorFilter = color ? `&& "${color}" in colors` : ""
+  const colorFilter = color ? `&& color match "${color}"` : ""
   const categoryFilter = category ? `&& "${category}" in categories` : ""
-  const sizeFilter = size ? `&& "${size}" in sizes` : ""
+  const sizeFilter = size ? `&& tallas match "tallas"` : ""
   const generoFilter = genero ? `&& genero match "${genero}"` : ""
 
   const searchFilter = search
@@ -64,9 +66,11 @@ export default async function Page({ searchParams }: Props) {
     tipo,
     marca,
     descuento,
+    color,
+    tallas,
     "slug":slug.current
   }`)
-
+  // console.log(products[0].tallas)
   return (
     <div>
       <SiteHeader />

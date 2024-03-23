@@ -15,16 +15,14 @@ const filters = [
     id: "category",
     name: "Categoría",
     options: [
+      { value: "ropa", label: "ropa" },
       { value: "calzado", label: "calzado" },
       { value: "accesorios", label: "accesorios" },
-      { value: "ropa", label: "ropa" },
-      { value: "scarves", label: "Scarves" },
-      { value: "wallets", label: "Wallets" },
     ],
   },
   {
     id: "genero",
-    name: "Genero",
+    name: "Género",
     options: [
       { value: "hombre", label: "Hombre" },
       { value: "mujer", label: "Mujer" },
@@ -33,18 +31,18 @@ const filters = [
       { value: "niña", label: "Niña" },
     ],
   },
-  {
-    id: "size",
-    name: "Talla",
-    options: [
-      { value: "xs", label: "X-Small" },
-      { value: "s", label: "Small" },
-      { value: "m", label: "Medium" },
-      { value: "l", label: "Large" },
-      { value: "xl", label: "X-Large" },
-      { value: "one-size", label: "One Size" },
-    ],
-  },
+  // {
+  //   id: "size",
+  //   name: "Talla",
+  //   options: [
+  //     { value: "xs", label: "X-Small" },
+  //     { value: "s", label: "Small" },
+  //     { value: "m", label: "Medium" },
+  //     { value: "l", label: "Large" },
+  //     { value: "xl", label: "X-Large" },
+  //     { value: "one-size", label: "One Size" },
+  //   ],
+  // },
   {
     id: "color",
     name: "Color",

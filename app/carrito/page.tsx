@@ -1,3 +1,4 @@
+import Footer from "@/components/Footer/Footer"
 import { SiteHeader } from "@/components/Header/site-header"
 import { CartItems } from "@/components/cart-items"
 import { CartSummary } from "@/components/cart-summary"
@@ -23,6 +24,8 @@ export default function Page() {
           <CartSummary />
         </form>
       </main>
+      <Footer />
+
     </div>
   )
 }

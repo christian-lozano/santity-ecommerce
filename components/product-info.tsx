@@ -19,8 +19,6 @@ interface Props {
 }
 
 export function ProductInfo({ product }: Props) {
-
-
   const precio = product.price
 
   const operation = (Number(product.descuento) / 100) * Number(precio)
@@ -87,7 +85,7 @@ export function ProductInfo({ product }: Props) {
 
       <div className="mt-4">
         <p>
-          talla: <strong>{selectSize}</strong>
+          Talla: <strong>{selectSize}</strong>
         </p>
         {product.tallas.map(({ talla, stock }) => (
           <Button

@@ -214,7 +214,7 @@ button {
 .button-0:hover {
   transform: rotate(180deg);
   background-color: black;
-  fill: white;
+  fill: black;
 }
 .MuiTouchRipple-root {
   opacity: 0.2;
@@ -390,4 +390,13 @@ select:focus {
 .second-back-btn {
   display: flex;
   padding: 1rem;
+  background: #000;
+}
+/* color left carousel */
+button.react-multiple-carousel__arrow.react-multiple-carousel__arrow--left {
+  background-color: black;
+}
+
+.fixed.bottom-1.left-1.z-50.flex.h-6.w-6.items-center.justify-center.rounded-full.bg-gray-800.p-3.font-mono.text-xs.text-white {
+  display: none;
 }
