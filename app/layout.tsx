@@ -2,6 +2,7 @@ import { Metadata } from "next"
 import Image from "next/image"
 import { client } from "@/sanity/lib/client"
 import { urlForImage } from "@/sanity/lib/image"
+import { Analytics } from "@vercel/analytics/react"
 import { groq } from "next-sanity"
 import { CartProvider } from "react-use-cart"
 

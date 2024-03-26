@@ -13,7 +13,7 @@ interface Props {
 export function Providers({ children }: Props) {
   return (
     <CartProvider>
-      <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+      <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
         <Toaster />
         {children}
         <TailwindIndicator />
