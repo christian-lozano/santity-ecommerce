@@ -41,7 +41,7 @@ const Carousel = ({ dataSlider }) => {
             viewBox="0 0 24 24"
             strokeWidth="1.5"
             stroke="currentColor"
-            class="h-6 w-6"
+            className="h-6 w-6"
           >
             <path
               strokeLinecap="round"
@@ -104,7 +104,7 @@ const Carousel = ({ dataSlider }) => {
                   viewBox="0 0 24 24"
                   strokeWidth="1.5"
                   stroke="currentColor"
-                  class="h-6 w-6"
+                  className="h-6 w-6"
                 >
                   <path
                     strokeLinecap="round"
@@ -119,7 +119,7 @@ const Carousel = ({ dataSlider }) => {
                   viewBox="0 0 24 24"
                   strokeWidth="1.5"
                   stroke="currentColor"
-                  class="h-6 w-6"
+                  className="h-6 w-6"
                 >
                   <path
                     strokeLinecap="round"

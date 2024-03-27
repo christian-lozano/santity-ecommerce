@@ -269,8 +269,8 @@ export default async function Page({ searchParams }: Props) {
             ></MainTab>
           </section>
           <div className="grid h-full grid-cols-2  items-center justify-center xl:flex xl:justify-around ">
-            {benefits.map((el) => (
-              <Benefit benefits={el}></Benefit>
+            {benefits.map((el,i) => (
+              <Benefit key={i} benefits={el}></Benefit>
             ))}
           </div>
         </main>

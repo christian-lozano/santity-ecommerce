@@ -6,8 +6,12 @@ import { SiteHeader } from "@/components/Header/site-header"
 import CarouselProductRelacionados from "@/components/carousel-product/carousel-product-relacionados"
 import { ProductGallery } from "@/components/product-gallery"
 import { ProductInfo } from "@/components/product-info"
+
 import "@/styles/globals.css"
+import { notFound } from "next/navigation"
+
 import Footer from "@/components/Footer/Footer"
+
 interface Props {
   params: {
     slug: string
@@ -35,6 +39,10 @@ export default async function Page({ params }: Props) {
     tallas,
     "slug":slug.current
   }`)
+
+  if (!product) {
+    return notFound()
+  }
   const productosGenero = async () => {
     const order = `| order(_id) [0...10]`
 
@@ -86,7 +94,6 @@ export default async function Page({ params }: Props) {
         <CarouselProductRelacionados products={products} />
       </div>
       <Footer />
-
     </>
   )
 }

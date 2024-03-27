@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server"
+import NewPedido from "@/models/pagoPendiente"
 import mercadopago from "mercadopago"
 
 export async function POST(req) {
@@ -9,6 +10,8 @@ export async function POST(req) {
 
   try {
     const data = await req.json()
+    // console.log(data)
+
     let productosCantidad = data.productos.map((el) => {
       let productos = {
         id: el.objectID,
@@ -73,9 +76,35 @@ export async function POST(req) {
     }
 
     const response = await mercadopago.preferences.create(preference)
-    // console.log(response)
-    console.log(response)
+    // envio mongo db
+
+    let dataEnvioMongoUser = {
+      id_payer: response.body.id,
+      id_mercado_pago: "01",
+      pedido: true,
+      pedido_pagado: false,
+      pedido_devuelto: false,
+      pedido_por_entregar: false,
+      pedido_entregado: false,
+      nombres: data.datosComprador.nombre,
+      apellidos: data.datosComprador.apellido,
+      email: data.datosComprador.email,
+      documento: data.datosComprador.documento,
+      cart_total: data.datosComprador.cartTotal,
+      telefono: data.datosComprador.telefono,
+      distrito: data.datosComprador.distrito,
+      provincia: data.datosComprador.provincia,
+      direccion: data.datosComprador.direccion,
+      comprobante: data.datosComprador.comprobante,
+      info_adicional: data.datosComprador.adicional,
+      ruc: data.datosComprador.ruc,
+      productos: productosCantidad,
+    }
+
     if (response.status === 201) {
+      const newPedido = new NewPedido(dataEnvioMongoUser)
+      const savePedido = await newPedido.save()
+      console.log(savePedido)
       return new Response(JSON.stringify({ url: response.body.init_point }), {
         // return new Response(JSON.stringify({ url: "test" }), {
         status: 200,
@@ -93,6 +122,7 @@ export async function POST(req) {
       })
     }
   } catch (error) {
+    console.log(error)
     return new Response(JSON.stringify({ error: "ocurrio un error" }), {
       // return new Response(JSON.stringify({ url: "test" }), {
       status: 401,

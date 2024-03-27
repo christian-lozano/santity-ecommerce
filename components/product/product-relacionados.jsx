@@ -40,7 +40,7 @@ export default function ProductRelacionados({ products }) {
         className="button-0 absolute z-50 flex items-center justify-center rounded-full  text-center"
       >
         <svg
-          class=" icon icon--plus"
+          className=" icon icon--plus"
           width="20"
           height="20"
           viewBox="0 0 20 20"

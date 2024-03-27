@@ -27,7 +27,7 @@ export default function PaginaPagar() {
             Revisa tus artículos. Y seleccione un método de envío adecuado.
           </p>
           <div className="mt-8 space-y-3 rounded-lg border  px-2 py-4  sm:px-6">
-            {items.length === 0 && <CartItemsEmpty />}
+            {domLoaded && items.length === 0 && <CartItemsEmpty />}
             {domLoaded &&
               items.map((el) => (
                 <Link href={`/products/${el.slug}`}>

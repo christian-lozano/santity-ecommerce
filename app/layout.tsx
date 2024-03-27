@@ -9,6 +9,7 @@ import { CartProvider } from "react-use-cart"
 import { siteConfig } from "@/config/site"
 import { fontSans } from "@/lib/fonts"
 import { shimmer, toBase64 } from "@/lib/image"
+import { connectMongoDB } from "@/lib/mongodb"
 import { cn } from "@/lib/utils"
 import { SheetFooter } from "@/components/ui/sheet"
 import Footer from "@/components/Footer/Footer"
@@ -22,7 +23,7 @@ export const metadata: Metadata = {}
 interface RootLayoutProps {
   children: React.ReactNode
 }
-
+connectMongoDB()
 export default async function RootLayout({ children }: RootLayoutProps) {
   return (
     <>

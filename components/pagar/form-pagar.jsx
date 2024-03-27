@@ -113,6 +113,7 @@ export default function FormPagar() {
         ruc: allValues.ruc,
         distrito: allValues.distrito,
         adicional: allValues.adicional,
+        provincia: allValues.provincia,
 
         cartTotal,
       },
@@ -211,10 +212,10 @@ export default function FormPagar() {
 
         {/* boleta factura */}
         <div className="flex justify-center pt-5">
-          <div class="flex gap-10">
-            <div class="inline-flex items-center">
+          <div className="flex gap-10">
+            <div className="inline-flex items-center">
               <label
-                class="relative flex cursor-pointer items-center rounded-full p-3"
+                className="relative flex cursor-pointer items-center rounded-full p-3"
                 htmlFor="react"
               >
                 <input
@@ -223,13 +224,13 @@ export default function FormPagar() {
                   checked={allValues.comprobante === "Boleta"}
                   value="Boleta"
                   type="radio"
-                  class="before:content[''] peer relative h-5 w-5 cursor-pointer appearance-none rounded-full border border-blue-gray-200  transition-all before:absolute before:left-2/4 before:top-2/4 before:block before:h-12 before:w-12 before:-translate-x-2/4 before:-translate-y-2/4 before:rounded-full before:bg-blue-gray-500 before:opacity-0 before:transition-opacity checked:border-gray-900 checked:before:bg-gray-900 hover:before:opacity-10"
+                  className="before:content[''] peer relative h-5 w-5 cursor-pointer appearance-none rounded-full border border-blue-gray-200  transition-all before:absolute before:left-2/4 before:top-2/4 before:block before:h-12 before:w-12 before:-translate-x-2/4 before:-translate-y-2/4 before:rounded-full before:bg-blue-gray-500 before:opacity-0 before:transition-opacity checked:border-gray-900 checked:before:bg-gray-900 hover:before:opacity-10"
                   id="react"
                 />
-                <span class="pointer-events-none absolute left-2/4 top-2/4 -translate-x-2/4 -translate-y-2/4  opacity-0 transition-opacity peer-checked:opacity-100">
+                <span className="pointer-events-none absolute left-2/4 top-2/4 -translate-x-2/4 -translate-y-2/4  opacity-0 transition-opacity peer-checked:opacity-100">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    class="h-3.5 w-3.5"
+                    className="h-3.5 w-3.5"
                     viewBox="0 0 16 16"
                     fill="currentColor"
                   >
@@ -238,15 +239,15 @@ export default function FormPagar() {
                 </span>
               </label>
               <label
-                class="mt-px cursor-pointer select-none font-light text-gray-700"
+                className="mt-px cursor-pointer select-none font-light text-gray-700"
                 htmlFor="react"
               >
                 Boleta
               </label>
             </div>
-            <div class="inline-flex items-center">
+            <div className="inline-flex items-center">
               <label
-                class="relative flex cursor-pointer items-center rounded-full p-3"
+                className="relative flex cursor-pointer items-center rounded-full p-3"
                 htmlFor="react"
               >
                 <input
@@ -255,13 +256,13 @@ export default function FormPagar() {
                   checked={allValues.comprobante === "Factura"}
                   value="Factura"
                   type="radio"
-                  class="before:content[''] peer relative h-5 w-5 cursor-pointer appearance-none rounded-full border border-blue-gray-200  transition-all before:absolute before:left-2/4 before:top-2/4 before:block before:h-12 before:w-12 before:-translate-x-2/4 before:-translate-y-2/4 before:rounded-full before:bg-blue-gray-500 before:opacity-0 before:transition-opacity checked:border-gray-900 checked:before:bg-gray-900 hover:before:opacity-10"
+                  className="before:content[''] peer relative h-5 w-5 cursor-pointer appearance-none rounded-full border border-blue-gray-200  transition-all before:absolute before:left-2/4 before:top-2/4 before:block before:h-12 before:w-12 before:-translate-x-2/4 before:-translate-y-2/4 before:rounded-full before:bg-blue-gray-500 before:opacity-0 before:transition-opacity checked:border-gray-900 checked:before:bg-gray-900 hover:before:opacity-10"
                   id="factura"
                 />
-                <span class="pointer-events-none absolute left-2/4 top-2/4 -translate-x-2/4 -translate-y-2/4  opacity-0 transition-opacity peer-checked:opacity-100">
+                <span className="pointer-events-none absolute left-2/4 top-2/4 -translate-x-2/4 -translate-y-2/4  opacity-0 transition-opacity peer-checked:opacity-100">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    class="h-3.5 w-3.5"
+                    className="h-3.5 w-3.5"
                     viewBox="0 0 16 16"
                     fill="currentColor"
                   >
@@ -270,7 +271,7 @@ export default function FormPagar() {
                 </span>
               </label>
               <label
-                class="mt-px cursor-pointer select-none font-light text-gray-700"
+                className="mt-px cursor-pointer select-none font-light text-gray-700"
                 htmlFor="react"
               >
                 Factura
