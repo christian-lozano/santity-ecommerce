@@ -47,8 +47,9 @@ export async function POST(req) {
           street_number: 3003,
         },
       },
+
       back_urls: {
-        success: `${process.env.URL_DOMINIO}`,
+        success: `${process.env.URL_DOMINIO}/api/exito`,
         failure: `${process.env.URL_DOMINIO}`,
         pending: `${process.env.URL_DOMINIO}`,
       },
@@ -68,6 +69,7 @@ export async function POST(req) {
         installments: 1,
       },
       auto_return: "approved",
+      // notification_url: `${process.env.URL_DOMINIO}/api/exito`,
     }
 
     const response = await mercadopago.preferences.create(preference)

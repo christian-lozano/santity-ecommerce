@@ -7,7 +7,7 @@ export const home = defineType({
   fields: [
     defineField({
       name: "name",
-      description: "This field is the title of your personal website.",
+ 
       title: "Name",
       type: "string",
       initialValue: "Home Page",

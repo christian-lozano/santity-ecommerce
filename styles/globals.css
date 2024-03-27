@@ -420,3 +420,8 @@ img {
   animation-range: entry 25% cover 30%;
   animation-fill-mode: both;
 }
+
+/* red validation form text */
+.validationFormRed {
+  color: rgb(255, 128, 128);
+}

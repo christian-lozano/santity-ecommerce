@@ -14,6 +14,7 @@ import MainTab from "@/components/tabs-home-genero/main-tab"
 import "@/styles/globals.css"
 import { urlForImage } from "@/sanity/lib/image"
 
+import { seedSanityData } from "@/lib/seed"
 import VideoHome from "@/components/video/video"
 
 interface Props {

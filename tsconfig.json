@@ -33,6 +33,6 @@
     "components/Typeandtype/Typeandtype.jsx",
     "components/product/product.jsx",
     "components/benefits/Benefit.jsx"
-, "components/tabs-home-genero/cabecera.jsx", "components/tabs-home-genero/main-tab.jsx", "components/hombre-mujer/semi-filtro-home.jsx", "components/hombre-mujer/hombre-mujer.jsx", "components/carrito/carrito.jsx", "components/video/video.jsx", "app/api/checkout/route.js"  ],
+, "components/tabs-home-genero/cabecera.jsx", "components/tabs-home-genero/main-tab.jsx", "components/hombre-mujer/semi-filtro-home.jsx", "components/hombre-mujer/hombre-mujer.jsx", "components/carrito/carrito.jsx", "components/video/video.jsx", "app/api/checkout/route.js", "app/api/exito/route.js"  ],
   "exclude": ["node_modules"]
 }

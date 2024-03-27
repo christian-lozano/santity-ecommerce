@@ -3,14 +3,74 @@
 import React, { useEffect, useState } from "react"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
-import { Option, Select } from "@material-tailwind/react"
+import { Option, Select, Spinner } from "@material-tailwind/react"
 import { useCart } from "react-use-cart"
 
 import { Input } from "../ui/input"
 
+const formData = {
+  title: "Detalles de Pago",
+  subtitle: "Complete su pedido proporcionando sus datos de pago.",
+  inputs: [
+    {
+      label: "Nombre",
+      name: "nombre",
+      placeholder: "Nombre",
+      type: "text",
+    },
+    {
+      label: "Apellido",
+      name: "apellido",
+      placeholder: "Apellido",
+      type: "text",
+    },
+    {
+      label: "Email",
+      name: "email",
+      placeholder: "Email",
+      type: "email",
+    },
+    {
+      label: "Documento de identidad",
+      name: "documento",
+      placeholder: "Documento de identidad",
+      type: "text",
+    },
+    {
+      label: "Teléfono",
+      name: "telefono",
+      placeholder: "Teléfono",
+      type: "tel",
+    },
+    {
+      label: "Dirección",
+      name: "direccion",
+      placeholder: "Dirección",
+      type: "text",
+    },
+    {
+      label: "Información Adicional",
+      name: "adicional",
+      placeholder: "Información Adicional",
+      type: "text",
+    },
+  ],
+}
+function Loading({ disableLoadAddProduct = true }) {
+  return (
+    <Spinner
+      // color="black"
+      className={` absolute left-7 top-3  h-7 w-7  ${
+        !disableLoadAddProduct ? "hidden" : "block"
+      }`}
+      onResize={undefined}
+      onResizeCapture={undefined}
+    />
+  )
+}
 export default function FormPagar() {
   const router = useRouter()
-  const [checkoutPago, setCheckoutPago] = useState(false)
+
   const [allValues, setAllValues] = useState({
     nombre: "",
     apellido: "",
@@ -19,23 +79,27 @@ export default function FormPagar() {
     telefono: "",
     direccion: "",
     comprobante: "Boleta",
-    ruc: "null",
+    ruc: "",
     provincia: "",
     distrito: "",
-    //   adicional: '',
+    adicional: "",
+    checkTerminos: false,
   })
 
-  const changeHandler = (e, name) => {
+  const changeHandler = (e) => {
     setAllValues({ ...allValues, [e.target.name]: e.target.value })
   }
   const { items, cartTotal } = useCart()
   const [domLoaded, setDomLoaded] = useState(false)
-
+  const [validate, setValidate] = useState(false)
+  const [loading, setLoading] = useState(false)
   useEffect(() => {
     setDomLoaded(true)
   }, [])
 
   const handlesubmit = async () => {
+    setValidate(false)
+    setLoading(true)
     let dataPago = {
       productos: items,
       datosComprador: {
@@ -47,7 +111,9 @@ export default function FormPagar() {
         comprobante: allValues.comprobante,
         direccion: allValues.direccion,
         ruc: allValues.ruc,
-        // distrito,
+        distrito: allValues.distrito,
+        adicional: allValues.adicional,
+
         cartTotal,
       },
     }
@@ -69,6 +135,8 @@ export default function FormPagar() {
       console.log(data.url)
       if (res.status === 200) {
         router.push(data.url)
+        setLoading(false)
+
         // setLoadingMercadoPago(false)
         // router.refresh()
         // alert(data.msg)
@@ -85,93 +153,64 @@ export default function FormPagar() {
       console.log(error.message)
     }
   }
-  console.log(allValues)
+  useEffect(() => {
+    if (
+      allValues.nombre.length >= 1 &&
+      allValues.apellido.length >= 1 &&
+      allValues.email.length >= 5 &&
+      allValues.documento.length >= 1 &&
+      allValues.telefono.length >= 1 &&
+      allValues.comprobante.length >= 2 &&
+      allValues.direccion.length >= 3 &&
+      allValues.provincia.length >= 2 &&
+      allValues.distrito.length >= 1 &&
+      allValues.adicional.length >= 1 &&
+      allValues.checkTerminos &&
+      items.length > 0
+    ) {
+      if (allValues.comprobante === "Factura" && allValues.ruc.length === 0) {
+        setValidate(false)
+      } else {
+        setValidate(true)
+      }
+    } else {
+      setValidate(false)
+    }
+  }, [allValues])
   return (
     <div className="mt-10  px-4 pt-8  lg:mt-0">
-      <p className="text-xl font-medium">Detalles del pago</p>
-      <p className="text-gray-400">
-        Complete su pedido proporcionando sus datos de pago.
-      </p>
-      <div className="">
-        <label
-          htmlFor="card-no"
-          className="mb-2 mt-4 block text-sm font-medium"
-        >
-          Nombre y Apellido
-        </label>
-        <div className="flex justify-between">
-          <div className="relative w-1/2 shrink-0">
-            <Input
-              type="text"
-              name="nombre"
-              placeholder="Nombre"
-              onChange={(e) => changeHandler(e)}
-            />
-          </div>
+      <p className="text-xl font-medium">{formData.title}</p>
+      <p className="text-gray-400">{formData.subtitle}</p>
+      <div>
+        <div className=" grid grid-cols-2 gap-4">
+          {formData.inputs.map((el) => (
+            <div>
+              <label
+                htmlFor="card-no"
+                className="mb-2 mt-4 block text-sm font-medium"
+              >
+                {el.label}
+              </label>
+              <div className="flex justify-between">
+                <div className="relative w-full shrink-0 px-5">
+                  <Input
+                    type={el.tipo}
+                    name={el.name}
+                    placeholder={el.placeholder}
+                    onChange={(e) => changeHandler(e)}
+                  />
+                  <span className="validationFormRed ml-1 text-sm">
+                    {allValues[`${el.name}`].length === 0 &&
+                      `la propiedad ${el.name} es necesaria`}
+                  </span>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
 
-          <Input
-            type="text"
-            name="apellido"
-            placeholder="Apellido"
-            onChange={(e) => changeHandler(e)}
-          />
-        </div>
-        {/*  */}
-        <label htmlFor="email" className="mb-2 mt-4 block text-sm font-medium">
-          Email
-        </label>
-        <div className="relative">
-          <Input
-            type="email"
-            name="email"
-            placeholder="Email"
-            onChange={(e) => changeHandler(e)}
-          />
-        </div>
-        {/*  */}
-        <label
-          htmlFor="card-no"
-          className="mb-2 mt-4 block text-sm font-medium"
-        ></label>
-        <div className="flex">
-          <div className="relative w-1/2 shrink-0">
-            Documento De Identidad
-            <Input
-              type="text"
-              name="documento"
-              placeholder="Telefono"
-              onChange={(e) => changeHandler(e)}
-            />
-          </div>
-          <div className="relative ml-1 w-1/2 shrink-0">
-            Teléfono
-            <Input
-              type="tel"
-              name="telefono"
-              placeholder="Telefono"
-              onChange={(e) => changeHandler(e)}
-            />
-          </div>
-        </div>
-        {/* Dirección */}
-        <label
-          htmlFor="billing-address"
-          className="mb-2 mt-4 block text-sm font-medium"
-        >
-          Dirección
-        </label>
-        <div className="mb-3 flex flex-col sm:flex-row ">
-          <div className="relative w-full shrink-0 sm:w-full">
-            <Input
-              type="text"
-              name="direccion"
-              placeholder="Direccion"
-              onChange={(e) => changeHandler(e)}
-            />
-          </div>
-        </div>
         {/* boleta factura */}
-        <div className="flex justify-center">
+        <div className="flex justify-center pt-5">
           <div class="flex gap-10">
             <div class="inline-flex items-center">
               <label
@@ -255,12 +294,88 @@ export default function FormPagar() {
                   placeholder="RUC"
                   onChange={(e) => changeHandler(e)}
                 />
+                <span className="validationFormRed ml-1 text-sm">
+                  {allValues.ruc === "null" ||
+                    (allValues.ruc.length === 0 &&
+                      `la propiedad Ruc es necesaria`)}
+                </span>
               </div>
             </div>
           </>
         )}
+        {/* distrito */}
+        <div className="flex flex-col sm:flex-row">
+          <label
+            htmlFor="card-holder"
+            className="mb-2 mt-4 block w-full text-sm  font-medium "
+          >
+            <Select
+              onChange={(e) => setAllValues({ ...allValues, distrito: e })}
+              nonce={undefined}
+              name="distrito"
+              label="Distrito"
+              className={`border  ${allValues.distrito.length === 0 && " "}`}
+              onResize={undefined}
+              onResizeCapture={undefined}
+            >
+              <Option value="Ancon">Ancon</Option>
+              <Option value="Ate">Ate</Option>
+              <Option value="Barranco">Barranco</Option>
+              <Option value="Breña">Breña</Option>
+              <Option value="Carabayllo">Carabayllo</Option>
+              <Option value="Chaclacayo">Chaclacayo</Option>
+              <Option value="Chorrillos">Chorrillos</Option>
+              <Option value="Cieneguilla">Cieneguilla</Option>
+              <Option value="Comas">Comas</Option>
+              <Option value="El agustino">El Agustino</Option>
+              <Option value="Independencia">Independencia</Option>
+              <Option value="Jesus maria">Jesus Maria</Option>
+              <Option value="La molina">La Molina</Option>
+              <Option value="La victoria">La Victoria</Option>
+              <Option value="Lima">Lima</Option>
+              <Option value="Lince">Lince</Option>
+              <Option value="Los olivos">Los Olivos</Option>
+              <Option value="Lurigancho">Lurigancho</Option>
+              <Option value="Lurin">Lurin</Option>
+              <Option value="Magdalena del mar">Magdalena del Mar</Option>
+              <Option value="Miraflores">Miraflores</Option>
+              <Option value="Pachacamac">Pachacamac</Option>
+              <Option value="Pucusana">Pucusana</Option>
+              <Option value="Pueblo libre">Pueblo Libre</Option>
+              <Option value="Puente piedra">Puente Piedra</Option>
+              <Option value="Punta hermosa">Punta Hermosa</Option>
+              <Option value="Punta Negra">Punta Negra</Option>
+              <Option value="Rimac">Rimac</Option>
+              <Option value="San Bartolo">San Bartolo</Option>
+              <Option value="San Borja">San Borja</Option>
+              <Option value="San Isidro">San Isidro</Option>
+              <Option value="San Juan de Lurigancho">
+                San Juan de Lurigancho
+              </Option>
+              <Option value="San Juan de Miraflores">
+                San Juan de Miraflores
+              </Option>
+              <Option value="San Luis">San Luis</Option>
+              <Option value="San Martin de Porres">San martin de porres</Option>
+              <Option value="San Miguel">San Miguel</Option>
+              <Option value="Santa Anita">Santa Anita</Option>
+              <Option value="Santa Maria del Mar">Santa Maria del Mar</Option>
+              <Option value="Santa rosa">Santa Rosa</Option>
+              <Option value="Santiago de Surco">Santiago de Surco</Option>
+              <Option value="Surquillo">Surquillo</Option>
+              <Option value="Villa el Salvador">Villa el Salvador</Option>
+              <Option value="Villa Maria del Triunfo">
+                Villa Maria del Triunfo
+              </Option>
+            </Select>
+            <span className="validationFormRed ml-1 text-sm">
+              {allValues.distrito.length === 0 &&
+                `la propiedad Distrito es necesaria`}
+            </span>
+          </label>
+        </div>
 
-        {/* info */}
+        {/* provincia */}
         <div className="flex flex-col sm:flex-row">
           <label
             htmlFor="card-holder"
@@ -301,6 +416,10 @@ export default function FormPagar() {
               <Option value="Tumbes">Tumbes</Option>
               <Option value="Ucayali">Ucayali</Option>
             </Select>
+            <span className="validationFormRed ml-1 text-sm">
+              {allValues.provincia.length === 0 &&
+                `la propiedad Provincia es necesaria`}
+            </span>
           </label>
         </div>
 
@@ -352,9 +471,13 @@ export default function FormPagar() {
             <input
               // checked={checkoutPago}
               type="checkbox"
-              className="before:content[''] peer relative h-5 w-5 cursor-pointer appearance-none rounded-md border border-blue-gray-200 transition-all before:absolute before:left-2/4 before:top-2/4 before:block before:h-12 before:w-12 before:-translate-x-2/4 before:-translate-y-2/4 before:rounded-full before:bg-blue-gray-500 before:opacity-0 before:transition-opacity checked:border-black checked:bg-black checked:before:bg-black hover:before:opacity-10"
+              className={`before:content[''] ${
+                !allValues.checkTerminos && "border-red-500"
+              }  peer relative h-5 w-5 cursor-pointer appearance-none rounded-md border  transition-all before:absolute before:left-2/4 before:top-2/4 before:block before:h-12 before:w-12 before:-translate-x-2/4 before:-translate-y-2/4 before:rounded-full before:bg-blue-gray-500 before:opacity-0 before:transition-opacity checked:border-black checked:bg-black checked:before:bg-black hover:before:opacity-10`}
               id="checkbox-8"
-              onChange={(e) => setCheckoutPago(e.target.checked)}
+              onChange={(e) =>
+                setAllValues({ ...allValues, checkTerminos: e.target.checked })
+              }
             />
             <div className="pointer-events-none absolute left-2/4 top-2/4 -translate-x-2/4 -translate-y-2/4 text-white opacity-0 transition-opacity peer-checked:opacity-100">
               <svg
@@ -386,13 +509,20 @@ export default function FormPagar() {
       </div>
       {/* ---- */}
 
-      <button
-        // disabled={true}
-        onClick={handlesubmit}
-        className="mb-8 mt-4 w-full  cursor-pointer rounded-md bg-white px-6 py-3 font-medium text-black"
-      >
-        Realizar pedido
-      </button>
+      {domLoaded && (
+        <button
+          disabled={!validate}
+          onClick={handlesubmit}
+          className={`mb-8 mt-4 w-full  cursor-pointer rounded-md ${
+            !validate ? "bg-gray-500 text-red-500 " : "bg-white text-black"
+          } px-6 py-3 font-medium  `}
+        >
+          {items.length === 0
+            ? "No tienes Productos en el Carrito"
+            : " Realizar pedido"}
+          <Loading disableLoadAddProduct={loading} />
+        </button>
+      )}
     </div>
   )
 }

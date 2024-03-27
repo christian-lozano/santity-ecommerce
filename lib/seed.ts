@@ -5,20 +5,13 @@ import { inventory } from "@/config/inventory"
 export async function seedSanityData() {
   const transaction = client.transaction()
   inventory.forEach((item) => {
-    const product = {
-      _type: "product",
+    const pedidos = {
+      _type: "pedidos",
       _id: item.id,
       name: item.name,
-      currency: item.currency,
       description: item.description,
-      price: item.price,
-      sku: item.sku,
-      sizes: item.sizes,
-      colors: item.colors,
-      categories: item.categories,
-      genero: item.genero,
     }
-    transaction.createOrReplace(product)
+    transaction.createOrReplace(pedidos)
   })
   await transaction.commit()
   await seedSanityImages()
