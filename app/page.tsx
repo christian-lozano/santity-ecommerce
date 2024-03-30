@@ -2,9 +2,7 @@ import { client } from "@/sanity/lib/client"
 import { groq } from "next-sanity"
 
 import { SanityProduct, SanitySlider } from "@/config/inventory"
-import Footer from "@/components/Footer/Footer"
-import { SiteHeader } from "@/components/Header/site-header"
-import Typeandtype from "@/components/Typeandtype/Typeandtype"
+
 import Benefit from "@/components/benefits/Benefit"
 import Carousel from "@/components/carousel-home/Carousel"
 import HombreMujer from "@/components/hombre-mujer/hombre-mujer"
@@ -12,7 +10,7 @@ import MainFiltroGenero from "@/components/hombre-mujer/main-filtro-genero"
 import MainTab from "@/components/tabs-home-genero/main-tab"
 
 import "@/styles/globals.css"
-import { urlForImage } from "@/sanity/lib/image"
+
 
 import { seedSanityData } from "@/lib/seed"
 import VideoHome from "@/components/video/video"
@@ -250,8 +248,6 @@ export default async function Page({ searchParams }: Props) {
 
   return (
     <div>
-      <SiteHeader />
-
       <div className="conta">
         <Carousel dataSlider={slider[0]} />
 
@@ -269,13 +265,12 @@ export default async function Page({ searchParams }: Props) {
             ></MainTab>
           </section>
           <div className="grid h-full grid-cols-2  items-center justify-center xl:flex xl:justify-around ">
-            {benefits.map((el,i) => (
+            {benefits.map((el, i) => (
               <Benefit key={i} benefits={el}></Benefit>
             ))}
           </div>
         </main>
       </div>
-      <Footer />
     </div>
   )
 }

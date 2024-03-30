@@ -73,8 +73,6 @@ export default async function Page({ searchParams }: Props) {
   // console.log(products[0].tallas)
   return (
     <div>
-      <SiteHeader />
-
       {/* <div className="px-4 pt-20 text-center">
         <h1 className="text-4xl font-extrabold tracking-normal">{siteConfig.name}</h1>
         <p className="mx-auto mt-4 max-w-3xl text-base">{siteConfig.description}</p>
@@ -117,7 +115,6 @@ export default async function Page({ searchParams }: Props) {
           </section>
         </main>
       </div>
-      <Footer />
     </div>
   )
 }

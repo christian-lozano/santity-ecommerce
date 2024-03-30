@@ -4,11 +4,13 @@ import { ArrowRight } from "lucide-react"
 import { useCart } from "react-use-cart"
 
 import { useToast } from "@/components/ui/use-toast"
+import GiaDeTallasMain from "@/components/guia-tallas/GiaDeTallasMain"
 
 import { Button } from "./ui/button"
 
 export default function ProductAddToCart({ product }) {
-  console.log(product.tallas)
+  console.log(product)
+
   const precio = product.price
 
   const operation = (Number(product.descuento) / 100) * Number(precio)
@@ -106,14 +108,17 @@ export default function ProductAddToCart({ product }) {
             </Button>
           ))}
       </div>
-
+      <GiaDeTallasMain
+        gender={product.genero}
+        product_type={"Zapatillas"}
+      ></GiaDeTallasMain>
       <form className="mt-6">
         <div className="mt-4 flex">
           <Button
             disabled={activeAddProduct}
             onClick={addToCart}
             type="button"
-            className="hover:bg-violet-700 focus:ring-violet-500 w-full bg-black py-6 text-base font-medium text-white focus:outline-none focus:ring-2 dark:bg-white dark:text-black"
+            className=" w-full bg-black py-6 text-base font-medium focus:outline-none focus:ring-2 dark:bg-white "
           >
             Agregar Al Carrito
           </Button>

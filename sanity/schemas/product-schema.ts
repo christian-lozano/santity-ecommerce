@@ -41,10 +41,18 @@ export const product = defineType({
       validation: (rule) => rule.required(),
     },
     {
-      name: "tipo",
       title: "Tipo",
+      name: "tipo",
       type: "string",
+
       validation: (rule) => rule.required(),
+      options: {
+        list: [
+          { title: "Calzado", value: "calzado" },
+          { title: "Ropa", value: "ropa" },
+          { title: "Accesorios", value: "accesorios" },
+        ], // <-- predefined values
+      },
     },
     {
       name: "marca",
@@ -76,6 +84,7 @@ export const product = defineType({
       name: "tallas",
       title: "Tallas",
       type: "array",
+
       validation: (rule) => rule.required(),
       of: [
         {

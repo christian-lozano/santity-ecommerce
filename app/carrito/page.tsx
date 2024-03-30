@@ -1,12 +1,11 @@
-import Footer from "@/components/Footer/Footer"
-import { SiteHeader } from "@/components/Header/site-header"
+
 import { CartItems } from "@/components/cart-items"
 import { CartSummary } from "@/components/cart-summary"
 import "@/styles/globals.css"
 export default function Page() {
   return (
     <div>
-      <SiteHeader />
+
       <main className="mx-auto max-w-2xl px-4  pt-16 sm:px-6 lg:max-w-7xl lg:px-8">
         <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">
           Carrito de Compras
@@ -24,7 +23,7 @@ export default function Page() {
           <CartSummary />
         </form>
       </main>
-      <Footer />
+
 
     </div>
   )

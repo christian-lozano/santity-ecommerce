@@ -2,7 +2,7 @@ import { client } from "@/sanity/lib/client"
 import { groq } from "next-sanity"
 
 import { SanityProduct } from "@/config/inventory"
-import { SiteHeader } from "@/components/Header/site-header"
+
 import CarouselProductRelacionados from "@/components/carousel-product/carousel-product-relacionados"
 import { ProductGallery } from "@/components/product-gallery"
 import { ProductInfo } from "@/components/product-info"
@@ -10,7 +10,7 @@ import { ProductInfo } from "@/components/product-info"
 import "@/styles/globals.css"
 import { notFound } from "next/navigation"
 
-import Footer from "@/components/Footer/Footer"
+
 
 interface Props {
   params: {
@@ -75,7 +75,7 @@ export default async function Page({ params }: Props) {
   const products = await productosGenero()
   return (
     <>
-      <SiteHeader />
+
       <main className="mx-auto max-w-5xl sm:px-6 sm:pt-16 lg:px-8">
         <div className="mx-auto max-w-2xl lg:max-w-none">
           {/* Product */}
@@ -93,7 +93,7 @@ export default async function Page({ params }: Props) {
         </h5>
         <CarouselProductRelacionados products={products} />
       </div>
-      <Footer />
+
     </>
   )
 }
