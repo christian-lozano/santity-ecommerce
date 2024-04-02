@@ -131,9 +131,7 @@ export default function FormPagar() {
         },
       })
       const data = await res.json()
-      console.log(res.status)
-
-      console.log(data.url)
+   
       if (res.status === 200) {
         router.push(data.url)
         setLoading(false)

@@ -6,7 +6,9 @@ export default function Product({ products }) {
   const precio = products.price
 
   const operation = (Number(products.descuento) / 100) * Number(precio)
-
+  const [stock, setStock] = useState(
+    products.tallas.every((el) => el.stock === 0)
+  )
   const resultado = Number(precio) - operation
   return (
     <>
@@ -27,7 +29,11 @@ export default function Product({ products }) {
           {products.descuento && (
             <div className="absolute right-0 top-4 bg-black px-3 py-1">
               <h4 className=" mt-1 text-xs text-white ">
-                -{products.descuento}%
+                {stock ? (
+                  <div>Agotado</div>
+                ) : (
+                  <span> -{products.descuento} %</span>
+                )}
               </h4>
             </div>
           )}

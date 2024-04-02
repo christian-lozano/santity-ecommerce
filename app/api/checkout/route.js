@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server"
 import NewPedido from "@/models/pagoPendiente"
+import { urlForImage } from "@/sanity/lib/image"
 import mercadopago from "mercadopago"
 
 export async function POST(req) {
@@ -14,11 +15,11 @@ export async function POST(req) {
 
     let productosCantidad = data.productos.map((el) => {
       let productos = {
-        id: el.objectID,
+        id: el.idsanity,
         category_id: el.talla,
         title: el.name,
         description: el.id,
-        picture_url: el.image,
+        picture_url: urlForImage(el.image).url(),
         quantity: el.quantity,
         unit_price: el.price,
       }
@@ -104,7 +105,7 @@ export async function POST(req) {
     if (response.status === 201) {
       const newPedido = new NewPedido(dataEnvioMongoUser)
       const savePedido = await newPedido.save()
-      console.log(savePedido)
+      // console.log(savePedido)
       return new Response(JSON.stringify({ url: response.body.init_point }), {
         // return new Response(JSON.stringify({ url: "test" }), {
         status: 200,

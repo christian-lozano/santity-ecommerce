@@ -9,8 +9,6 @@ import GiaDeTallasMain from "@/components/guia-tallas/GiaDeTallasMain"
 import { Button } from "./ui/button"
 
 export default function ProductAddToCart({ product }) {
-  console.log(product)
-
   const precio = product.price
 
   const operation = (Number(product.descuento) / 100) * Number(precio)
@@ -24,6 +22,9 @@ export default function ProductAddToCart({ product }) {
     _key: "",
   })
   const [activeAddProduct, setActiveAddProduct] = useState(true)
+  const [stock, setStock] = useState(
+    product.tallas.every((el) => el.stock === 0)
+  )
   const { addItem, items } = useCart()
 
   //add to cart
@@ -114,14 +115,28 @@ export default function ProductAddToCart({ product }) {
       ></GiaDeTallasMain>
       <form className="mt-6">
         <div className="mt-4 flex">
-          <Button
-            disabled={activeAddProduct}
-            onClick={addToCart}
-            type="button"
-            className=" w-full bg-black py-6 text-base font-medium focus:outline-none focus:ring-2 dark:bg-white "
-          >
-            Agregar Al Carrito
-          </Button>
+          {stock ? (
+            <div className="flex w-full flex-col items-center">
+              <Link href={"/tienda"} className="w-full">
+                <Button
+                  disabled={false}
+                  type="button"
+                  className=" mt-20 w-full bg-black py-6 text-base font-medium focus:outline-none focus:ring-2 dark:bg-white "
+                >
+                  Producto Agotado
+                </Button>
+              </Link>
+            </div>
+          ) : (
+            <Button
+              disabled={activeAddProduct}
+              onClick={addToCart}
+              type="button"
+              className=" w-full bg-black py-6 text-base font-medium focus:outline-none focus:ring-2 dark:bg-white "
+            >
+              {activeAddProduct ? "Seleccione una talla" : "Agregar Al Carrito"}
+            </Button>
+          )}
         </div>
       </form>
     </div>

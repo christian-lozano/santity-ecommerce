@@ -28,6 +28,7 @@ export default async function ContedorCarouselProduct({
           description,
           genero,
           descuento,
+          tallas,
           "slug":slug.current
         }`)
 

@@ -87,7 +87,7 @@ export const product = defineType({
 
       validation: (rule) => rule.required(),
       of: [
-        {
+        defineField({
           title: "Tallas y Stock",
           type: "object",
           name: "Tallas y Stock ",
@@ -103,7 +103,7 @@ export const product = defineType({
               type: "number",
             },
           ],
-        },
+        }),
       ],
     },
 

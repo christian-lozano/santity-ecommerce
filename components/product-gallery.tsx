@@ -3,9 +3,12 @@
 import { useState } from "react"
 import Image from "next/image"
 import { urlForImage } from "@/sanity/lib/image"
+import { PhotoProvider, PhotoView } from "react-photo-view"
 
 import { SanityProduct } from "@/config/inventory"
 import { shimmer, toBase64 } from "@/lib/image"
+
+import "react-photo-view/dist/react-photo-view.css"
 
 interface Props {
   product: SanityProduct
@@ -16,7 +19,7 @@ export function ProductGallery({ product }: Props) {
   return (
     <div className="flex flex-col-reverse">
       {/* Image Grid */}
-      <div className="mx-auto mt-6 hidden w-full max-w-2xl sm:block lg:max-w-none">
+      <div className="mx-auto mt-6  w-full max-w-2xl sm:block lg:max-w-none">
         <ul className="grid grid-cols-4 gap-6">
           {product.images.map((image, index) => (
             <div
@@ -43,19 +46,28 @@ export function ProductGallery({ product }: Props) {
       </div>
 
       {/* Main Image */}
-      <div className="aspect-h-1 aspect-w-1 w-full">
-        <Image
-          priority
-          src={urlForImage(product.images[selectedImage]).url()}
-          width={600}
-          height={750}
-          alt={`main ${product.name} image`}
-          placeholder="blur"
-          blurDataURL={`data:image/svg+xml;base64,${toBase64(
-            shimmer(600, 750)
-          )}}`}
-          className="h-full w-full border-2 border-gray-200 object-cover object-center shadow-sm dark:border-gray-800 sm:rounded-lg"
-        />
+      <div className="aspect-h-1 aspect-w-1 h-full w-full">
+        <PhotoProvider>
+          <PhotoView src={urlForImage(product.images[selectedImage]).url()}>
+            <img
+              className="h-full w-full"
+              src={urlForImage(product.images[selectedImage]).url()}
+              alt=""
+            />
+            {/* <Image
+              priority
+              src={urlForImage(product.images[selectedImage]).url()}
+              width={600}
+              height={750}
+              alt={`main ${product.name} image`}
+              placeholder="blur"
+              blurDataURL={`data:image/svg+xml;base64,${toBase64(
+                shimmer(600, 750)
+              )}}`}
+              className="h-full w-full border-2 border-gray-200 object-cover object-center shadow-sm dark:border-gray-800 sm:rounded-lg"
+            /> */}
+          </PhotoView>
+        </PhotoProvider>
       </div>
     </div>
   )

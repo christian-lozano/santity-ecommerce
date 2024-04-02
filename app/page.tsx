@@ -2,7 +2,6 @@ import { client } from "@/sanity/lib/client"
 import { groq } from "next-sanity"
 
 import { SanityProduct, SanitySlider } from "@/config/inventory"
-
 import Benefit from "@/components/benefits/Benefit"
 import Carousel from "@/components/carousel-home/Carousel"
 import HombreMujer from "@/components/hombre-mujer/hombre-mujer"
@@ -10,8 +9,6 @@ import MainFiltroGenero from "@/components/hombre-mujer/main-filtro-genero"
 import MainTab from "@/components/tabs-home-genero/main-tab"
 
 import "@/styles/globals.css"
-
-
 import { seedSanityData } from "@/lib/seed"
 import VideoHome from "@/components/video/video"
 
@@ -155,6 +152,7 @@ export default async function Page({ searchParams }: Props) {
       description,
       genero,
       marca,
+      tallas,
       descuento,
       "slug":slug.current
     }`)

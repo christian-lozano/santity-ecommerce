@@ -27,49 +27,57 @@ interface Props {
 }
 
 export default async function Page({ searchParams }: Props) {
-  const {
-    date = "desc",
-    price,
-    color,
-    category,
-    size,
-    search,
-    genero,
-  } = searchParams
-  const priceOrder = price ? `| order(price ${price})` : ""
-  const dateOrder = date ? `| order(_createAt ${date})` : ""
+  async function fetchNextPage() {
+    const {
+      date = "desc",
+      price,
+      color,
+      category,
+      size,
+      search,
+      genero,
+    } = searchParams
+    const priceOrder = price ? `| order(price ${price})` : ""
+    const dateOrder = date ? `| order(_createAt ${date})` : ""
 
-  const order = `${priceOrder}${dateOrder}`
+    const order = `${priceOrder}${dateOrder}`
 
-  const productFilter = `_type == "product"`
-  const colorFilter = color ? `&& color match "${color}"` : ""
-  const categoryFilter = category ? `&& "${category}" in categories` : ""
-  const sizeFilter = size ? `&& tallas match "tallas"` : ""
-  const generoFilter = genero ? `&& genero match "${genero}"` : ""
+    const productFilter = `_type == "product"`
+    const colorFilter = color ? `&& color match "${color}"` : ""
+    const categoryFilter = category ? `&& "${category}" in categories` : ""
+    const sizeFilter = size ? `&& tallas match "tallas"` : ""
+    const generoFilter = genero ? `&& genero match "${genero}"` : ""
 
-  const searchFilter = search
-    ? `&& name match "${search}" || sku match "${search}"|| genero match "${search}"`
-    : ""
+    const searchFilter = search
+      ? `&& name match "${search}" || sku match "${search}"|| genero match "${search}"`
+      : ""
 
-  const filter = `*[${productFilter}${colorFilter}${categoryFilter}${sizeFilter}${searchFilter}${generoFilter}]`
+    const filter = `*[${productFilter}${colorFilter}${categoryFilter}${sizeFilter}${searchFilter}${generoFilter}]`
 
-  // await seedSanityData()
-  const products = await client.fetch<SanityProduct[]>(groq`${filter} ${order} {
-    _id,
-    _createdAt,
-    name,
-    sku,
-    images,
-    price,
-    description,
-    genero,
-    tipo,
-    marca,
-    descuento,
-    color,
-    tallas,
-    "slug":slug.current
-  }`)
+    // await seedSanityData()
+
+    const products = await client.fetch<SanityProduct[]>(
+      groq`${filter} ${order}  [0...${2}] {
+      _id,
+      _createdAt,
+      name,
+      sku,
+      images,
+      price,
+      description,
+      genero,
+      tipo,
+      marca,
+      descuento,
+      color,
+      tallas,
+      "slug":slug.current
+    } `
+    )
+
+    return products
+  }
+  const products = await fetchNextPage()
   // console.log(products[0].tallas)
   return (
     <div>
