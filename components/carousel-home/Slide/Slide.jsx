@@ -45,6 +45,8 @@ const Slide = (props) => {
         <img
           src={urlForImage(props.slide.imgmob.asset._ref).url()}
           className="md:hidden lg:hidden xl:hidden"
+          width={600}
+          height={771}
           alt=""
         />
       </Link>
