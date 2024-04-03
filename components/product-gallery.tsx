@@ -20,15 +20,17 @@ export function ProductGallery({ product }: Props) {
     <div className="flex flex-col-reverse">
       {/* Image Grid */}
       <div className="mx-auto mt-6  w-full max-w-2xl sm:block lg:max-w-none">
-        <ul className="grid grid-cols-3 gap-[2px]">
+        <ul className="grid grid-flow-col gap-[2px]">
           {product.images.map((image, index) => (
             <div
               key={image._key as string}
               onClick={() => setSetselectedImage(index)}
-              className="relative flex h-24 cursor-pointer items-center justify-center rounded-md bg-white text-sm font-medium uppercase hover:bg-gray-50"
+              className="relative flex h-[50px] w-[50px] cursor-pointer items-center justify-center rounded-md bg-white text-sm font-medium uppercase hover:bg-gray-50"
             >
               <span className="absolute inset-0 overflow-hidden rounded-md">
                 <img
+                  width={50}
+                  height={50}
                   className="relative "
                   src={urlForImage(image).url()}
                   alt=""
