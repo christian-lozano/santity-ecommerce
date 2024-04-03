@@ -49,6 +49,7 @@ export async function GET(req) {
 
     return NextResponse.redirect(new URL("/exito", req.url))
   } catch (error) {
-    console.log(error)
+    console.log(error);
+    return new Response(JSON.stringify({ error: "ocurrio un error" }))
   }
 }

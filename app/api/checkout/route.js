@@ -1,4 +1,4 @@
-import { NextResponse } from "next/server"
+
 import NewPedido from "@/models/pagoPendiente"
 import { urlForImage } from "@/sanity/lib/image"
 import mercadopago from "mercadopago"
