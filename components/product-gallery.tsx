@@ -20,7 +20,7 @@ export function ProductGallery({ product }: Props) {
     <div className="flex flex-col-reverse">
       {/* Image Grid */}
       <div className="mx-auto mt-6  w-full max-w-2xl sm:block lg:max-w-none">
-        <ul className="grid grid-cols-4 gap-6">
+        <ul className="grid grid-cols-3 gap-[2px]">
           {product.images.map((image, index) => (
             <div
               key={image._key as string}
@@ -29,8 +29,6 @@ export function ProductGallery({ product }: Props) {
             >
               <span className="absolute inset-0 overflow-hidden rounded-md">
                 <img
-          
-          
                   className="relative "
                   src={urlForImage(image).url()}
                   alt=""
