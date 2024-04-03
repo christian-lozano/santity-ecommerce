@@ -9,7 +9,7 @@ import GiaDeTallasMain from "@/components/guia-tallas/GiaDeTallasMain"
 import { Button } from "./ui/button"
 
 export default function ProductAddToCart({ product }) {
-  const precio = product.price
+  const precio = product.priceecommerce
 
   const operation = (Number(product.descuento) / 100) * Number(precio)
 

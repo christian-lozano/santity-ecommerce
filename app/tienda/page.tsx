@@ -16,7 +16,7 @@ import "@/styles/globals.css"
 interface Props {
   searchParams: {
     date?: string
-    price?: string
+    priceecommerce?: string
     color?: string
     category?: string
     size?: string
@@ -30,14 +30,14 @@ export default async function Page({ searchParams }: Props) {
   async function fetchNextPage() {
     const {
       date = "desc",
-      price,
+      priceecommerce,
       color,
       category,
       size,
       search,
       genero,
     } = searchParams
-    const priceOrder = price ? `| order(price ${price})` : ""
+    const priceOrder = priceecommerce ? `| order(price ${priceecommerce})` : ""
     const dateOrder = date ? `| order(_createAt ${date})` : ""
 
     const order = `${priceOrder}${dateOrder}`
@@ -57,13 +57,13 @@ export default async function Page({ searchParams }: Props) {
     // await seedSanityData()
 
     const products = await client.fetch<SanityProduct[]>(
-      groq`${filter} ${order}  [0...${2}] {
+      groq`${filter} ${order}  [0...${100}] {
       _id,
       _createdAt,
       name,
       sku,
       images,
-      price,
+      priceecommerce,
       description,
       genero,
       tipo,
@@ -86,7 +86,7 @@ export default async function Page({ searchParams }: Props) {
         <p className="mx-auto mt-4 max-w-3xl text-base">{siteConfig.description}</p>
       </div> */}
       <div className="sticky top-[80px]  z-20    h-full w-full  xl:top-[101px] ">
-        <div className=" flex  w-full   items-center justify-between bg-white  px-6 py-4   dark:bg-background ">
+        <div className=" flex  w-full items-center justify-between bg-white  px-6 py-4   dark:bg-background">
           <h1 className="text-xl font-bold tracking-tight sm:text-2xl">
             {products.length}
             <span className="ml-2">Producto{products.length > 1 && "s"}</span>

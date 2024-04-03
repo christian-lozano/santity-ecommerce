@@ -429,3 +429,6 @@ img {
 .validationFormRed {
   color: rgb(255, 128, 128);
 }
+button.react-multiple-carousel__arrow.react-multiple-carousel__arrow--right {
+  background-color: black;
+}

@@ -137,7 +137,7 @@ export default function NuestrasTiendas() {
                   <div className="flex items-center justify-between p-6">
                     <div className="flex w-full justify-around">
                       <button
-                        className=" bg-black p-5 py-2 capitalize text-white dark:bg-white dark:text-black"
+                        className=" bg-black p-5 py-2 capitalize  dark:bg-white "
                         onClick={handleOpen}
                       >
                         Ver Horarios
@@ -147,7 +147,7 @@ export default function NuestrasTiendas() {
                         target="_blank"
                         rel="noreferrer"
                       >
-                        <button className=" bg-black p-5 py-2 capitalize text-white dark:bg-white dark:text-black">
+                        <button className=" bg-black p-5 py-2 capitalize  dark:bg-white ">
                           Ver Ubicación
                         </button>
                       </Link>
@@ -161,7 +161,7 @@ export default function NuestrasTiendas() {
                         onResizeCapture={undefined}
                       >
                         <Button
-                          className="absolute right-1 top-1 cursor-pointer"
+                          className="absolute right-1 top-1 cursor-pointer "
                           onClick={handleOpen}
                         >
                           <span>

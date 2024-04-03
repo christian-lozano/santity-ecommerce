@@ -9,13 +9,21 @@ import MainFiltroGenero from "@/components/hombre-mujer/main-filtro-genero"
 import MainTab from "@/components/tabs-home-genero/main-tab"
 
 import "@/styles/globals.css"
+import { Metadata } from "next"
+
 import { seedSanityData } from "@/lib/seed"
 import VideoHome from "@/components/video/video"
+
+export const metadata: Metadata = {
+  title: " Fritz Sport Perú Tienda oficial | Zapatillas y ropa deportiva",
+  description:
+    "Bienvenido(a) al sitio oficial de Fritz Sport Perú. Encuentra en esta tienda online zapatillas y ropa deportiva, creados con tecnología y diseño. ¡Conoce más!",
+}
 
 interface Props {
   searchParams: {
     date?: string
-    price?: string
+    priceecommerce?: string
     color?: string
     category?: string
     size?: string
@@ -128,7 +136,7 @@ const dataCabeceraTab = [
 
 export default async function Page({ searchParams }: Props) {
   const productosGenero = async (genero: String, cantidad: String) => {
-    const { date = "desc", price, search } = searchParams
+    const { date = "desc", priceecommerce, search } = searchParams
 
     const order = `| order(_id) [0...${cantidad}]`
 
@@ -148,7 +156,7 @@ export default async function Page({ searchParams }: Props) {
       sku,
       images,
       currency,
-      price,
+      priceecommerce,
       description,
       genero,
       marca,

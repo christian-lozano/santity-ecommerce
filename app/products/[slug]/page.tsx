@@ -7,11 +7,42 @@ import { ProductGallery } from "@/components/product-gallery"
 import { ProductInfo } from "@/components/product-info"
 
 import "@/styles/globals.css"
+import { Metadata } from "next"
 import { notFound } from "next/navigation"
 
 interface Props {
   params: {
     slug: string
+  }
+}
+
+export const generateMetadata = async ({
+  params,
+}: Props): Promise<Metadata> => {
+  const product =
+    await client.fetch<SanityProduct>(groq`*[_type == "product" && slug.current == "${params.slug}"][0] {
+  _id,
+  _createAt,
+  "id":_id,
+  name,
+  sku,
+  marca,
+  images,
+  priceecommerce,
+  currency,
+  description,
+  sizes,
+  categories,
+  colors,
+  genero,
+  descuento,
+  tallas,
+  "slug":slug.current
+}`)
+
+  return {
+    title: `Producto - ${product.name}`,
+    description: `${product.name} - ${product.name} - ${product.slug} - ${product.sku}`,
   }
 }
 
@@ -25,7 +56,7 @@ export default async function Page({ params }: Props) {
     sku,
     marca,
     images,
-    price,
+    priceecommerce,
     currency,
     description,
     sizes,
@@ -59,7 +90,7 @@ export default async function Page({ params }: Props) {
           sku,
           images,
           marca,
-          price,
+          priceecommerce,
           description,
           descuento,
           genero,

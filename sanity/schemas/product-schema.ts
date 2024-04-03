@@ -61,10 +61,24 @@ export const product = defineType({
       validation: (rule) => rule.required(),
     },
     {
-      name: "images",
-      title: "Images (jpg,png,webp) 2000x2000",
+      title: "Imagen Principal Catalogo(png,webp)",
+      name: "imgcatalogomain",
+      type: "image",
+      validation: (rule) => rule.required(),
+    },
+    {
+      name: "imagescatalogo",
+      title: "Images Catalogo (jpg,png,webp)",
       type: "array",
       of: [{ type: "image" }],
+      validation: (rule) => rule.required(),
+    },
+    {
+      name: "images",
+      title: "Images Ecommerce (jpg,png,webp) 2400x2400",
+      type: "array",
+      of: [{ type: "image" }],
+      validation: (rule) => rule.required(),
     },
     {
       name: "categories",
@@ -82,7 +96,7 @@ export const product = defineType({
     },
     {
       name: "tallas",
-      title: "Tallas",
+      title: "Tallas Ecommerce",
       type: "array",
 
       validation: (rule) => rule.required(),
@@ -91,6 +105,8 @@ export const product = defineType({
           title: "Tallas y Stock",
           type: "object",
           name: "Tallas y Stock ",
+          validation: (rule) => rule.required(),
+
           fields: [
             {
               title: "Talla",
@@ -108,8 +124,28 @@ export const product = defineType({
     },
 
     {
-      name: "price",
-      title: "Price",
+      name: "tallascatalogo",
+      title: "Tallas Catalogo",
+      type: "string",
+
+      validation: (rule) => rule.required(),
+    },
+
+    {
+      name: "priceecommerce",
+      title: "Precio Ecommerce",
+      type: "number",
+      validation: (rule) => rule.required(),
+    },
+    {
+      name: "pricemayorista",
+      title: "Precio Mayorista",
+      type: "number",
+      validation: (rule) => rule.required(),
+    },
+    {
+      name: "priceemprendedor",
+      title: "Precio Emprendedor",
       type: "number",
       validation: (rule) => rule.required(),
     },
@@ -117,11 +153,13 @@ export const product = defineType({
       name: "stock",
       title: "Stock Total",
       type: "number",
+      validation: (rule) => rule.required(),
     },
     {
       name: "descuento",
-      title: "Descuento",
+      title: "Descuento Ecommerce",
       type: "number",
+      validation: (rule) => rule.required(),
     },
   ],
 })

@@ -32,7 +32,7 @@ export default function ProductRelacionados({ products }) {
         </h3>
         <h3 className="mt-4 font-medium ">{products.name}</h3>
 
-        <p className="mt-2 font-medium">S/{products.price}</p>
+        <p className="mt-2 font-medium">S/{products.priceecommerce}</p>
         {/* <p className="mt-2 font-medium">S/{products.descuento}</p> */}
       </Link>
       {/* <button

@@ -29,6 +29,7 @@ interface ApiData {
 }
 
 export interface SanityProduct extends Omit<InventoryProduct, "images"> {
+  priceecommerce: any
   sku: any
   tallas: any
   price: any

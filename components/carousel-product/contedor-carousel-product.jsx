@@ -24,7 +24,7 @@ export default async function ContedorCarouselProduct({
           sku,
           images,
           marca,
-          price,
+          priceecommerce,
           description,
           genero,
           descuento,

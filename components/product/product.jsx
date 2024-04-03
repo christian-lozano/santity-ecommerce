@@ -3,7 +3,7 @@ import Link from "next/link"
 import { urlForImage } from "@/sanity/lib/image"
 
 export default function Product({ products }) {
-  const precio = products.price
+  const precio = products.priceecommerce
 
   const operation = (Number(products.descuento) / 100) * Number(precio)
   const [stock, setStock] = useState(
@@ -28,23 +28,27 @@ export default function Product({ products }) {
 
           {products.descuento && (
             <div className="absolute right-0 top-4 bg-black px-3 py-1">
-              <h4 className=" mt-1 text-xs text-white ">
+              <div className=" mt-1 text-xs text-white ">
                 {stock ? (
                   <div>Agotado</div>
                 ) : (
                   <span> -{products.descuento} %</span>
                 )}
-              </h4>
+              </div>
             </div>
           )}
         </div>
-        <h3 className="mt-4 font-medium capitalize ">
-          {products.marca} - {products.genero}
-        </h3>
-        <h3 className="mt-4 font-medium ">{products.name}</h3>
+        <div className="flex items-center justify-between">
+          <h2 className="mt-4 font-medium capitalize">
+            {products.marca} - {products.genero}
+          </h2>
+          <h5 className="mt-4 text-xs font-medium">Sku: {products.sku}</h5>
+        </div>
+        <h3 className="mt-2 text-xl font-medium ">{products.name}</h3>
+
         <div className="flex">
           <span className="mr-2 mt-2 font-semibold text-[#767677] line-through">
-            S/{products.price}
+            S/{products.priceecommerce}
           </span>
           <p className="mt-2 font-semibold">S/{resultado} </p>
         </div>
