@@ -12,14 +12,15 @@ import { Checkbox } from "@/components/ui/checkbox"
 
 const filters = [
   {
-    id: "category",
-    name: "Categoría",
+    id: "tipo",
+    name: "Tipo",
     options: [
       { value: "ropa", label: "ropa" },
       { value: "calzado", label: "calzado" },
       { value: "accesorios", label: "accesorios" },
     ],
   },
+
   {
     id: "genero",
     name: "Género",
@@ -29,6 +30,28 @@ const filters = [
       { value: "niños", label: "Niños" },
       { value: "niño", label: "Niño" },
       { value: "niña", label: "Niña" },
+    ],
+  },
+
+  {
+    id: "category",
+    name: "Categoria",
+    options: [
+      { value: "zapatilla", label: "zapatilla" },
+      { value: "comodo", label: "comodo" },
+      { value: "mochila", label: "mochila" },
+      { value: "urbano", label: "urbano" },
+      { value: "casaca", label: "casaca" },
+      { value: "sandalia", label: "sandalia" },
+      { value: "pantalon", label: "pantalón" },
+      { value: "plataforma", label: "plataforma" },
+      { value: "polera", label: "polera" },
+      { value: "terrex", label: "terrex" },
+      { value: "bolso", label: "bolso" },
+      { value: "buzo", label: "buzo" },
+      { value: "gorra", label: "gorra" },
+      { value: "short", label: "short" },
+      { value: "escolar", label: "escolar" },
     ],
   },
   // {
@@ -44,14 +67,30 @@ const filters = [
   //   ],
   // },
   {
+    id: "marca",
+    name: "Marca",
+    options: [
+      { value: "adidas", label: "adidas" },
+      { value: "nike", label: "nike" },
+      { value: "puma", label: "puma" },
+      { value: "reebok", label: "reebok" },
+      { value: "cat", label: "cat" },
+      { value: "joma", label: "joma" },
+    ],
+  },
+  {
     id: "color",
     name: "Color",
     options: [
-      { value: "black", label: "Black" },
-      { value: "blue", label: "Blue" },
-      { value: "brown", label: "Brown" },
-      { value: "green", label: "Green" },
-      { value: "yellow", label: "Yellow" },
+      { value: "blanco", label: "Blanco" },
+      { value: "negro", label: "Negro" },
+      { value: "azul", label: "Azul" },
+      { value: "verde", label: "Verde" },
+      { value: "rosa", label: "Rosa" },
+      { value: "gris", label: "Gris" },
+      { value: "naranja", label: "Naranja" },
+      { value: "celeste", label: "celeste" },
+      { value: "amarillo", label: "amarillo" },
     ],
   },
 ]
@@ -61,7 +100,7 @@ export function ProductFilters() {
   const router = useRouter()
   const searchValues = Array.from(searchParams.entries())
   return (
-    <form className=" sticky top-20">
+    <form className=" sticky top-20 pt-20">
       <h3 className="sr-only">Categories</h3>
 
       {filters.map((section, i) => (

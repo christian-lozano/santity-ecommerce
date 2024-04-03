@@ -25,7 +25,7 @@ export function NavNavigation({ children }: Props) {
     {
       id: "01",
       page: "Niños",
-      url: "/tienda?genero=niño",
+      url: "/tienda?genero=niños",
     },
     {
       id: "01",

@@ -17,40 +17,44 @@ export default function Product({ products }) {
         href={`/products/${products.slug}`}
         className="group z-10 text-sm"
       >
-        <div className="aspect-h-1 aspect-w-1 overflow-hidden rounded-lg    group-hover:opacity-75 ">
-          <img
-            width={2000}
-            height={2000}
-            className="relative "
-            src={urlForImage(products.images[0].asset._ref).url()}
-            alt=""
-          />
+        <div className="p-1">
+          <div className="aspect-h-1 aspect-w-1 overflow-hidden rounded-lg     group-hover:opacity-75 ">
+            <img
+              width={2000}
+              height={2000}
+              className="relative "
+              src={urlForImage(products.images[0].asset._ref).url()}
+              alt=""
+            />
 
-          {products.descuento && (
-            <div className="absolute right-0 top-4 bg-black px-3 py-1">
-              <div className=" mt-1 text-xs text-white ">
-                {stock ? (
-                  <div>Agotado</div>
-                ) : (
-                  <span> -{products.descuento} %</span>
-                )}
+            {products.descuento && (
+              <div className="absolute right-0 top-4 bg-black px-3 py-1">
+                <div className=" mt-1 text-xs text-white ">
+                  {stock ? (
+                    <div>Agotado</div>
+                  ) : (
+                    <span> -{products.descuento} %</span>
+                  )}
+                </div>
               </div>
-            </div>
-          )}
-        </div>
-        <div className="flex items-center justify-between">
-          <h2 className="mt-4 font-medium capitalize">
-            {products.marca} - {products.genero}
-          </h2>
-          <h5 className="mt-4 text-xs font-medium">Sku: {products.sku}</h5>
-        </div>
-        <h3 className="mt-2 text-xl font-medium ">{products.name}</h3>
+            )}
+          </div>
+          <div className="flex items-center justify-between ">
+            <h2 className="mt-4 font-medium capitalize">
+              {products.marca} - {products.genero}
+            </h2>
+            <h5 className="mt-4 text-xs font-medium">Sku: {products.sku}</h5>
+          </div>
+          <h3 className="mt-2 text-lg font-medium xl:text-xl ">
+            {products.name}
+          </h3>
 
-        <div className="flex">
-          <span className="mr-2 mt-2 font-semibold text-[#767677] line-through">
-            S/{products.priceecommerce}
-          </span>
-          <p className="mt-2 font-semibold">S/{resultado} </p>
+          <div className="flex">
+            <span className="mr-2 mt-2 font-semibold text-[#767677] line-through">
+              S/{products.priceecommerce}
+            </span>
+            <p className="mt-2 font-semibold">S/{resultado} </p>
+          </div>
         </div>
 
         {/* <p className="mt-2 font-medium">S/{products.descuento}</p> */}

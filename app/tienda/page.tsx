@@ -2,11 +2,7 @@ import { client } from "@/sanity/lib/client"
 import { groq } from "next-sanity"
 
 import { SanityProduct } from "@/config/inventory"
-import { siteConfig } from "@/config/site"
-import { seedSanityData } from "@/lib/seed"
 import { cn } from "@/lib/utils"
-import Footer from "@/components/Footer/Footer"
-import { SiteHeader } from "@/components/Header/site-header"
 import { ProductFilters } from "@/components/product-filters"
 import { ProductGrid } from "@/components/product-grid"
 import { ProductSort } from "@/components/product-sort"
@@ -19,6 +15,8 @@ interface Props {
     priceecommerce?: string
     color?: string
     category?: string
+    tipo?: string
+    marca?: string
     size?: string
     genero?: string
     search?: string
@@ -36,7 +34,10 @@ export default async function Page({ searchParams }: Props) {
       size,
       search,
       genero,
+      marca,
+      tipo,
     } = searchParams
+
     const priceOrder = priceecommerce ? `| order(price ${priceecommerce})` : ""
     const dateOrder = date ? `| order(_createAt ${date})` : ""
 
@@ -44,20 +45,25 @@ export default async function Page({ searchParams }: Props) {
 
     const productFilter = `_type == "product"`
     const colorFilter = color ? `&& color match "${color}"` : ""
+    const tipoFilter = tipo ? `&& tipo match "${tipo}"` : ""
+    const marcaFilter = marca ? `&& marca match "${marca}"` : ""
+
     const categoryFilter = category ? `&& "${category}" in categories` : ""
     const sizeFilter = size ? `&& tallas match "tallas"` : ""
     const generoFilter = genero ? `&& genero match "${genero}"` : ""
 
     const searchFilter = search
-      ? `&& name match "${search}" || sku match "${search}"|| genero match "${search}"`
+      ? `&& name match "${search}" || sku match "${search}"|| genero match "${search}"|| marca match "${search}"|| tipo match "${search}"|| category match "${search}"|| color match "${search}"`
       : ""
 
-    const filter = `*[${productFilter}${colorFilter}${categoryFilter}${sizeFilter}${searchFilter}${generoFilter}]`
+    const filter = `*[${productFilter}${colorFilter}${categoryFilter}${sizeFilter}${searchFilter}${generoFilter}${tipoFilter}${marcaFilter}]`
+
+    console.log(filter)
 
     // await seedSanityData()
 
     const products = await client.fetch<SanityProduct[]>(
-      groq`${filter} ${order}  [0...${100}] {
+      groq`${filter} ${order} {
       _id,
       _createdAt,
       name,
@@ -87,9 +93,12 @@ export default async function Page({ searchParams }: Props) {
       </div> */}
       <div className="sticky top-[80px]  z-20    h-full w-full  xl:top-[101px] ">
         <div className=" flex  w-full items-center justify-between bg-white  px-6 py-4   dark:bg-background">
-          <h1 className="text-xl font-bold tracking-tight sm:text-2xl">
-            {products.length}
-            <span className="ml-2">Producto{products.length > 1 && "s"}</span>
+          <h1 className="text-xl font-bold tracking-tight sm:text-xl">
+            {/* {products.length}
+            <span className="ml-2 ">
+              Producto{products.length > 1 && "s"}
+            </span> */}
+            <span>Filtrar por:</span>
           </h1>
           {/* Product Sort */}
           <ProductSort />
