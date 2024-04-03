@@ -15,8 +15,6 @@ interface Props {
 }
 
 export function ProductGallery({ product }: Props) {
-
-
   const [selectedImage, setSetselectedImage] = useState(0)
   return (
     <div className="flex flex-col-reverse">
@@ -31,8 +29,8 @@ export function ProductGallery({ product }: Props) {
             >
               <span className="absolute inset-0 overflow-hidden rounded-md">
                 <img
-                  width={2000}
-                  height={2000}
+          
+          
                   className="relative "
                   src={urlForImage(image).url()}
                   alt=""

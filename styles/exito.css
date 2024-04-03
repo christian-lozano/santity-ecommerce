@@ -146,9 +146,9 @@ h3.text-bold.text-2xl.font-extrabold {
   box-sizing: border-box;
   position: relative;
 }
-img {
+/* img {
   object-fit: cover;
-}
+} */
 
 p {
   outline: none;

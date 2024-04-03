@@ -2,7 +2,7 @@ import React, { useState } from "react"
 import Link from "next/link"
 import { urlForImage } from "@/sanity/lib/image"
 
-export default function Product({ products }) {
+export default function Product({ products, generoSku = false }) {
   const precio = products.priceecommerce
 
   const operation = (Number(products.descuento) / 100) * Number(precio)
@@ -39,12 +39,14 @@ export default function Product({ products }) {
               </div>
             )}
           </div>
-          <div className="flex items-center justify-between ">
-            <h2 className="mt-4 font-medium capitalize">
-              {products.marca} - {products.genero}
-            </h2>
-            <h5 className="mt-4 text-xs font-medium">Sku: {products.sku}</h5>
-          </div>
+          {generoSku && (
+            <div className="flex items-center justify-between ">
+              <h2 className="mt-4 font-medium capitalize">
+                {products.marca} - {products.genero}
+              </h2>
+              <h5 className="mt-4 text-xs font-medium">Sku: {products.sku}</h5>
+            </div>
+          )}
           <h3 className="mt-2 text-lg font-medium xl:text-xl ">
             {products.name}
           </h3>

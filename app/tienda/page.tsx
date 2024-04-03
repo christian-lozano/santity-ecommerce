@@ -127,7 +127,7 @@ export default async function Page({ searchParams }: Props) {
                 <ProductFilters />
               </div>
             </div>
-            <ProductGrid products={products} />
+            <ProductGrid products={products} generoSku={true} />
             {/* Product grid */}
           </section>
         </main>
