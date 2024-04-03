@@ -138,6 +138,7 @@ export default function FormPagar() {
 
         // setLoadingMercadoPago(false)
         // router.refresh()
+        //test
         // alert(data.msg)
       }
       if (res.status === 401) {
