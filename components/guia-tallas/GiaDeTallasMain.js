@@ -6,6 +6,7 @@ import { Dialog } from "@material-tailwind/react"
 import GiaDeTallasZapatillas from "./GiaDeTallasZapatillas"
 
 export default function GiaDeTallasMain({ gender, product_type }) {
+  console.log(gender)
   // guía de tallas Zapatillas
   let dataGiaTallasMujerZapatillas = {
     title: "GUÍA DE TALLAS zapatillas MUJERES",
@@ -342,21 +343,21 @@ export default function GiaDeTallasMain({ gender, product_type }) {
   const [guiaTallasZapatillas, setGuiaTallasZapatillas] = useState()
   const [verGiaTallas, setVerGiaTallas] = useState(false)
   useEffect(() => {
-    if (product_type === "Zapatillas") {
+    if (product_type === "calzado") {
       switch (gender) {
-        case "Hombre":
+        case "hombre":
           setGuiaTallasZapatillas(dataGiaTallasHombreZapatillas)
           break
-        case "Mujer":
+        case "mujer":
           setGuiaTallasZapatillas(dataGiaTallasMujerZapatillas)
           break
-        case "Niños":
+        case "niños":
           setGuiaTallasZapatillas(dataGiaTallasNinosZapatillas)
           break
-        case "Niño":
+        case "niño":
           setGuiaTallasZapatillas(dataGiaTallasNinosZapatillas)
           break
-        case "Niña":
+        case "niña":
           setGuiaTallasZapatillas(dataGiaTallasNinosZapatillas)
           break
       }
@@ -365,7 +366,7 @@ export default function GiaDeTallasMain({ gender, product_type }) {
 
   return (
     <div>
-      {product_type === "Zapatillas" && (
+      {product_type === "calzado" && gender !== "unisex" && (
         <button
           onClick={() => setVerGiaTallas(!verGiaTallas)}
           className="mt-3 border-b-[1px] dark:fill-white  "
@@ -409,7 +410,7 @@ export default function GiaDeTallasMain({ gender, product_type }) {
         onResize={undefined}
         onResizeCapture={undefined}
       >
-        {product_type === "Zapatillas" && (
+        {product_type === "calzado" && gender !== "unisex" && (
           <GiaDeTallasZapatillas dataTallasZapatillas={guiaTallasZapatillas} />
         )}
       </Dialog>

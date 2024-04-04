@@ -27,6 +27,8 @@ const filters = [
     options: [
       { value: "hombre", label: "Hombre" },
       { value: "mujer", label: "Mujer" },
+      { value: "unisex", label: "unisex" },
+
       { value: "niños", label: "Niños" },
       { value: "niño", label: "Niño" },
       { value: "niña", label: "Niña" },

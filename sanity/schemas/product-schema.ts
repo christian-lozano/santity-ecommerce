@@ -35,10 +35,19 @@ export const product = defineType({
     },
 
     {
-      name: "genero",
       title: "Genero",
+      name: "genero",
       type: "string",
+
       validation: (rule) => rule.required(),
+      options: {
+        list: [
+          { title: "Hombre", value: "hombre" },
+          { title: "Mujer", value: "mujer" },
+          { title: "Niños", value: "niños" },
+          { title: "Unisex", value: "unisex" },
+        ], // <-- predefined values
+      },
     },
     {
       title: "Tipo",
@@ -55,10 +64,22 @@ export const product = defineType({
       },
     },
     {
-      name: "marca",
       title: "Marca",
+      name: "marca",
       type: "string",
+
       validation: (rule) => rule.required(),
+      options: {
+        list: [
+          { title: "Adidas", value: "adidas" },
+          { title: "Nike", value: "nike" },
+          { title: "Puma", value: "puma" },
+          { title: "Reebok", value: "reebok" },
+          { title: "Cat", value: "cat" },
+          { title: "Fritz Sport", value: "fritzsport" },
+          { title: "joma", value: "joma" },
+        ], // <-- predefined values
+      },
     },
     {
       title: "Imagen Principal Catalogo(png,webp)",

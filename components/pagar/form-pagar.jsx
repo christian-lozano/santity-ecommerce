@@ -131,7 +131,7 @@ export default function FormPagar() {
         },
       })
       const data = await res.json()
-   
+
       if (res.status === 200) {
         router.push(data.url)
         setLoading(false)
@@ -150,7 +150,7 @@ export default function FormPagar() {
       }
       // console.log(data);
     } catch (error) {
-      console.log(error.message)
+      console.log(error)
     }
   }
   useEffect(() => {

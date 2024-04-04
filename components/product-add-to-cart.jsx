@@ -111,7 +111,7 @@ export default function ProductAddToCart({ product }) {
       </div>
       <GiaDeTallasMain
         gender={product.genero}
-        product_type={"Zapatillas"}
+        product_type={product.tipo}
       ></GiaDeTallasMain>
       <form className="mt-6">
         <div className="mt-4 flex">

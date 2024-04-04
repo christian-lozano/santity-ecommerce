@@ -58,7 +58,7 @@ export default async function Page({ searchParams }: Props) {
 
     const filter = `*[${productFilter}${colorFilter}${categoryFilter}${sizeFilter}${searchFilter}${generoFilter}${tipoFilter}${marcaFilter}]`
 
-    console.log(filter)
+  
 
     // await seedSanityData()
 

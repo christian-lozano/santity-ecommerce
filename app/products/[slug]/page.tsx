@@ -35,6 +35,7 @@ export const generateMetadata = async ({
   categories,
   colors,
   genero,
+  tipo,
   descuento,
   tallas,
   "slug":slug.current
@@ -63,6 +64,7 @@ export default async function Page({ params }: Props) {
     categories,
     colors,
     genero,
+    tipo,
     descuento,
     tallas,
     "slug":slug.current
@@ -93,6 +95,7 @@ export default async function Page({ params }: Props) {
           priceecommerce,
           description,
           descuento,
+          tipo,
           genero,
           descuento,
           "slug":slug.current
