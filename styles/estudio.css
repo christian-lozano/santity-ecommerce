@@ -5,3 +5,9 @@ a.z-header.sticky-0.fixed.bottom-0.right-5.z-\[999\].xl\:right-16,
 header.sticky.top-0.z-40.w-full.items-center.justify-around.border-b.border-slate-700\/20.bg-background.xl\:block {
   display: none !important;
 }
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}

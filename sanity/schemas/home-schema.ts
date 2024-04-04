@@ -4,6 +4,8 @@ export const home = defineType({
   name: "home",
   title: "Home",
   type: "document",
+  validation: (rule) => rule.required(),
+
   fields: [
     defineField({
       name: "name",
@@ -26,6 +28,7 @@ export const home = defineType({
               title: "Image Desktop (jpg,png,webp) 1940x765",
               name: "imgdeskt",
               type: "image",
+              validation: (rule) => rule.required(),
               options: {
                 hotspot: true, // <-- Defaults to false
               },
@@ -34,10 +37,12 @@ export const home = defineType({
               title: "Image Tablet (jpg,png,webp) 960x960",
               name: "imgtab",
               type: "image",
+              validation: (rule) => rule.required(),
               options: {
                 hotspot: true, // <-- Defaults to false
               },
             },
+
             {
               title: "Image Mobil (jpg,png,webp) 600x800",
               name: "imgmob",
@@ -45,6 +50,7 @@ export const home = defineType({
               options: {
                 hotspot: true, // <-- Defaults to false
               },
+              validation: (rule) => rule.required(),
             },
             {
               title: "Url Slider",

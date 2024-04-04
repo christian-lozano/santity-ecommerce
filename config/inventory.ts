@@ -8,6 +8,7 @@ interface InventoryProduct {
 
   description: string
 }
+
 interface InventorySlider {
   id: string
   name: string
@@ -28,6 +29,20 @@ interface ApiData {
   stock: number
 }
 
+export interface InventoryNuestrasTiendas
+  extends Omit<InventoryProduct, "images"> {
+  priceecommerce: any
+  sku: any
+  tallas: any
+  price: any
+  genero: any
+  descuento: string
+  marca: any
+  _id: string
+  _createdAt: Date
+  slug: string
+  images: Image[]
+}
 export interface SanityProduct extends Omit<InventoryProduct, "images"> {
   priceecommerce: any
   sku: any

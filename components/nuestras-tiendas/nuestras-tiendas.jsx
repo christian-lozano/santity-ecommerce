@@ -38,7 +38,7 @@ const dataNuestrasEmpresas = [
     ubicacion: "https://maps.app.goo.gl/iUxXwFKqF2BAEGhC7",
   },
 ]
-export default function NuestrasTiendas() {
+export default function NuestrasTiendas({ nuestrasTiendas }) {
   const [open, setOpen] = useState(false)
   const handleOpen = () => setOpen(!open)
   return (
@@ -51,10 +51,10 @@ export default function NuestrasTiendas() {
                 <div className="container absolute mx-auto text-center text-white">
                   <h1 className="mb-6 text-3xl font-bold sm:text-3xl xl:text-5xl">
                     {" "}
-                    Nuestras Tiendas
+                    {nuestrasTiendas.name}
                   </h1>
                 </div>
-
+                {/* video desktop */}
                 <video
                   muted={true}
                   webkit-playsinline={true}
@@ -65,7 +65,7 @@ export default function NuestrasTiendas() {
                   className="laptop:h-full hidden  w-[100vw] xl:block"
                 >
                   <source
-                    src="https://res.cloudinary.com/dmtq82guq/video/upload/v1705420976/ecommerce-fritz-sport/slider-home/fw23_rivalry_launch_hp_mh_d_2c98ca2cf4_1_t5xs5v.mp4"
+                    src={nuestrasTiendas.videohomedesk}
                     type="video/mp4"
                   />
                   <track
@@ -81,6 +81,7 @@ export default function NuestrasTiendas() {
                     label="spanish_captions"
                   />
                 </video>
+                {/* video mobil */}
 
                 <video
                   muted={true}
@@ -91,10 +92,7 @@ export default function NuestrasTiendas() {
                   loop={true}
                   className="h-full w-[100vw]  xl:hidden"
                 >
-                  <source
-                    src="https://res.cloudinary.com/dmtq82guq/video/upload/v1705428698/ecommerce-fritz-sport/slider-home/empresaMobil_r9inqz.mp4"
-                    type="video/mp4"
-                  />
+                  <source src={nuestrasTiendas.videohomemob} type="video/mp4" />
                   <track
                     src="captions_en.vtt"
                     kind="captions"
@@ -113,11 +111,11 @@ export default function NuestrasTiendas() {
           </div>
           {/*  */}
           <h5 className=" text-center text-xl font-semibold text-black dark:text-white sm:mt-16 sm:text-xl xl:mb-32 xl:mt-20 xl:text-3xl">
-            Conoce la Ubicación y <br /> Nuestros Horarios de Atención
+            {nuestrasTiendas.titulosede}
           </h5>
           <div className="-mx-4 -mb-10 -mt-4 flex flex-wrap px-1 sm:-m-4 sm:px-5">
             {/* Tumbes */}
-            {dataNuestrasEmpresas.map((el) => (
+            {nuestrasTiendas.sedes.map((el) => (
               <div className="mx-auto mb-6 mt-10 flex max-w-sm flex-col items-center justify-center p-0 md:mb-0 md:w-1/3">
                 <div className="relative flex max-w-[24rem] flex-col rounded-xl  bg-clip-border text-gray-700 shadow-md">
                   <div className="relative m-0 overflow-hidden rounded-none bg-transparent bg-clip-border text-gray-700 shadow-none">
@@ -128,10 +126,10 @@ export default function NuestrasTiendas() {
                   </div>
                   <div className="p-6">
                     <h4 className="block text-center font-sans text-2xl font-semibold leading-snug tracking-normal text-black antialiased dark:text-white">
-                      {el.title}
+                      {el.titulosede}
                     </h4>
                     <p className="mt-3 block text-center  font-sans  font-normal leading-relaxed text-black antialiased dark:text-white">
-                      {el.subtitle}
+                      {el.direccion}
                     </p>
                   </div>
                   <div className="flex items-center justify-between p-6">
@@ -143,12 +141,12 @@ export default function NuestrasTiendas() {
                         Ver Horarios
                       </button>
                       <Link
-                        href={el.ubicacion}
+                        href={el.urlubicacion}
                         target="_blank"
                         rel="noreferrer"
                       >
                         <button className=" bg-black p-5 py-2 capitalize  dark:bg-white ">
-                          Ver Ubicación
+                          {el.ubicanosboton}
                         </button>
                       </Link>
 
@@ -198,9 +196,12 @@ export default function NuestrasTiendas() {
                         >
                           {" "}
                           <div className="flex w-full flex-col  items-center justify-center">
-                            {el.dataHorarios.map((el) => (
-                              <div className="my-2 w-full  border-b-2 text-center">
-                                {el}
+                            {el.horarios.map((horario, i) => (
+                              <div
+                                key={i}
+                                className="my-2 w-full  border-b-2 text-center"
+                              >
+                                {horario}
                               </div>
                             ))}
                           </div>
