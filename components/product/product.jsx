@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import Link from "next/link"
 import { urlForImage } from "@/sanity/lib/image"
 
@@ -6,9 +6,16 @@ export default function Product({ products, generoSku = false }) {
   const precio = products.priceecommerce
 
   const operation = (Number(products.descuento) / 100) * Number(precio)
-  const [stock, setStock] = useState(
-    products.tallas.every((el) => el.stock === 0)
-  )
+  const [stock, setStock] = useState()
+
+  useEffect(() => {
+    if (!products.tallas) {
+      setStock(false)
+    } else {
+      setStock(products.tallas.every((el) => el.stock === 0))
+    }
+  }, [])
+
   const resultado = Number(precio) - operation
   return (
     <>
@@ -19,13 +26,15 @@ export default function Product({ products, generoSku = false }) {
       >
         <div className="p-1">
           <div className="aspect-h-1 aspect-w-1 overflow-hidden rounded-lg     group-hover:opacity-75 ">
-            <img
-              width={2000}
-              height={2000}
-              className="relative "
-              src={urlForImage(products.images[0].asset._ref).url()}
-              alt=""
-            />
+            {products.images && (
+              <img
+                width={2000}
+                height={2000}
+                className="relative "
+                src={urlForImage(products.images[0].asset._ref).url()}
+                alt=""
+              />
+            )}
 
             {products.descuento && (
               <div className="absolute right-0 top-4 bg-black px-3 py-1">
