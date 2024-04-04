@@ -25,6 +25,7 @@ const responsive = {
 }
 
 const CarouselProductRelacionados = ({ products }) => {
+
   return (
     <div className="parent ">
       <Carousel

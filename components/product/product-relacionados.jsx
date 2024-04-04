@@ -3,6 +3,7 @@ import Link from "next/link"
 import { urlForImage } from "@/sanity/lib/image"
 
 export default function ProductRelacionados({ products }) {
+  console.log(products)
   return (
     <>
       <Link
@@ -11,13 +12,15 @@ export default function ProductRelacionados({ products }) {
         className="group z-10 text-sm"
       >
         <div className="aspect-h-1 aspect-w-1 overflow-hidden rounded-lg    group-hover:opacity-75 ">
-          <img
-            width={800}
-            height={800}
-            className="relative "
-            src={urlForImage(products.images[0].asset._ref).url()}
-            alt=""
-          />
+          {products.images && (
+            <img
+              width={800}
+              height={800}
+              className="relative "
+              src={urlForImage(products.images[0].asset._ref).url()}
+              alt=""
+            />
+          )}
 
           {products.descuento && (
             <div className="absolute right-0 top-4 bg-black px-3 py-1">
