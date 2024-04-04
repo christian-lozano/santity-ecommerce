@@ -11,7 +11,6 @@ import MainTab from "@/components/tabs-home-genero/main-tab"
 import "@/styles/globals.css"
 import { Metadata } from "next"
 
-import { seedSanityData } from "@/lib/seed"
 import VideoHome from "@/components/video/video"
 
 export const metadata: Metadata = {
