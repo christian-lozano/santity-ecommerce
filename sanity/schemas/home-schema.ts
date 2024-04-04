@@ -23,7 +23,7 @@ export const home = defineType({
           name: "Slide",
           fields: [
             {
-              title: "Image Desktop (jpg,png,webp) 1920x840",
+              title: "Image Desktop (jpg,png,webp) 1940x765",
               name: "imgdeskt",
               type: "image",
               options: {
@@ -39,7 +39,7 @@ export const home = defineType({
               },
             },
             {
-              title: "Image Mobil (jpg,png,webp) 600x771",
+              title: "Image Mobil (jpg,png,webp) 600x800",
               name: "imgmob",
               type: "image",
               options: {

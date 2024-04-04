@@ -96,7 +96,7 @@ export const product = defineType({
     },
     {
       name: "images",
-      title: "Images Ecommerce (jpg,png,webp) 2400x2400",
+      title: "Images Ecommerce (jpg,png,webp) 2000x2000",
       type: "array",
       of: [{ type: "image" }],
       validation: (rule) => rule.required(),

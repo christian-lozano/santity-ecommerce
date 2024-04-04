@@ -39,19 +39,18 @@ const filters = [
     id: "category",
     name: "Categoria",
     options: [
-      { value: "zapatilla", label: "zapatilla" },
-      { value: "comodo", label: "comodo" },
-      { value: "mochila", label: "mochila" },
+      { value: "zapatilla", label: "zapatillas" },
+      { value: "mochila", label: "mochilas" },
       { value: "urbano", label: "urbano" },
-      { value: "casaca", label: "casaca" },
-      { value: "sandalia", label: "sandalia" },
+      { value: "casaca", label: "casacas" },
+      { value: "sandalia", label: "sandalias" },
       { value: "pantalon", label: "pantalón" },
       { value: "plataforma", label: "plataforma" },
-      { value: "polera", label: "polera" },
+      { value: "polera", label: "poleras" },
       { value: "terrex", label: "terrex" },
-      { value: "bolso", label: "bolso" },
-      { value: "buzo", label: "buzo" },
-      { value: "gorra", label: "gorra" },
+      { value: "bolso", label: "bolsos" },
+      { value: "buzo", label: "buzos" },
+      { value: "gorra", label: "gorras" },
       { value: "short", label: "short" },
       { value: "escolar", label: "escolar" },
     ],
@@ -102,7 +101,7 @@ export function ProductFilters() {
   const router = useRouter()
   const searchValues = Array.from(searchParams.entries())
   return (
-    <form className=" sticky top-20 pt-20">
+    <form className="sticky top-20">
       <h3 className="sr-only">Categories</h3>
 
       {filters.map((section, i) => (
@@ -140,7 +139,6 @@ export function ProductFilters() {
                         checked
                           ? params.delete(section.id)
                           : params.set(section.id, option.value)
-
                         router.replace(`tienda/?${params.toString()}`)
                       }}
                     />
