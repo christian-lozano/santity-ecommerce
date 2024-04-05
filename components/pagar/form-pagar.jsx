@@ -143,7 +143,7 @@ export default function FormPagar() {
       }
       if (res.status === 401) {
         alert("Ingresa un Email Valido")
-        setLoadingMercadoPago(false)
+        // setLoadingMercadoPago(false)
 
         // router.refresh()
         // alert(data.msg)

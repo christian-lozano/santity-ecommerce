@@ -3,7 +3,10 @@ import Link from "next/link"
 import { urlForImage } from "@/sanity/lib/image"
 
 export default function ProductRelacionados({ products }) {
-  console.log(products)
+  const precio = products.priceecommerce
+
+  const operation = (Number(products.descuento) / 100) * Number(precio)
+  const resultado = Number(precio) - operation
   return (
     <>
       <Link
@@ -35,7 +38,12 @@ export default function ProductRelacionados({ products }) {
         </h3>
         <h3 className="mt-4 font-medium uppercase ">{products.name}</h3>
 
-        <p className="mt-2 font-medium">S/{products.priceecommerce}</p>
+        <div className="flex">
+          <span className="mr-2 mt-2 font-semibold text-[#767677] line-through">
+            S/{products.priceecommerce}
+          </span>
+          <p className="mt-2 font-semibold">S/{resultado.toFixed(2)} </p>
+        </div>
         {/* <p className="mt-2 font-medium">S/{products.descuento}</p> */}
       </Link>
       {/* <button

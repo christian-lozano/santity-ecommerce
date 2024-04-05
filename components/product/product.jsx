@@ -6,6 +6,7 @@ export default function Product({ products, generoSku = false }) {
   const precio = products.priceecommerce
 
   const operation = (Number(products.descuento) / 100) * Number(precio)
+  const resultado = Number(precio) - operation
   const [stock, setStock] = useState()
 
   useEffect(() => {
@@ -16,7 +17,7 @@ export default function Product({ products, generoSku = false }) {
     }
   }, [])
 
-  const resultado = Number(precio) - operation
+
   return (
     <>
       <Link
@@ -64,7 +65,7 @@ export default function Product({ products, generoSku = false }) {
             <span className="mr-2 mt-2 font-semibold text-[#767677] line-through">
               S/{products.priceecommerce}
             </span>
-            <p className="mt-2 font-semibold">S/{resultado} </p>
+            <p className="mt-2 font-semibold">S/{resultado.toFixed(2)} </p>
           </div>
         </div>
 
