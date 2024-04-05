@@ -10,6 +10,8 @@ import "@/styles/globals.css"
 import { Metadata } from "next"
 import { notFound } from "next/navigation"
 
+import { metadataPage } from "@/components/seo-meta-product-view/generateMetadata"
+
 interface Props {
   params: {
     slug: string
@@ -19,36 +21,9 @@ interface Props {
 export const generateMetadata = async ({
   params,
 }: Props): Promise<Metadata> => {
-  const product =
-    await client.fetch<SanityProduct>(groq`*[_type == "product" && slug.current == "${params.slug}"][0] {
-  _id,
-  _createAt,
-  "id":_id,
-  name,
-  sku,
-  marca,
-  images,
-  priceecommerce,
-  currency,
-  description,
-  sizes,
-  categories,
-  colors,
-  genero,
-  tipo,
-  descuento,
-  tallas,
-  "slug":slug.current
-}`)
-
-  return {
-    title: `Producto - ${product.name}`,
-    description: `${product.name} - ${product.name} - ${product.slug} - ${product.sku}`,
-  }
+  let meta = await metadataPage({ params })
+  return meta
 }
-
-
-
 
 export default async function Page({ params }: Props) {
   const product =
@@ -73,6 +48,7 @@ export default async function Page({ params }: Props) {
     "slug":slug.current
   }`)
 
+
   if (!product) {
     return notFound()
   }
@@ -84,7 +60,6 @@ export default async function Page({ params }: Props) {
     const generoFilterHombre = `${product.genero}`
       ? `&& genero match "${product.genero}"&& marca match "${product.marca}"`
       : ""
-
     const filter = `*[${productFilter}${generoFilterHombre}]`
 
     // await seedSanityData()
@@ -108,7 +83,6 @@ export default async function Page({ params }: Props) {
   }
 
   const products = await productosGenero()
-
   return (
     <>
       <main className="mx-auto max-w-6xl sm:px-6 sm:pt-16 lg:px-8">
