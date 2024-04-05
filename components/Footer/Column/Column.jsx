@@ -40,7 +40,7 @@ const Column = (props) => {
           </h3>
           <div className={activecol ? "activecol col" : "col"}>
             {column.links.map((link) => {
-              return <Link href={`/website${link.link}`}>{link.text}</Link>
+              return <Link href={`${link.link}`}>{link.text}</Link>
             })}
           </div>
         </>

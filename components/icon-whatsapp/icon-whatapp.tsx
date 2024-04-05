@@ -1,6 +1,14 @@
+"use client"
+
 import Link from "next/link"
 
-export default function IconWhatapp() {
+interface Props {
+  urlWhatsApp: {
+    whatsapp: string
+  }
+}
+
+export default function IconWhatapp({ urlWhatsApp }: Props) {
   return (
     <>
       <Link
@@ -32,7 +40,7 @@ export default function IconWhatapp() {
         </div>
       </Link>
       <a
-        href="https://api.whatsapp.com/send/?phone=51983478551&text&type=phone_number&app_absent=0"
+        href={`"https://api.whatsapp.com/send/?phone=51${urlWhatsApp.whatsapp}&text&type=phone_number&app_absent=0"`}
         target="_blank"
         className="z-header sticky-0 fixed bottom-0 right-5 z-[999] xl:right-16"
         rel="noreferrer"

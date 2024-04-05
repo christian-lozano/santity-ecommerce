@@ -296,7 +296,7 @@ export default function PaginaEmprende({ emprende }) {
                           <a
                             key={i}
                             className="mr-5"
-                            href={el.urlbutton}
+                            href={`https://api.whatsapp.com/send/?phone=51${el.urlbutton}&text&type=phone_number&app_absent=0`}
                             target="_blank"
                             rel="noreferrer"
                           >

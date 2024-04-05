@@ -220,5 +220,11 @@ export const home = defineType({
       type: "string",
       validation: (rule) => rule.required(),
     },
+    {
+      title: "Numero WhatsApp flotante",
+      name: "whatsapp",
+      type: "string",
+      validation: (rule) => rule.required(),
+    },
   ],
 })

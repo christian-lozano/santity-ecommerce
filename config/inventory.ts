@@ -61,6 +61,7 @@ export interface SanitySlider extends Omit<InventorySlider, "images"> {
   _createdAt: Date
   slug: string
   images: Image[]
+  whatsapp: string
 }
 export const inventory: InventoryProduct[] = [
   {

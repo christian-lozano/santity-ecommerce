@@ -1,3 +1,7 @@
+import { client } from "@/sanity/lib/client"
+import { groq } from "next-sanity"
+
+import { SanitySlider } from "@/config/inventory"
 import { fontSans } from "@/lib/fonts"
 import { connectMongoDB } from "@/lib/mongodb"
 import { cn } from "@/lib/utils"
@@ -47,8 +51,12 @@ interface RootLayoutProps {
 connectMongoDB()
 
 // app/layout.tsx
-
 export default async function RootLayout({ children }: RootLayoutProps) {
+  const urlWhatsApp = await client.fetch<
+    SanitySlider[]
+  >(groq`*[_type == "home"] {
+  whatsapp
+  }`)
   return (
     <>
       <html lang="es" suppressHydrationWarning>
@@ -70,7 +78,7 @@ export default async function RootLayout({ children }: RootLayoutProps) {
               <SiteBlob />
             </div>
           </Providers>
-          <IconWhatapp></IconWhatapp>
+          <IconWhatapp urlWhatsApp={urlWhatsApp[0]}></IconWhatapp>
         </body>
       </html>
     </>

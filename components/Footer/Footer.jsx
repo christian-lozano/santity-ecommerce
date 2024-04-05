@@ -51,15 +51,15 @@ const columns = [
     links: [
       {
         text: "Políticas de Privacidad",
-        link: "privacy",
+        link: "#",
       },
       {
-        text: "Contactados",
+        text: "Contáctanos",
         link: "https://api.whatsapp.com/send/?phone=51983478551&text&type=phone_number&app_absent=0",
       },
       {
         text: "Términos & Condiciones",
-        link: "terms",
+        link: "#",
       },
     ],
   },

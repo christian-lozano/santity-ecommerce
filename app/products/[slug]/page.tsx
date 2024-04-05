@@ -10,14 +10,13 @@ import "@/styles/globals.css"
 import { Metadata } from "next"
 import { notFound } from "next/navigation"
 
-import { metadataPage } from "@/components/seo-meta-product-view/generateMetadata"
+import { metadataPage } from "@/config/generateMetadata"
 
 interface Props {
   params: {
     slug: string
   }
 }
-
 export const generateMetadata = async ({
   params,
 }: Props): Promise<Metadata> => {
@@ -47,7 +46,6 @@ export default async function Page({ params }: Props) {
     tallas,
     "slug":slug.current
   }`)
-
 
   if (!product) {
     return notFound()
