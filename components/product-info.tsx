@@ -26,7 +26,7 @@ export function ProductInfo({ product }: Props) {
           <p className=" mr-2 text-3xl font-semibold tracking-tight text-[#767677] line-through">
             S/{product.priceecommerce}
           </p>
-          <p className="text-3xl tracking-tight ">S/{resultado}</p>
+          <p className="text-3xl tracking-tight ">S/{resultado.toFixed(2)}</p>
         </div>
       </div>
       <h6 className="text-md tracking-tight">Marca: {product.marca}</h6>

@@ -25,11 +25,11 @@ export function ProductGallery({ product }: Props) {
             <div
               key={image._key as string}
               onClick={() => setSetselectedImage(index)}
-              className="relative flex h-20 w-20 cursor-pointer items-center justify-center rounded-md bg-white text-sm font-medium uppercase hover:bg-gray-50"
+              className="relative flex h-16 w-16 cursor-pointer items-center justify-center rounded-md bg-white text-sm font-medium uppercase hover:bg-gray-50 xl:h-20 xl:w-20"
             >
               <span className="absolute inset-0 overflow-hidden rounded-md">
                 <img
-                  className="relative h-20 w-20"
+                  className="relative h-16 w-16 xl:h-20 xl:w-20"
                   src={urlForImage(image).url()}
                   alt=""
                 />
