@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react"
 import Link from "next/link"
 import { urlForImage } from "@/sanity/lib/image"
-import { Clock, X } from "lucide-react"
+import { X } from "lucide-react"
 import { useCart } from "react-use-cart"
 
 import { Button } from "@/components/ui/button"

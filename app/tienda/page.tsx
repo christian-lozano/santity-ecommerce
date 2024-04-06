@@ -14,6 +14,8 @@ interface Props {
   searchParams: {
     date?: string
     priceecommerce?: string
+    price?: string
+
     color?: string
     category?: string
     tipo?: string
@@ -52,6 +54,7 @@ export default async function Page({ searchParams }: Props) {
   async function fetchNextPage() {
     const {
       date = "desc",
+      price,
       priceecommerce,
       color,
       category,
@@ -62,7 +65,8 @@ export default async function Page({ searchParams }: Props) {
       tipo,
     } = searchParams
 
-    const priceOrder = priceecommerce ? `| order(price ${priceecommerce})` : ""
+    const priceOrder = price ? `| order(priceecommerce ${price})` : ""
+
     const dateOrder = date ? `| order(_createAt ${date})` : ""
 
     const order = `${priceOrder}${dateOrder}`
@@ -102,18 +106,15 @@ export default async function Page({ searchParams }: Props) {
       "slug":slug.current
     } `
     )
-
+    console.log(priceecommerce)
     return products
   }
   const products = await fetchNextPage()
   // console.log(products[0].tallas)
+
   return (
     <div>
-      {/* <div className="px-4 pt-20 text-center">
-        <h1 className="text-4xl font-extrabold tracking-normal">{siteConfig.name}</h1>
-        <p className="mx-auto mt-4 max-w-3xl text-base">{siteConfig.description}</p>
-      </div> */}
-      <div className="sticky top-[80px]  z-20    h-full w-full  xl:top-[101px] ">
+      <div className="sticky top-[80px] z-20 h-full w-full  xl:top-[101px]">
         <div className=" flex  w-full items-center justify-between bg-white  px-6 py-4   dark:bg-background">
           <h1 className="text-xl font-bold tracking-tight sm:text-xl">
             {/* {products.length}
