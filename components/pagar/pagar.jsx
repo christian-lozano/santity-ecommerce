@@ -60,7 +60,7 @@ export default function PaginaPagar() {
                             </div>
                             <div className="text-right">
                               <p className="text-base font-semibold xl:text-lg">
-                                S/{el.itemTotal}
+                                S/{el.itemTotal.toFixed(2)}
                               </p>
                             </div>
                           </div>

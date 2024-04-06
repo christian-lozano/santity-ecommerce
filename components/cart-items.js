@@ -1,19 +1,13 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import Image from "next/image"
 import Link from "next/link"
 import { urlForImage } from "@/sanity/lib/image"
 import { Clock, X } from "lucide-react"
 import { useCart } from "react-use-cart"
-import { formatCurrencyString, useShoppingCart } from "use-shopping-cart"
-import { Product } from "use-shopping-cart/core"
 
-import { shimmer, toBase64 } from "@/lib/image"
-import { getSizeName } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { useToast } from "@/components/ui/use-toast"
 import { CartItemsEmpty } from "@/components/cart-items-empty"
 
 export function CartItems() {
@@ -21,8 +15,8 @@ export function CartItems() {
   useEffect(() => {
     setClientState(true)
   }, [])
-  function removeCartItem() {}
-  const { items, removeItem, cartTotal } = useCart()
+
+  const { items, removeItem } = useCart()
   return (
     <>
       {clientState && (
@@ -105,7 +99,7 @@ export function CartItems() {
                 </p> */}
                 <p className="mt-4 flex space-x-2 text-sm">
                   {/* <Clock className="h-5 w-5 shrink-0" aria-hidden="true" /> */}
-                  <span>Precio total: S/{el.itemTotal} </span>
+                  <span>Precio total: S/{el.itemTotal.toFixed(2)} </span>
                 </p>
               </div>
             </div>
