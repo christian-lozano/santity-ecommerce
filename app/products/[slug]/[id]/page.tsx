@@ -15,18 +15,21 @@ import { metadataPage } from "@/config/generateMetadata"
 interface Props {
   params: {
     slug: string
+    id: string
   }
 }
-export const generateMetadata = async ({
-  params,
-}: Props): Promise<Metadata> => {
-  let meta = await metadataPage({ params })
-  return meta
-}
+// export const generateMetadata = async ({
+//   params,
+// }: Props): Promise<Metadata> => {
+//   let meta = await metadataPage({ params })
+//   return meta
+// }
 
 export default async function Page({ params }: Props) {
+
+
   const product =
-    await client.fetch<SanityProduct>(groq`*[_type == "product" && slug.current == "${params.slug}"][0] {
+    await client.fetch<SanityProduct>(groq`*[_type == "product" && slug.current == "${params.slug}" && sku == "${params.id}"][0] {
     _id,
     _createAt,
     "id":_id,
@@ -46,6 +49,7 @@ export default async function Page({ params }: Props) {
     tallas,
     "slug":slug.current
   }`)
+
 
   if (!product) {
     return notFound()

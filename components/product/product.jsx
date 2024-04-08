@@ -17,12 +17,11 @@ export default function Product({ products, generoSku = false }) {
     }
   }, [])
 
-
   return (
     <>
       <Link
         key={products.id}
-        href={`/products/${products.slug}`}
+        href={`/products/${products.slug}/${products.sku}`}
         className="group z-10 text-sm"
       >
         <div className="p-1">

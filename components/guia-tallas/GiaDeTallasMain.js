@@ -6,7 +6,7 @@ import { Dialog } from "@material-tailwind/react"
 import GiaDeTallasZapatillas from "./GiaDeTallasZapatillas"
 
 export default function GiaDeTallasMain({ gender, product_type }) {
-  console.log(gender)
+
   // guía de tallas Zapatillas
   let dataGiaTallasMujerZapatillas = {
     title: "GUÍA DE TALLAS zapatillas MUJERES",

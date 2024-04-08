@@ -11,7 +11,7 @@ export default function ProductRelacionados({ products }) {
     <>
       <Link
         key={products.id}
-        href={`/products/${products.slug}`}
+        href={`/products/${products.slug}/${products.sku}`}
         className="group z-10 text-sm"
       >
         <div className="aspect-h-1 aspect-w-1 overflow-hidden rounded-lg    group-hover:opacity-75 ">

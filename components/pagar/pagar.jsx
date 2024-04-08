@@ -30,7 +30,7 @@ export default function PaginaPagar() {
             {domLoaded && items.length === 0 && <CartItemsEmpty />}
             {domLoaded &&
               items.map((el) => (
-                <Link href={`/products/${el.slug}`}>
+                <Link href={`/products/${el.slug}/${el.objectID}`}>
                   <li
                     key={el.id}
                     className="flex flex-col items-center  py-6 sm:flex-row sm:justify-between"

@@ -144,9 +144,9 @@ export function ProductFilters() {
                     />
                     <label
                       htmlFor={`filter-${section.id}-${optionIdx}`}
-                      className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                      className="text-sm font-medium uppercase leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                     >
-                      {option.value}
+                      {option.label}
                     </label>
                   </div>
                 ))}

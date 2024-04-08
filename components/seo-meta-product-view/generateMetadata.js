@@ -29,7 +29,7 @@ export async function metadataPage({ params }) {
     openGraph: {
       title: `Producto:-${product.name}`,
       description: `${product.name}-${product.slug}-${product.sku}`,
-      url: `${process.env.URL_DOMINIO}/products/${product.slug}`,
+      url: `${process.env.URL_DOMINIO}/products/${product.slug}/${el.slug}`,
       siteName: "Fritz Sport",
       images: [
         {
