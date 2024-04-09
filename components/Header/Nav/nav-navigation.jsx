@@ -255,7 +255,11 @@ const dataHeader = {
   ],
 }
 
-export function NavNavigation({ children }) {
+export function NavNavigation({
+  children,
+  setActiveSearchDesk,
+  activeSearchDesk,
+}) {
   const [activeHoverNavDesktop, setActiveHoverNavDesktop] = useState()
 
   // desktop nav
@@ -285,14 +289,24 @@ export function NavNavigation({ children }) {
           activeHoverNavDesktop={activeHoverNavDesktop}
         />
       </div>
-      <NavTop>
-        <NavSearch />
-      </NavTop>
+      <div className="xl:hidden">
+        <NavTop>
+          <NavSearch />
+        </NavTop>
+      </div>
+      <div className="hidden xl:block">
+        <NavTop
+          setActiveSearchDesk={setActiveSearchDesk}
+          activeSearchDesk={activeSearchDesk}
+        >
+          <NavSearch />
+        </NavTop>
+      </div>
       <NavMenuHoverDesktop
         andler={andler}
         setAndler={setAndler}
         hoverMenu={hoverMenu}
-      ></NavMenuHoverDesktop>
+      />
     </ul>
   )
 }

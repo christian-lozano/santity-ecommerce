@@ -285,10 +285,10 @@ export default async function Page({ searchParams }: Props) {
             aria-labelledby="products-heading"
             className="flex pb-24 pt-6"
           >
-            <MainTab
+            {/* <MainTab
               dataCabeceraTab={dataCabeceraTab}
               dataProductTab={dataProductTab}
-            ></MainTab>
+            ></MainTab> */}
           </section>
           <div className="grid h-full grid-cols-2  items-center justify-center xl:flex xl:justify-around ">
             {benefits.map((el, i) => (

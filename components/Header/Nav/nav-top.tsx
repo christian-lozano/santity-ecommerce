@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useEffect, useState } from "react"
+import React, { Dispatch, SetStateAction, useEffect, useState } from "react"
 import Link from "next/link"
 import { Edit, Search, ShoppingBag, X } from "lucide-react"
 import { useCart } from "react-use-cart"
@@ -13,8 +13,14 @@ import { ThemeToggle } from "@/components/theme-toggle"
 
 interface Props {
   children: JSX.Element[] | JSX.Element
+  setActiveSearchDesk: Dispatch<SetStateAction<boolean>>
+  activeSearchDesk: Boolean
 }
-export default function NavTop({ children }: Props) {
+export default function NavTop({
+  children,
+  setActiveSearchDesk,
+  activeSearchDesk,
+}: Props) {
   const [search, setActiveSearch] = useState<boolean>(false)
   const [open, setOpen] = useState(false)
   const handleSidebarToggle = (isOpen: boolean) => {
@@ -70,7 +76,17 @@ export default function NavTop({ children }: Props) {
             {/* icono Buscador */}
 
             <Button
+              className="xl:hidden"
               onClick={() => setActiveSearch(!search)}
+              size="sm"
+              variant="ghost"
+            >
+              <Search className={"h-5 xl:w-5"} />
+              <span className="sr-only">Buscar</span>
+            </Button>
+            <Button
+              className="hidden xl:block"
+              onClick={() => setActiveSearchDesk(!activeSearchDesk)}
               size="sm"
               variant="ghost"
             >
