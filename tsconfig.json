@@ -46,6 +46,6 @@
     "app/emprende/page.js",
     "components/seo-meta-product-view/generateMetadata.js",
     "components/icon-whatsapp/icon-whatapp.js"
-, "components/icon-whatsapp/icon-whatapp.tsx", "components/cart-items.js"  ],
+, "components/icon-whatsapp/icon-whatapp.tsx", "components/cart-items.js", "components/Header/Nav/nav-menu-desktop.tsx", "components/Header/Nav/nav-menu-hover-desktop.tsx", "components/Header/Nav/nav-navigation.jsx"  ],
   "exclude": ["node_modules"]
 }

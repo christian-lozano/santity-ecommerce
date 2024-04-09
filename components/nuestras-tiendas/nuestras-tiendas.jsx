@@ -2,6 +2,7 @@
 
 import React, { useState } from "react"
 import Link from "next/link"
+import { urlForImage } from "@/sanity/lib/image"
 import { Dialog, DialogBody, DialogHeader } from "@material-tailwind/react"
 
 import { Button } from "@/components/ui/button"
@@ -40,6 +41,7 @@ const dataNuestrasEmpresas = [
 ]
 export default function NuestrasTiendas({ nuestrasTiendas }) {
   const [open, setOpen] = useState(false)
+
   const handleOpen = () => setOpen(!open)
   return (
     <div className=" pt-14 md:pt-16">
@@ -120,7 +122,7 @@ export default function NuestrasTiendas({ nuestrasTiendas }) {
                 <div className="relative flex max-w-[24rem] flex-col rounded-xl  bg-clip-border text-gray-700 shadow-md">
                   <div className="relative m-0 overflow-hidden rounded-none bg-transparent bg-clip-border text-gray-700 shadow-none">
                     <img
-                      src="https://res.cloudinary.com/dmtq82guq/image/upload/v1705423883/fritz_sport/ecommerce/nuestras_tiendas/tienda/miguel_grau/nilhpzfkoqye7onkr1zp.jpg"
+                      src={urlForImage(el.img.asset._ref).url()}
                       alt="ui/ux review check"
                     />
                   </div>

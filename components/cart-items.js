@@ -58,7 +58,7 @@ export function CartItems() {
                       </h3>
                     </div>
                     <p className="mt-1 text-sm font-medium">
-                      Precio por unidad: S/{el.price.toFixed(2)}
+                      Precio por unidad: S/{el.price.toFixed(0)}
                     </p>
 
                     <p className="mt-1 text-sm font-medium">
@@ -99,7 +99,7 @@ export function CartItems() {
                 </p> */}
                 <p className="mt-4 flex space-x-2 text-sm">
                   {/* <Clock className="h-5 w-5 shrink-0" aria-hidden="true" /> */}
-                  <span>Precio total: S/{el.itemTotal.toFixed(2)} </span>
+                  <span>Precio total: S/{el.itemTotal.toFixed(0)} </span>
                 </p>
               </div>
             </div>

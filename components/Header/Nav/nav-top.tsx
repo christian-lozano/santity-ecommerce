@@ -51,8 +51,8 @@ export default function NavTop({ children }: Props) {
       <div className="xl:hidden">
         <Logo />
       </div>
-      <div className="xl:flex xl:w-full   xl:justify-end  ">
-        <div className=" xl:mr-36">
+      <div className="xl:flex xl:w-full  xl:justify-center  ">
+        <div>
           <div className="flex items-center space-x-1">
             {/* dark mode */}
             <ThemeToggle />
