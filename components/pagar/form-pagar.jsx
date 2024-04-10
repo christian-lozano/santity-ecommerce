@@ -429,12 +429,12 @@ export default function FormPagar() {
             <div className="mt-6 border-y py-2">
               <div className="flex items-center justify-between">
                 <p className="text-sm font-medium ">Subtotal</p>
-                <p className="font-semibold ">S/{cartTotal}</p>
+                <p className="font-semibold ">S/{cartTotal.toFixed()}</p>
               </div>
             </div>
             <div className="mt-6 flex items-center justify-between ">
               <p className="text-sm font-medium ">Total</p>
-              <p className="text-2xl font-semibold ">S/{cartTotal}</p>
+              <p className="text-2xl font-semibold ">S/{cartTotal.toFixed()}</p>
             </div>
           </div>
         )}
