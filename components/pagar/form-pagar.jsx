@@ -152,10 +152,6 @@ export default function FormPagar() {
           id_payer: data.id_payer,
           id_mercado_pago: "01",
           pedido: true,
-          pedido_pagado: false,
-          pedido_devuelto: false,
-          pedido_por_entregar: false,
-          pedido_entregado: false,
           nombres: allValues.nombre,
           apellidos: allValues.apellido,
           email: allValues.email,
@@ -168,7 +164,7 @@ export default function FormPagar() {
           comprobante: allValues.comprobante,
           info_adicional: allValues.adicional,
           ruc: allValues.ruc,
-          productos: productosCantidad,
+          // productos: productosCantidad,
         }
 
         const resp = await fetch(`/api/mongo`, {
