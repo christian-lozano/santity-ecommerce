@@ -15,7 +15,7 @@ export function CartItems() {
   useEffect(() => {
     setClientState(true)
   }, [])
-
+  //test
   const { items, removeItem } = useCart()
   return (
     <>
