@@ -7,10 +7,31 @@ export const pedidos = defineType({
 
   fields: [
     defineField({
+      title: "Estado de Pedido",
+      name: "estado",
+      type: "string",
+
+      validation: (rule) => rule.required(),
+      options: {
+        list: [
+          { title: "pendiente", value: "pendiente" },
+          { title: "pagado", value: "pagado" },
+          { title: "entregado", value: "entregado" },
+          { title: "devuelto", value: "devuelto" },
+        ], // <-- predefined values
+      },
+    }),
+    {
       name: "id_payer",
       title: "id_payer",
       type: "string",
-    }),
+    },
+    {
+      name: "razon",
+      title: "razón social",
+      type: "string",
+    },
+
     {
       name: "id_mercado_pago",
       title: "Id Percado Pago",
@@ -44,7 +65,7 @@ export const pedidos = defineType({
     {
       name: "cart_total",
       title: "cart_total",
-      type: "string",
+      type: "number",
     },
     {
       name: "telefono",
@@ -80,6 +101,46 @@ export const pedidos = defineType({
       name: "ruc",
       title: "ruc",
       type: "string",
+    },
+    {
+      name: "productos",
+      title: "Productos",
+      type: "array",
+
+      of: [
+        defineField({
+          name: "productos",
+          title: "productos",
+          type: "object",
+          fields: [
+            {
+              name: "name",
+              title: "nombre",
+              type: "string",
+            },
+            {
+              name: "cantidad",
+              title: "cantidad",
+              type: "number",
+            },
+            {
+              name: "sku",
+              title: "sku",
+              type: "string",
+            },
+            {
+              name: "talla",
+              title: "talla",
+              type: "string",
+            },
+            {
+              name: "unit_price",
+              title: "unit_price",
+              type: "number",
+            },
+          ],
+        }),
+      ],
     },
     // Banner Emprende
   ],

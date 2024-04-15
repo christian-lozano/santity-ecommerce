@@ -7,6 +7,8 @@ export async function POST(req) {
   // console.log(data)
   try {
     const data = await req.json()
+
+    console.log(data)
     const dato = await seedSanityData(data)
 
     console.log(dato)

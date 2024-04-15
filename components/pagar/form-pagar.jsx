@@ -85,6 +85,8 @@ export default function FormPagar() {
     distrito: "",
     adicional: "",
     checkTerminos: false,
+    estado: "pendiente",
+    razon: "Fritz Sport",
   })
 
   const changeHandler = (e) => {
@@ -105,6 +107,7 @@ export default function FormPagar() {
         id: el.idsanity,
         category_id: el.talla,
         title: el.name,
+        type: el.objectID,
         description: el.id,
         picture_url: urlForImage(el.image).url(),
         quantity: el.quantity,
@@ -119,6 +122,8 @@ export default function FormPagar() {
     let dataPago = {
       productos: productosCantidad,
       datosComprador: {
+        razon: allValues.razon,
+        estado: allValues.estado,
         nombre: allValues.nombre,
         apellido: allValues.apellido,
         email: allValues.email,
@@ -149,9 +154,11 @@ export default function FormPagar() {
 
       if (res.status === 200) {
         let dataEnvioMongoUser = {
+          razon: allValues.razon,
+
           id_payer: data.id_payer,
           id_mercado_pago: "01",
-          pedido: true,
+          estado: allValues.estado,
           nombres: allValues.nombre,
           apellidos: allValues.apellido,
           email: allValues.email,
@@ -164,7 +171,7 @@ export default function FormPagar() {
           comprobante: allValues.comprobante,
           info_adicional: allValues.adicional,
           ruc: allValues.ruc,
-          // productos: productosCantidad,
+          productos: productosCantidad,
         }
 
         const resp = await fetch(`/api/mongo`, {

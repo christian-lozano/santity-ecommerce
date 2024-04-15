@@ -3,6 +3,8 @@ import { client } from "@/sanity/lib/client"
 import { inventory } from "@/config/inventory"
 
 export async function seedSanityData(data: {
+  estado: any
+  productos: any
   comprobante: any
   id_payer: any
   id_mercado_pago: any
@@ -19,10 +21,34 @@ export async function seedSanityData(data: {
   ruc: any
 }) {
   const transaction = client.transaction()
+
   // inventory.forEach((item) => {
+
+  let produc = data.productos.map(
+    (el: {
+      title: any
+      quantity: any
+      type: any
+      category_id: any
+      unit_price: any
+    }) => {
+      let result = {
+        name: el.title,
+        cantidad: Number(el.quantity),
+        sku: el.type,
+        talla: el.category_id,
+        unit_price: Number(el.unit_price.toFixed(0)),
+      }
+      return result
+    }
+  )
+
   const pedidos = {
     _type: "pedidos",
     _id: data.id_payer,
+    id_payer: data.id_payer,
+    estado: data.estado,
+    razon: data.razón,
     id_mercado_pago: data.id_mercado_pago,
     nombres: data.nombres,
     apellidos: data.apellidos,
@@ -32,10 +58,11 @@ export async function seedSanityData(data: {
     telefono: data.telefono,
     distrito: data.distrito,
     provincia: data.provincia,
-    comprobante:data.comprobante,
+    comprobante: data.comprobante,
     direccion: data.direccion,
     info_adicional: data.info_adicional,
     ruc: data.ruc,
+    productos: produc,
 
     // description: item.description,
   }
