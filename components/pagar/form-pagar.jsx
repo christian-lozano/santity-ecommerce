@@ -170,9 +170,8 @@ export default function FormPagar() {
           ruc: allValues.ruc,
           productos: productosCantidad,
         }
-        console.log(dataEnvioMongoUser)
-        router.push(data.url)
-        const res = await fetch(`/api/mongo`, {
+
+        const resp = await fetch(`/api/mongo`, {
           method: "POST",
           body: JSON.stringify(dataEnvioMongoUser),
           headers: {
@@ -182,7 +181,11 @@ export default function FormPagar() {
             "Access-Control-Allow-Headers": "*",
           },
         })
-        const dato = await res.json()
+
+        if (resp.status === 200) {
+          router.push(data.url)
+        }
+        // const dato = await res.json()
         setLoading(false)
 
         // setLoadingMercadoPago(false)

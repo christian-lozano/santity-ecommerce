@@ -65,7 +65,7 @@ export default function Product({ products, generoSku = false }) {
               S/{products.priceecommerce}
             </span>
             <p className="mt-2 font-semibold">
-              S/{resultado.toFixed(0) === "0" && 999}{" "}
+              S/{resultado.toFixed(0) === "0" ? 999 : resultado.toFixed(0)}{" "}
             </p>
           </div>
         </div>
