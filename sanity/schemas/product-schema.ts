@@ -180,6 +180,23 @@ export const product = defineType({
       validation: (rule) => rule.required(),
     },
     {
+      title: "Razon Social",
+      name: "razonsocial",
+      type: "string",
+      validation: (rule) => rule.required(),
+      options: {
+        list: [
+          { title: "Fritz Sport", value: "fritzsport" },
+          { title: "Fritz Duran", value: "fritzduran" },
+          { title: "Alexander Skate", value: "alexanderskate" },
+        ], // <-- predefined values
+      },
+      initialValue: {
+        fritzsport: false,
+      },
+    },
+
+    {
       name: "descuento",
       title: "Descuento Ecommerce",
       type: "number",
