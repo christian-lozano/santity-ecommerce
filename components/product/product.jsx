@@ -16,7 +16,7 @@ export default function Product({ products, generoSku = false }) {
       setStock(products.tallas.every((el) => el.stock === 0))
     }
   }, [])
-
+  console.log(products.priceecommerce)
   return (
     <>
       <Link
@@ -64,7 +64,9 @@ export default function Product({ products, generoSku = false }) {
             <span className="mr-2 mt-2 font-semibold text-[#767677] line-through">
               S/{products.priceecommerce}
             </span>
-            <p className="mt-2 font-semibold">S/{resultado.toFixed(0)} </p>
+            <p className="mt-2 font-semibold">
+              S/{resultado.toFixed(0) === "0" && 999}{" "}
+            </p>
           </div>
         </div>
 

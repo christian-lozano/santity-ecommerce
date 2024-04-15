@@ -94,6 +94,7 @@ export default function FormPagar() {
   const [domLoaded, setDomLoaded] = useState(false)
   const [validate, setValidate] = useState(false)
   const [loading, setLoading] = useState(false)
+  const [precioDelibery, setPrecioDelibery] = useState(0)
   useEffect(() => {
     setDomLoaded(true)
   }, [])
@@ -107,7 +108,7 @@ export default function FormPagar() {
         description: el.id,
         picture_url: urlForImage(el.image).url(),
         quantity: el.quantity,
-        unit_price: el.price,
+        unit_price: el.price + precioDelibery,
       }
 
       return productos
@@ -129,7 +130,7 @@ export default function FormPagar() {
         distrito: allValues.distrito,
         adicional: allValues.adicional,
         provincia: allValues.provincia,
-        cartTotal: cartTotal,
+        cartTotal: cartTotal + precioDelibery,
       },
     }
 
@@ -159,7 +160,7 @@ export default function FormPagar() {
           apellidos: allValues.apellido,
           email: allValues.email,
           documento: allValues.documento,
-          cart_total: cartTotal,
+          cart_total: cartTotal + precioDelibery,
           telefono: allValues.telefono,
           distrito: allValues.distrito,
           provincia: allValues.provincia,
@@ -226,6 +227,12 @@ export default function FormPagar() {
       }
     } else {
       setValidate(false)
+    }
+
+    if (allValues.provincia === "Lima") {
+      setPrecioDelibery(10)
+    } else {
+      setPrecioDelibery(20)
     }
   }, [allValues])
   return (
@@ -354,6 +361,54 @@ export default function FormPagar() {
             </div>
           </>
         )}
+        {/* provincia */}
+        <div className="flex flex-col sm:flex-row">
+          <label
+            htmlFor="card-holder"
+            className="mb-2 mt-4 block w-full text-sm  font-medium "
+          >
+            <Select
+              onChange={(e) => setAllValues({ ...allValues, provincia: e })}
+              nonce={undefined}
+              name="provincia"
+              label="Provincia"
+              className={`border  ${allValues.provincia.length === 0 && " "}`}
+              onResize={undefined}
+              onResizeCapture={undefined}
+            >
+              <Option value="Amazonas">Amazonas</Option>
+              <Option value="Ancash">Ancash</Option>
+              <Option value="Apurímac">Apurímac</Option>
+              <Option value="Arequipa">Arequipa</Option>
+              <Option value="Ayacucho">Ayacucho</Option>
+              <Option value="Cajamarca">Cajamarca</Option>
+              <Option value="Callao">Callao</Option>
+              <Option value="Cuzco">Cuzco </Option>
+              <Option value="Huancavelica">Huancavelica</Option>
+              <Option value="Huánuco">Huánuco</Option>
+              <Option value="Ica">Ica</Option>
+              <Option value="Junín">Junín</Option>
+              <Option value="La_Libertad">La Libertad</Option>
+              <Option value="Lambayeque">Lambayeque</Option>
+              <Option value="Lima">Lima</Option>
+              <Option value="Loreto">Loreto</Option>
+              <Option value="Madre_de_Dios">Madre de Dios</Option>
+              <Option value="Moquegua">Moquegua</Option>
+              <Option value="Pasco">Pasco</Option>
+              <Option value="Piura">Piura</Option>
+              <Option value="Puno">Puno</Option>
+              <Option value="San_Martín">San Martín</Option>
+              <Option value="Tacna">Tacna</Option>
+              <Option value="Tumbes">Tumbes</Option>
+              <Option value="Ucayali">Ucayali</Option>
+            </Select>
+            <span className="validationFormRed ml-1 text-sm">
+              {allValues.provincia.length === 0 &&
+                `la propiedad Provincia es necesaria`}
+            </span>
+          </label>
+        </div>
+
         {/* distrito */}
         <div className="flex flex-col sm:flex-row">
           <label
@@ -426,66 +481,26 @@ export default function FormPagar() {
           </label>
         </div>
 
-        {/* provincia */}
-        <div className="flex flex-col sm:flex-row">
-          <label
-            htmlFor="card-holder"
-            className="mb-2 mt-4 block w-full text-sm  font-medium "
-          >
-            <Select
-              onChange={(e) => setAllValues({ ...allValues, provincia: e })}
-              nonce={undefined}
-              name="provincia"
-              label="Provincia"
-              className={`border  ${allValues.provincia.length === 0 && " "}`}
-              onResize={undefined}
-              onResizeCapture={undefined}
-            >
-              <Option value="Amazonas">Amazonas</Option>
-              <Option value="Ancash">Ancash</Option>
-              <Option value="Apurímac">Apurímac</Option>
-              <Option value="Arequipa">Arequipa</Option>
-              <Option value="Ayacucho">Ayacucho</Option>
-              <Option value="Cajamarca">Cajamarca</Option>
-              <Option value="Callao">Callao</Option>
-              <Option value="Cuzco">Cuzco </Option>
-              <Option value="Huancavelica">Huancavelica</Option>
-              <Option value="Huánuco">Huánuco</Option>
-              <Option value="Ica">Ica</Option>
-              <Option value="Junín">Junín</Option>
-              <Option value="La_Libertad">La Libertad</Option>
-              <Option value="Lambayeque">Lambayeque</Option>
-              <Option value="Lima">Lima</Option>
-              <Option value="Loreto">Loreto</Option>
-              <Option value="Madre_de_Dios">Madre de Dios</Option>
-              <Option value="Moquegua">Moquegua</Option>
-              <Option value="Pasco">Pasco</Option>
-              <Option value="Piura">Piura</Option>
-              <Option value="Puno">Puno</Option>
-              <Option value="San_Martín">San Martín</Option>
-              <Option value="Tacna">Tacna</Option>
-              <Option value="Tumbes">Tumbes</Option>
-              <Option value="Ucayali">Ucayali</Option>
-            </Select>
-            <span className="validationFormRed ml-1 text-sm">
-              {allValues.provincia.length === 0 &&
-                `la propiedad Provincia es necesaria`}
-            </span>
-          </label>
-        </div>
-
         {/* <!-- Total --> */}
         {domLoaded && (
           <div className="border-b-2 pb-2">
             <div className="mt-6 border-y py-2">
               <div className="flex items-center justify-between">
                 <p className="text-sm font-medium ">Subtotal</p>
-                <p className="font-semibold ">S/{cartTotal.toFixed()}</p>
+                <p className="font-semibold ">
+                  S/{(cartTotal + precioDelibery).toFixed()}
+                </p>
               </div>
             </div>
             <div className="mt-6 flex items-center justify-between ">
-              <p className="text-sm font-medium ">Total</p>
-              <p className="text-2xl font-semibold ">S/{cartTotal.toFixed()}</p>
+              <p className="text-sm font-medium ">Precio de Envió</p>
+              <p className="text-base font-semibold ">S/{precioDelibery}</p>
+            </div>
+            <div className="mt-6 flex items-center justify-between ">
+              <p className="text-sm font-medium">Total</p>
+              <p className="text-2xl font-semibold ">
+                S/{(cartTotal + precioDelibery).toFixed()}
+              </p>
             </div>
           </div>
         )}
@@ -565,9 +580,7 @@ export default function FormPagar() {
           disabled={!validate}
           onClick={handlesubmit}
           className={`mb-8 mt-4 w-full  cursor-pointer rounded-md ${
-            !validate
-              ? "bg-gray-500 text-red-500 "
-              : " bg-white text-black"
+            !validate ? "bg-gray-500 text-red-500 " : " bg-white text-black"
           } b px-6 py-3  font-medium `}
         >
           {items.length === 0

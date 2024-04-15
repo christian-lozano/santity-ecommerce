@@ -70,6 +70,7 @@ export async function POST(req) {
         installments: 1,
       },
       auto_return: "approved",
+  
       // notification_url: `${process.env.URL_DOMINIO}/api/exito`,
     }
 
