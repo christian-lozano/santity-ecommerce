@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from "react"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
+import { urlForImage } from "@/sanity/lib/image"
 import { Option, Select, Spinner } from "@material-tailwind/react"
 import { useCart } from "react-use-cart"
 
@@ -98,10 +99,24 @@ export default function FormPagar() {
   }, [])
 
   const handlesubmit = async () => {
+    let productosCantidad = items.map((el) => {
+      let productos = {
+        id: el.idsanity,
+        category_id: el.talla,
+        title: el.name,
+        description: el.id,
+        picture_url: urlForImage(el.image).url(),
+        quantity: el.quantity,
+        unit_price: el.price,
+      }
+
+      return productos
+    })
+
     setValidate(false)
     setLoading(true)
     let dataPago = {
-      productos: items,
+      productos: productosCantidad,
       datosComprador: {
         nombre: allValues.nombre,
         apellido: allValues.apellido,
@@ -114,8 +129,7 @@ export default function FormPagar() {
         distrito: allValues.distrito,
         adicional: allValues.adicional,
         provincia: allValues.provincia,
-
-        cartTotal,
+        cartTotal: cartTotal,
       },
     }
 
@@ -133,7 +147,41 @@ export default function FormPagar() {
       const data = await res.json()
 
       if (res.status === 200) {
+        let dataEnvioMongoUser = {
+          id_payer: data.id_payer,
+          id_mercado_pago: "01",
+          pedido: true,
+          pedido_pagado: false,
+          pedido_devuelto: false,
+          pedido_por_entregar: false,
+          pedido_entregado: false,
+          nombres: allValues.nombre,
+          apellidos: allValues.apellido,
+          email: allValues.email,
+          documento: allValues.documento,
+          cart_total: cartTotal,
+          telefono: allValues.telefono,
+          distrito: allValues.distrito,
+          provincia: allValues.provincia,
+          direccion: allValues.direccion,
+          comprobante: allValues.comprobante,
+          info_adicional: allValues.adicional,
+          ruc: allValues.ruc,
+          productos: productosCantidad,
+        }
+        console.log(dataEnvioMongoUser)
         router.push(data.url)
+        const res = await fetch(`/api/mongo`, {
+          method: "POST",
+          body: JSON.stringify(dataEnvioMongoUser),
+          headers: {
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE",
+            "Access-Control-Allow-Headers": "*",
+          },
+        })
+        const dato = await res.json()
         setLoading(false)
 
         // setLoadingMercadoPago(false)
@@ -143,6 +191,8 @@ export default function FormPagar() {
       }
       if (res.status === 401) {
         alert("Ingresa un Email Valido")
+        setLoading(true)
+
         // setLoadingMercadoPago(false)
 
         // router.refresh()
@@ -150,7 +200,8 @@ export default function FormPagar() {
       }
       // console.log(data);
     } catch (error) {
-      console.log(error)
+      console.log(error.message)
+      setLoading(true)
     }
   }
   useEffect(() => {
@@ -479,7 +530,7 @@ export default function FormPagar() {
                 setAllValues({ ...allValues, checkTerminos: e.target.checked })
               }
             />
-            <div className="pointer-events-none absolute left-2/4 top-2/4 -translate-x-2/4 -translate-y-2/4 text-white opacity-0 transition-opacity peer-checked:opacity-100">
+            <div className="pointer-events-none absolute left-2/4 top-2/4 -translate-x-2/4 -translate-y-2/4 bg-red-200  opacity-0 transition-opacity peer-checked:opacity-100">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-3.5 w-3.5"
@@ -514,8 +565,10 @@ export default function FormPagar() {
           disabled={!validate}
           onClick={handlesubmit}
           className={`mb-8 mt-4 w-full  cursor-pointer rounded-md ${
-            !validate ? "bg-gray-500 text-red-500 " : "bg-white text-black"
-          } px-6 py-3 font-medium  `}
+            !validate
+              ? "bg-gray-500 text-red-500 "
+              : " bg-white text-black"
+          } b px-6 py-3  font-medium `}
         >
           {items.length === 0
             ? "No tienes Productos en el Carrito"
