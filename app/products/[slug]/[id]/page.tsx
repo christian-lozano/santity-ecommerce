@@ -57,7 +57,7 @@ export default async function Page({ params }: Props) {
   const productosGenero = async () => {
     const order = `| order(_id) [0...10]`
 
-    const productFilter = `_type == "product"`
+    const productFilter = `_type == "product" && razonsocial match "fritzsport"`
 
     const generoFilterHombre = `${product.genero}`
       ? `&& genero match "${product.genero}"&& marca match "${product.marca}"`

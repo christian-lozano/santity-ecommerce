@@ -81,6 +81,7 @@ export async function POST(req) {
       // const newPedido = new NewPedido(dataEnvioMongoUser)
       // const savePedido = await newPedido.save()
       // console.log(savePedido)
+      
       return new Response(
         JSON.stringify({
           url: response.body.init_point,

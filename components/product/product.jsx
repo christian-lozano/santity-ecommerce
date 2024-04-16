@@ -16,7 +16,7 @@ export default function Product({ products, generoSku = false }) {
       setStock(products.tallas.every((el) => el.stock === 0))
     }
   }, [])
-  console.log(products.priceecommerce)
+  // console.log(products.priceecommerce)
   return (
     <>
       <Link

@@ -26,13 +26,16 @@ export async function GET(req) {
     const searchParams = req.nextUrl.searchParams
     const collection_id = searchParams.get("collection_id")
     const preference_id = searchParams.get("preference_id")
+    const _id = searchParams.get("id")
 
-    const filter = { id_payer: preference_id }
-    const update = {
-      pedido_pagado: true,
-      id_mercado_pago: collection_id,
-    }
-    let PedidoUpdate = await Pagos.findOneAndUpdate(filter, update)
+    // console.log(searchParams)
+
+    // const filter = { id_payer: preference_id }
+    // const update = {
+    //   pedido_pagado: true,
+    //   id_mercado_pago: collection_id,
+    // }
+    // let PedidoUpdate = await Pagos.findOneAndUpdate(filter, update)
 
     fetch(`https://api.mercadopago.com/v1/payments/${collection_id}`, {
       method: "GET",
@@ -42,6 +45,12 @@ export async function GET(req) {
     })
       .then((res) => res.json())
       .then(async (result) => {
+        // console.log(preference_id)
+        const resulta = client
+          .patch(preference_id)
+          .set({ estado: "pagado", id_mercado_pago: collection_id })
+          .commit()
+
         result.additional_info.items.map(async (el) => {
           await updateDocumentTitle(el.id, el.description, Number(el.quantity))
         })
@@ -49,7 +58,7 @@ export async function GET(req) {
 
     return NextResponse.redirect(new URL("/exito", req.url))
   } catch (error) {
-    console.log(error);
+    console.log(error)
     return new Response(JSON.stringify({ error: "ocurrio un error" }))
   }
 }

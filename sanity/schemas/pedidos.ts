@@ -27,6 +27,12 @@ export const pedidos = defineType({
       type: "string",
     },
     {
+      name: "tipoEntrega",
+      title: "tipo de Entrega",
+      type: "string",
+    },
+
+    {
       name: "razon",
       title: "razón social",
       type: "string",
@@ -34,13 +40,8 @@ export const pedidos = defineType({
 
     {
       name: "id_mercado_pago",
-      title: "Id Percado Pago",
+      title: "Id Mercado Pago",
       type: "string",
-    },
-    {
-      name: "pedido_pagado",
-      title: "Pedido Pagado",
-      type: "boolean",
     },
     {
       name: "nombres",

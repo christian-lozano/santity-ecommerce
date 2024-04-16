@@ -71,7 +71,7 @@ export default async function Page({ searchParams }: Props) {
 
     const order = `${priceOrder}${dateOrder}`
 
-    const productFilter = `_type == "product"`
+    const productFilter = `_type == "product" && razonsocial match "fritzsport"`
     const colorFilter = color ? `&& color match "${color}"` : ""
     const tipoFilter = tipo ? `&& tipo match "${tipo}"` : ""
     const marcaFilter = marca ? `&& marca match "${marca}"` : ""
@@ -106,7 +106,7 @@ export default async function Page({ searchParams }: Props) {
       "slug":slug.current
     } `
     )
-    console.log(priceecommerce)
+    // console.log(priceecommerce)
     return products
   }
   const products = await fetchNextPage()

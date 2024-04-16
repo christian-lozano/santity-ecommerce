@@ -57,6 +57,40 @@ const formData = {
     },
   ],
 }
+
+const dataProvincia = {
+  amazonas: [
+    "Bagua",
+    "Bongara",
+    "Chachapoyas",
+    "Condorcanqui",
+    "Luya",
+    "Rodriguez de Mendoza",
+    "Utcubamba",
+  ],
+  ancash: [
+    "Aija",
+    "Antonio Raymondi",
+    "Asuncion",
+    "Bolognesi",
+    "Carhuaz",
+    "Carlos Fermin Fitzcarrald",
+    "Casma",
+    "Corongo",
+    "Huaraz",
+    "Huari",
+    "Huarmey",
+    "Huaylas",
+    "Mariscal Luzuriaga",
+    "Ocros",
+    "Pallasca",
+    "Pomabamba",
+    "Recuay",
+    "Santa",
+    "Sihuas",
+    "Yungay",
+  ],
+}
 function Loading({ disableLoadAddProduct = true }) {
   return (
     <Spinner
@@ -69,7 +103,7 @@ function Loading({ disableLoadAddProduct = true }) {
     />
   )
 }
-export default function FormPagar() {
+export default function FormPagar({ tipoEntrega }) {
   const router = useRouter()
 
   const [allValues, setAllValues] = useState({
@@ -122,6 +156,7 @@ export default function FormPagar() {
     let dataPago = {
       productos: productosCantidad,
       datosComprador: {
+        tipoEntrega: tipoEntrega,
         razon: allValues.razon,
         estado: allValues.estado,
         nombre: allValues.nombre,
@@ -154,8 +189,8 @@ export default function FormPagar() {
 
       if (res.status === 200) {
         let dataEnvioMongoUser = {
+          tipoEntrega: tipoEntrega,
           razon: allValues.razon,
-
           id_payer: data.id_payer,
           id_mercado_pago: "01",
           estado: allValues.estado,

@@ -12,7 +12,7 @@ import NavTop from "./Nav/nav-top"
 export function SiteHeader() {
   const [activeSearchDesk, setActiveSearchDesk] = useState<boolean>(true)
 
-  console.log(activeSearchDesk)
+  // console.log(activeSearchDesk)
 
   return (
     <>

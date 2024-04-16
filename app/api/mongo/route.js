@@ -8,10 +8,10 @@ export async function POST(req) {
   try {
     const data = await req.json()
 
-    console.log(data)
+    // console.log(data)
     const dato = await seedSanityData(data)
 
-    console.log(dato)
+    // console.log(dato)
     // const newPedido = new NewPedido(data)
     // const savePedido = await newPedido.save()
     // console.log(savePedido)

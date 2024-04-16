@@ -3,7 +3,8 @@ import { client } from "@/sanity/lib/client"
 import { inventory } from "@/config/inventory"
 
 export async function seedSanityData(data: {
-  razón: any
+  tipoEntrega: any
+  razon: any
   estado: any
   productos: any
   comprobante: any
@@ -47,9 +48,10 @@ export async function seedSanityData(data: {
   const pedidos = {
     _type: "pedidos",
     _id: data.id_payer,
+    tipoEntrega: data.tipoEntrega,
     id_payer: data.id_payer,
     estado: data.estado,
-    razon: data.razón,
+    razon: data.razon,
     id_mercado_pago: data.id_mercado_pago,
     nombres: data.nombres,
     apellidos: data.apellidos,

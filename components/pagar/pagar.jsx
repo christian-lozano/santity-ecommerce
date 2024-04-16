@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from "react"
 import Link from "next/link"
 import { urlForImage } from "@/sanity/lib/image"
+import { Radio, Typography } from "@material-tailwind/react"
 import { useCart } from "react-use-cart"
 
 import { CartItemsEmpty } from "../cart-items-empty"
@@ -13,10 +14,11 @@ export default function PaginaPagar() {
   // console.log(items)
 
   const [domLoaded, setDomLoaded] = useState(false)
-
+  const [tipoEntrega, setTipoEntrega] = useState("envio")
   useEffect(() => {
     setDomLoaded(true)
   }, [])
+  console.log(tipoEntrega)
 
   return (
     <div className=" pt-20">
@@ -76,22 +78,64 @@ export default function PaginaPagar() {
           <p className="mt-8 text-lg font-medium">Métodos de envío</p>
           <form className="mt-5 grid gap-6">
             <div className="relative ">
-              <label
-                className="Select-none flex cursor-pointer rounded-lg border border-gray-300 p-4 peer-checked:border-2 peer-checked:border-gray-700 peer-checked:bg-gray-50"
-                htmlFor="radio_2"
-              >
-                <span className="absolute right-4 top-1/2 box-content block h-5 w-5 -translate-y-1/2 rounded-full border-8 border-gray-300 bg-black peer-checked:border-gray-700 dark:bg-white"></span>
-                <div className="ml-5">
-                  <span className="mt-2 font-semibold">
-                    Envio previa coordinación
-                  </span>
-                </div>
-              </label>
+              <div className="flex flex-col ">
+                <Radio
+                  value="envio"
+                  checked={tipoEntrega === "envio"}
+                  onChange={(e) => setTipoEntrega(e.target.value)}
+                  name="description"
+                  color="blue"
+                  label={
+                    <div>
+                      <Typography color="white" className="font-medium">
+                        ENVÍO A DESTINO
+                      </Typography>
+                      <Typography
+                        variant="small"
+                        color="white"
+                        className="font-normal"
+                      >
+                        plazo máximo en 3 dias
+                      </Typography>
+                    </div>
+                  }
+                  containerProps={{
+                    className: "-mt-5",
+                  }}
+                />
+
+                <Radio
+                  checked={tipoEntrega === "recojo"}
+                  value="recojo"
+                  onChange={(e) => setTipoEntrega(e.target.value)}
+                  color="blue"
+                  name="description"
+                  defaultChecked
+                  label={
+                    <div>
+                      <Typography color="white" className="font-medium">
+                        RECOJO EN TIENDA
+                      </Typography>
+                      <Typography
+                        variant="small"
+                        color="white"
+                        className="font-normal"
+                      >
+                        Recojo en tienda Fritz Sport, Av. Miguel Grau 231, Lima
+                        15001
+                      </Typography>
+                    </div>
+                  }
+                  containerProps={{
+                    className: "-mt-5",
+                  }}
+                />
+              </div>
             </div>
           </form>
         </div>
         {/* form */}
-        <FormPagar />
+        <FormPagar tipoEntrega={tipoEntrega} />
       </div>
     </div>
   )
