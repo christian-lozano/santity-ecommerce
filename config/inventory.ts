@@ -44,7 +44,7 @@ export interface InventoryNuestrasTiendas
   images: Image[]
 }
 export interface SanityProduct extends Omit<InventoryProduct, "images"> {
-  [x: string]: string
+  razonsocial: string
   priceecommerce: any
   sku: any
   tallas: any
