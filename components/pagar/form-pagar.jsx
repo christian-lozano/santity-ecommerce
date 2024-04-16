@@ -131,6 +131,19 @@ export default function FormPagar({ tipoEntrega }) {
   const [validate, setValidate] = useState(false)
   const [loading, setLoading] = useState(false)
   const [precioDelibery, setPrecioDelibery] = useState(0)
+
+  useEffect(() => {
+    if (tipoEntrega === "recojo") {
+      setPrecioDelibery(0)
+    } else {
+      if (allValues.provincia === "Lima") {
+        setPrecioDelibery(10)
+      } else {
+        setPrecioDelibery(20)
+      }
+    }
+  }, [tipoEntrega, allValues.provincia])
+
   useEffect(() => {
     setDomLoaded(true)
   }, [])
@@ -257,7 +270,7 @@ export default function FormPagar({ tipoEntrega }) {
       allValues.direccion.length >= 3 &&
       allValues.provincia.length >= 2 &&
       allValues.distrito.length >= 1 &&
-      allValues.adicional.length >= 1 &&
+      // allValues.adicional.length >= 1 &&
       allValues.checkTerminos &&
       items.length > 0
     ) {
@@ -270,28 +283,30 @@ export default function FormPagar({ tipoEntrega }) {
       setValidate(false)
     }
 
-    if (allValues.provincia === "Lima") {
-      setPrecioDelibery(10)
-    } else {
-      setPrecioDelibery(20)
-    }
+    // if (allValues.provincia === "Lima") {
+    //   setPrecioDelibery(10)
+    // } else {
+    //   setPrecioDelibery(20)
+    // }
   }, [allValues])
   return (
     <div className="mt-10  px-4 pt-8  lg:mt-0">
       <p className="text-xl font-medium">{formData.title}</p>
       <p className="text-gray-400">{formData.subtitle}</p>
       <div>
-        <div className=" grid grid-cols-2 gap-4">
+        <div className=" grid xl:grid-cols-2 xl:gap-4">
           {formData.inputs.map((el) => (
             <div>
               <label
                 htmlFor="card-no"
                 className="mb-2 mt-4 block text-sm font-medium"
               >
-                {el.label}
+                {el.label === "Información Adicional"
+                  ? el.label + "  " + " *no obligatorio"
+                  : el.label}
               </label>
               <div className="flex justify-between">
-                <div className="relative w-full shrink-0 px-5">
+                <div className="relative w-full shrink-0 px-1 xl:px-5">
                   <Input
                     type={el.tipo}
                     name={el.name}
@@ -300,7 +315,11 @@ export default function FormPagar({ tipoEntrega }) {
                   />
                   <span className="validationFormRed ml-1 text-sm">
                     {allValues[`${el.name}`].length === 0 &&
-                      `la propiedad ${el.name} es necesaria`}
+                      `${
+                        el.name === "adicional"
+                          ? ""
+                          : `la propiedad ${el.name} es necesaria`
+                      }`}
                   </span>
                 </div>
               </div>

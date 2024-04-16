@@ -1,5 +1,4 @@
-import NewPedido from "@/models/pagoPendiente"
-import { client } from "@/sanity/lib/client"
+
 
 import { seedSanityData } from "@/lib/seed"
 

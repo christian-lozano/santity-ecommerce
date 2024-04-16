@@ -1,5 +1,4 @@
 import { NextResponse } from "next/server"
-import Pagos from "@/models/pagoPendiente"
 import { client } from "@/sanity/lib/client"
 // sanity.js
 
@@ -26,7 +25,7 @@ export async function GET(req) {
     const searchParams = req.nextUrl.searchParams
     const collection_id = searchParams.get("collection_id")
     const preference_id = searchParams.get("preference_id")
-    const _id = searchParams.get("id")
+   
 
     // console.log(searchParams)
 

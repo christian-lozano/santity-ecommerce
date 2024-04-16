@@ -3,11 +3,11 @@ import { groq } from "next-sanity"
 
 import { SanitySlider } from "@/config/inventory"
 import { fontSans } from "@/lib/fonts"
-import { connectMongoDB } from "@/lib/mongodb"
+
 import { cn } from "@/lib/utils"
 import Footer from "@/components/Footer/Footer"
 import { SiteHeader } from "@/components/Header/site-header"
-import { Banner } from "@/components/banner/banner"
+
 import IconWhatapp from "@/components/icon-whatsapp/icon-whatapp"
 import { Providers } from "@/components/providers"
 import { SiteBlob } from "@/components/site-blob"
@@ -49,7 +49,7 @@ import { SiteBlob } from "@/components/site-blob"
 interface RootLayoutProps {
   children: React.ReactNode
 }
-connectMongoDB()
+// connectMongoDB()
 
 // app/layout.tsx
 export default async function RootLayout({ children }: RootLayoutProps) {

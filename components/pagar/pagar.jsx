@@ -76,7 +76,7 @@ export default function PaginaPagar() {
           </div>
 
           <p className="mt-8 text-lg font-medium">Métodos de envío</p>
-          <form className="mt-5 grid gap-6">
+          <form className="mt-5 ">
             <div className="relative ">
               <div className="flex flex-col ">
                 <Radio
@@ -93,7 +93,7 @@ export default function PaginaPagar() {
                       <Typography
                         variant="small"
                         color="white"
-                        className="font-normal"
+                        className="text-sm font-normal"
                       >
                         plazo máximo en 3 dias
                       </Typography>
@@ -113,13 +113,13 @@ export default function PaginaPagar() {
                   defaultChecked
                   label={
                     <div>
-                      <Typography color="white" className="font-medium">
+                      <Typography color="white" className=" font-medium">
                         RECOJO EN TIENDA
                       </Typography>
                       <Typography
                         variant="small"
                         color="white"
-                        className="font-normal"
+                        className="font-normal text-sm"
                       >
                         Recojo en tienda Fritz Sport, Av. Miguel Grau 231, Lima
                         15001
