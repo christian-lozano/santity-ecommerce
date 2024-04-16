@@ -272,7 +272,7 @@ export default function FormPagar({ tipoEntrega }) {
   const [provincia, setProvincia] = useState([])
 
   const handlesubmit = async () => {
-    let productosCantidad = items.map((el) => {
+    let productosCantidad = items.map((el, i) => {
       let productos = {
         id: el.idsanity,
         category_id: el.talla,
@@ -281,12 +281,12 @@ export default function FormPagar({ tipoEntrega }) {
         description: el.id,
         picture_url: urlForImage(el.image).url(),
         quantity: el.quantity,
-        unit_price: el.price + precioDelibery,
+        unit_price: Number(el.price.toFixed(1)),
       }
 
       return productos
     })
-
+    productosCantidad[0].unit_price += precioDelibery
     setValidate(false)
     setLoading(true)
     let dataPago = {
@@ -657,9 +657,7 @@ export default function FormPagar({ tipoEntrega }) {
             <div className="mt-6 border-y py-2">
               <div className="flex items-center justify-between">
                 <p className="text-sm font-medium ">Subtotal</p>
-                <p className="font-semibold ">
-                  S/{(cartTotal + precioDelibery).toFixed()}
-                </p>
+                <p className="font-semibold ">S/{cartTotal.toFixed(0)}</p>
               </div>
             </div>
             <div className="mt-6 flex items-center justify-between ">
@@ -669,7 +667,7 @@ export default function FormPagar({ tipoEntrega }) {
             <div className="mt-6 flex items-center justify-between ">
               <p className="text-sm font-medium">Total</p>
               <p className="text-2xl font-semibold ">
-                S/{(cartTotal + precioDelibery).toFixed()}
+                S/{(cartTotal + precioDelibery).toFixed(0)}
               </p>
             </div>
           </div>

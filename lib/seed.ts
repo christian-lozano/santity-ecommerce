@@ -58,7 +58,7 @@ export async function seedSanityData(data: {
     apellidos: data.apellidos,
     email: data.email,
     documento: data.documento,
-    cart_total: data.cart_total,
+    cart_total: Number(data.cart_total.toFixed(0)),
     telefono: data.telefono,
     departamento: data.departamento,
     distrito: data.distrito,
