@@ -3,6 +3,9 @@
 import React, { useEffect, useState } from "react"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
+import departamentos from "@/json/departamentos.json"
+import distritos from "@/json/distritos.json"
+import provincias from "@/json/provincias.json"
 import { urlForImage } from "@/sanity/lib/image"
 import { Option, Select, Spinner } from "@material-tailwind/react"
 import { useCart } from "react-use-cart"
@@ -58,16 +61,131 @@ const formData = {
   ],
 }
 
-const dataProvincia = {
-  amazonas: [
-    "Bagua",
-    "Bongara",
-    "Chachapoyas",
-    "Condorcanqui",
-    "Luya",
-    "Rodriguez de Mendoza",
-    "Utcubamba",
+const data = {
+  departamentos: [
+    "Amazonas",
+    "Ancash",
+    "Apurímac",
+    "Arequipa",
+    "Ayacucho",
+    "Cajamarca",
+    "Callao",
+    "Cuzco",
+    "Huancavelica",
+    "Huánuco",
+    "Ica",
+    "Junín",
+    "La_Libertad",
+    "Lambayeque",
+    "Lima",
+    "Loreto",
+    "Madre_de_Dios",
+    "Moquegua",
+    "Pasco",
+    "Piura",
+    "Puno",
+    "San_Martín",
+    "Tacna",
+    "Tumbes",
+    "Ucayali",
   ],
+
+  amazonas_provincias: [
+    {
+      title: "Bagua",
+      distritos: [
+        "Aramango",
+        "Bagua",
+        "Copallin",
+        "El Parco",
+        "Imaza",
+        "La Peca",
+      ],
+    },
+    {
+      title: "Bongara",
+      distritos: [
+        "Chisquilla",
+        "Churuja",
+        "Corosha",
+        "Cuispes",
+        "Florida",
+        "Jazan",
+        "Jumbilla",
+        "Recta",
+        "San Carlos",
+        "Shipasbamba",
+        "Valera",
+        "Yambrabamba",
+      ],
+    },
+    {
+      title: "Chachapoyas",
+      distritos: [
+        "Asuncion",
+        "Bolsas",
+        "Chachapoyas",
+        "Cheto",
+        "Chiliquin",
+        "Chuquibamba",
+        "Granada",
+        "Huancas",
+        "La Jalca",
+        "Leimebamba",
+        "Levanto",
+        "Magdalena",
+        "Mariscal Castilla",
+        "MolinoPampa",
+        "Montevideo",
+        "Olleros",
+        "Quinjalca",
+        "San Francisco de Daguas",
+        "San Francisco de Maino",
+        "Soloco",
+        "Sonche",
+      ],
+    },
+    {
+      title: "Condorcanqui",
+      distritos: ["El Cenepa", "Nieva", "Rio Santiago"],
+    },
+    {
+      title: "Luya",
+      distritos: [
+        "Camporredondo",
+        "Cocabamba",
+        "Colcamar",
+        "Conila",
+        "Inguilpata",
+        "Lamud",
+        "Lonya Chico",
+        "Luya",
+        "Luya Viejo",
+        "Maria",
+        "Ocalli",
+        "Ocumal",
+        "Pisuquia",
+        "Providencia",
+        "San Cristobal",
+        "San Francisco del Yeso",
+        "San Jeronimo",
+        "San Juan de Lopecancha",
+        "Santa Catalina",
+        "Santo Tomas",
+        "Tingo",
+        "Trita",
+      ],
+    },
+    {
+      title: "Rodriguez de Mendoza",
+      distritos: ["Chirimoto", "Cochamal", "Huambo", "Limabamba"],
+    },
+    {
+      title: "Utcubamba",
+      distritos: [],
+    },
+  ],
+
   ancash: [
     "Aija",
     "Antonio Raymondi",
@@ -91,13 +209,6 @@ const dataProvincia = {
     "Yungay",
   ],
 }
-
-
-
-
-
-
-
 
 function Loading({ disableLoadAddProduct = true }) {
   return (
@@ -123,6 +234,7 @@ export default function FormPagar({ tipoEntrega }) {
     direccion: "",
     comprobante: "Boleta",
     ruc: "",
+    departamento: "",
     provincia: "",
     distrito: "",
     adicional: "",
@@ -155,6 +267,9 @@ export default function FormPagar({ tipoEntrega }) {
   useEffect(() => {
     setDomLoaded(true)
   }, [])
+
+  const [departamento, setDepartamento] = useState([])
+  const [provincia, setProvincia] = useState([])
 
   const handlesubmit = async () => {
     let productosCantidad = items.map((el) => {
@@ -221,6 +336,7 @@ export default function FormPagar({ tipoEntrega }) {
           documento: allValues.documento,
           cart_total: cartTotal + precioDelibery,
           telefono: allValues.telefono,
+          departamento: allValues.departamento,
           distrito: allValues.distrito,
           provincia: allValues.provincia,
           direccion: allValues.direccion,
@@ -276,6 +392,7 @@ export default function FormPagar({ tipoEntrega }) {
       allValues.telefono.length >= 1 &&
       allValues.comprobante.length >= 2 &&
       allValues.direccion.length >= 3 &&
+      allValues.departamento.length >= 2 &&
       allValues.provincia.length >= 2 &&
       allValues.distrito.length >= 1 &&
       // allValues.adicional.length >= 1 &&
@@ -296,7 +413,26 @@ export default function FormPagar({ tipoEntrega }) {
     // } else {
     //   setPrecioDelibery(20)
     // }
+    console.log(allValues)
   }, [allValues])
+
+  const handlerDepartamento = (data, id) => {
+    setDepartamento(data)
+    setAllValues({
+      ...allValues,
+      departamento: departamentos.find((el) => el.id_ubigeo === id)
+        .nombre_ubigeo,
+    })
+  }
+  const handlerProvincia = (data, id) => {
+    setProvincia(data)
+
+    setAllValues({
+      ...allValues,
+      provincia: data[0].buscador_ubigeo,
+    })
+  }
+
   return (
     <div className="mt-10  px-4 pt-8  lg:mt-0">
       <p className="text-xl font-medium">{formData.title}</p>
@@ -429,14 +565,43 @@ export default function FormPagar({ tipoEntrega }) {
             </div>
           </>
         )}
-        {/* provincia */}
+        {/* Departamentos */}
         <div className="flex flex-col sm:flex-row">
           <label
             htmlFor="card-holder"
             className="mb-2 mt-4 block w-full text-sm  font-medium "
           >
             <Select
-              onChange={(e) => setAllValues({ ...allValues, provincia: e })}
+              onChange={(e) => handlerDepartamento(provincias[e], e)}
+              nonce={undefined}
+              name="departamento"
+              label="Departamento"
+              className={`border  ${allValues.provincia.length === 0 && " "}`}
+              onResize={undefined}
+              onResizeCapture={undefined}
+            >
+              {departamentos.map((el) => (
+                <Option key={el.id_ubigeo} value={el.id_ubigeo}>
+                  {el.nombre_ubigeo}
+                </Option>
+              ))}
+            </Select>
+
+            <span className="validationFormRed ml-1 text-sm">
+              {allValues.provincia.length === 0 &&
+                `la propiedad Departamento es necesaria`}
+            </span>
+          </label>
+        </div>
+
+        {/* Provincias */}
+        <div className="flex flex-col sm:flex-row">
+          <label
+            htmlFor="card-holder"
+            className="mb-2 mt-4 block w-full text-sm  font-medium "
+          >
+            <Select
+              onChange={(e) => handlerProvincia(distritos[e], e)}
               nonce={undefined}
               name="provincia"
               label="Provincia"
@@ -444,40 +609,20 @@ export default function FormPagar({ tipoEntrega }) {
               onResize={undefined}
               onResizeCapture={undefined}
             >
-              <Option value="Amazonas">Amazonas</Option>
-              <Option value="Ancash">Ancash</Option>
-              <Option value="Apurímac">Apurímac</Option>
-              <Option value="Arequipa">Arequipa</Option>
-              <Option value="Ayacucho">Ayacucho</Option>
-              <Option value="Cajamarca">Cajamarca</Option>
-              <Option value="Callao">Callao</Option>
-              <Option value="Cuzco">Cuzco </Option>
-              <Option value="Huancavelica">Huancavelica</Option>
-              <Option value="Huánuco">Huánuco</Option>
-              <Option value="Ica">Ica</Option>
-              <Option value="Junín">Junín</Option>
-              <Option value="La_Libertad">La Libertad</Option>
-              <Option value="Lambayeque">Lambayeque</Option>
-              <Option value="Lima">Lima</Option>
-              <Option value="Loreto">Loreto</Option>
-              <Option value="Madre_de_Dios">Madre de Dios</Option>
-              <Option value="Moquegua">Moquegua</Option>
-              <Option value="Pasco">Pasco</Option>
-              <Option value="Piura">Piura</Option>
-              <Option value="Puno">Puno</Option>
-              <Option value="San_Martín">San Martín</Option>
-              <Option value="Tacna">Tacna</Option>
-              <Option value="Tumbes">Tumbes</Option>
-              <Option value="Ucayali">Ucayali</Option>
+              {departamento.map((el) => (
+                <Option key={el.id_ubigeo} value={el.id_ubigeo}>
+                  {el.nombre_ubigeo}
+                </Option>
+              ))}
             </Select>
+
             <span className="validationFormRed ml-1 text-sm">
               {allValues.provincia.length === 0 &&
                 `la propiedad Provincia es necesaria`}
             </span>
           </label>
         </div>
-
-        {/* distrito */}
+        {/* Distritos */}
         <div className="flex flex-col sm:flex-row">
           <label
             htmlFor="card-holder"
@@ -488,60 +633,17 @@ export default function FormPagar({ tipoEntrega }) {
               nonce={undefined}
               name="distrito"
               label="Distrito"
-              className={`border  ${allValues.distrito.length === 0 && " "}`}
+              className={`border  ${allValues.provincia.length === 0 && " "}`}
               onResize={undefined}
               onResizeCapture={undefined}
             >
-              <Option value="Ancon">Ancon</Option>
-              <Option value="Ate">Ate</Option>
-              <Option value="Barranco">Barranco</Option>
-              <Option value="Breña">Breña</Option>
-              <Option value="Carabayllo">Carabayllo</Option>
-              <Option value="Chaclacayo">Chaclacayo</Option>
-              <Option value="Chorrillos">Chorrillos</Option>
-              <Option value="Cieneguilla">Cieneguilla</Option>
-              <Option value="Comas">Comas</Option>
-              <Option value="El agustino">El Agustino</Option>
-              <Option value="Independencia">Independencia</Option>
-              <Option value="Jesus maria">Jesus Maria</Option>
-              <Option value="La molina">La Molina</Option>
-              <Option value="La victoria">La Victoria</Option>
-              <Option value="Lima">Lima</Option>
-              <Option value="Lince">Lince</Option>
-              <Option value="Los olivos">Los Olivos</Option>
-              <Option value="Lurigancho">Lurigancho</Option>
-              <Option value="Lurin">Lurin</Option>
-              <Option value="Magdalena del mar">Magdalena del Mar</Option>
-              <Option value="Miraflores">Miraflores</Option>
-              <Option value="Pachacamac">Pachacamac</Option>
-              <Option value="Pucusana">Pucusana</Option>
-              <Option value="Pueblo libre">Pueblo Libre</Option>
-              <Option value="Puente piedra">Puente Piedra</Option>
-              <Option value="Punta hermosa">Punta Hermosa</Option>
-              <Option value="Punta Negra">Punta Negra</Option>
-              <Option value="Rimac">Rimac</Option>
-              <Option value="San Bartolo">San Bartolo</Option>
-              <Option value="San Borja">San Borja</Option>
-              <Option value="San Isidro">San Isidro</Option>
-              <Option value="San Juan de Lurigancho">
-                San Juan de Lurigancho
-              </Option>
-              <Option value="San Juan de Miraflores">
-                San Juan de Miraflores
-              </Option>
-              <Option value="San Luis">San Luis</Option>
-              <Option value="San Martin de Porres">San martin de porres</Option>
-              <Option value="San Miguel">San Miguel</Option>
-              <Option value="Santa Anita">Santa Anita</Option>
-              <Option value="Santa Maria del Mar">Santa Maria del Mar</Option>
-              <Option value="Santa rosa">Santa Rosa</Option>
-              <Option value="Santiago de Surco">Santiago de Surco</Option>
-              <Option value="Surquillo">Surquillo</Option>
-              <Option value="Villa el Salvador">Villa el Salvador</Option>
-              <Option value="Villa Maria del Triunfo">
-                Villa Maria del Triunfo
-              </Option>
+              {provincia.map((el) => (
+                <Option key={el.id_ubigeo} value={el.nombre_ubigeo}>
+                  {el.nombre_ubigeo}
+                </Option>
+              ))}
             </Select>
+
             <span className="validationFormRed ml-1 text-sm">
               {allValues.distrito.length === 0 &&
                 `la propiedad Distrito es necesaria`}

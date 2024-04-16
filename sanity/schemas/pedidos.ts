@@ -74,8 +74,8 @@ export const pedidos = defineType({
       type: "string",
     },
     {
-      name: "distrito",
-      title: "distrito",
+      name: "departamento",
+      title: "departamento",
       type: "string",
     },
     {
@@ -83,6 +83,12 @@ export const pedidos = defineType({
       title: "provincia",
       type: "string",
     },
+    {
+      name: "distrito",
+      title: "distrito",
+      type: "string",
+    },
+
     {
       name: "direccion",
       title: "direccion",

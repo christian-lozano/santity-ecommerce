@@ -3,6 +3,7 @@ import { client } from "@/sanity/lib/client"
 import { inventory } from "@/config/inventory"
 
 export async function seedSanityData(data: {
+  departamento: any
   tipoEntrega: any
   razon: any
   estado: any
@@ -59,6 +60,7 @@ export async function seedSanityData(data: {
     documento: data.documento,
     cart_total: data.cart_total,
     telefono: data.telefono,
+    departamento: data.departamento,
     distrito: data.distrito,
     provincia: data.provincia,
     comprobante: data.comprobante,
