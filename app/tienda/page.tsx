@@ -71,7 +71,7 @@ export default async function Page({ searchParams }: Props) {
 
     const order = `${priceOrder}${dateOrder}`
 
-    const productFilter = `_type == "product" && razonsocial match "fritzsport"`
+    const productFilter = `_type == "product"`
     const colorFilter = color ? `&& color match "${color}"` : ""
     const tipoFilter = tipo ? `&& tipo match "${tipo}"` : ""
     const marcaFilter = marca ? `&& marca match "${marca}"` : ""
@@ -81,7 +81,7 @@ export default async function Page({ searchParams }: Props) {
     const generoFilter = genero ? `&& genero match "${genero}"` : ""
 
     const searchFilter = search
-      ? `&& name match "${search}" || sku match "${search}"|| genero match "${search}"|| marca match "${search}"|| tipo match "${search}"|| category match "${search}"|| color match "${search}"`
+      ? `&& name match "${search}" || sku match "${search}" || genero match "${search}"|| marca match "${search}"|| tipo match "${search}"|| category match "${search}"|| color match "${search}"  `
       : ""
 
     const filter = `*[${productFilter}${colorFilter}${categoryFilter}${sizeFilter}${searchFilter}${generoFilter}${tipoFilter}${marcaFilter}]`
@@ -102,6 +102,7 @@ export default async function Page({ searchParams }: Props) {
       marca,
       descuento,
       color,
+      razonsocial,
       tallas,
       "slug":slug.current
     } `
@@ -111,6 +112,7 @@ export default async function Page({ searchParams }: Props) {
   }
   const products = await fetchNextPage()
   // console.log(products[0].tallas)
+  const productos = products.filter((el) => el.razonsocial !== "fritzduran")
 
   return (
     <div>
@@ -150,7 +152,7 @@ export default async function Page({ searchParams }: Props) {
                 <ProductFilters />
               </div>
             </div>
-            <ProductGrid products={products} generoSku={true} />
+            <ProductGrid products={productos} generoSku={true} />
             {/* Product grid */}
           </section>
         </main>

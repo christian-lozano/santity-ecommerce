@@ -25,6 +25,7 @@ const responsive = {
 }
 
 const CarouselProduct = ({ products }) => {
+  const productos = products.filter((el) => el.razonsocial !== "fritzduran")
   return (
     <div className="parent ">
       <Carousel
@@ -45,7 +46,7 @@ const CarouselProduct = ({ products }) => {
         slideImageFit="cover"
         dotListClass="custom-dot-list-style"
       >
-        {products.map((el, index) => (
+        {productos.map((el, index) => (
           <Product products={el} />
         ))}
       </Carousel>

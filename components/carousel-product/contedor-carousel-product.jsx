@@ -10,7 +10,7 @@ export default async function ContedorCarouselProduct({
   const productosGenero = async (genero, cantidad) => {
     const order = `| order(_id) [0...${cantidad}]`
 
-    const productFilter = `_type == "product" && razonsocial match "fritzsport"`
+    const productFilter = `_type == "product"`
 
     const generoFilterHombre = genero ? `&& genero match "${genero}"` : ""
 
@@ -35,10 +35,11 @@ export default async function ContedorCarouselProduct({
     return products
   }
   const products = await productosGenero(genero, cantidad)
+  const productos = products.filter((el) => el.razonsocial !== "fritzduran")
 
   return (
     <div>
-      <CarouselProduct products={products} />
+      <CarouselProduct products={productos} />
     </div>
   )
 }

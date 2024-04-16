@@ -26,8 +26,6 @@ interface Props {
 // }
 
 export default async function Page({ params }: Props) {
-
-
   const product =
     await client.fetch<SanityProduct>(groq`*[_type == "product" && slug.current == "${params.slug}" && sku == "${params.id}"][0] {
     _id,
@@ -50,14 +48,13 @@ export default async function Page({ params }: Props) {
     "slug":slug.current
   }`)
 
-
   if (!product) {
     return notFound()
   }
   const productosGenero = async () => {
     const order = `| order(_id) [0...10]`
 
-    const productFilter = `_type == "product" && razonsocial match "fritzsport"`
+    const productFilter = `_type == "product"`
 
     const generoFilterHombre = `${product.genero}`
       ? `&& genero match "${product.genero}"&& marca match "${product.marca}"`
@@ -85,6 +82,7 @@ export default async function Page({ params }: Props) {
   }
 
   const products = await productosGenero()
+
   return (
     <>
       <main className="mx-auto max-w-6xl sm:px-6 sm:pt-16 lg:px-8">
