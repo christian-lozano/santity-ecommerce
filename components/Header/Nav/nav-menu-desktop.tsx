@@ -37,7 +37,7 @@ export default function NavMenuDesktop({
                     <div className="mb-6 mt-4 grid h-full grid-flow-col gap-x-10 p-0 lg:my-0 lg:flex-row lg:px-1">
                       {dataHeader.menuSubmenu.map((el, index) => (
                         <Link
-                          href={`/${el.url}`}
+                          href={`${el.url}`}
                           className="flex  h-full items-center justify-center "
                           key={el.id}
                           onClick={() => setAndler(false)}

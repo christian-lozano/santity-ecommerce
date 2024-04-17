@@ -30,8 +30,8 @@ const filters = [
       { value: "unisex", label: "unisex" },
 
       // { value: "niños", label: "Niños" },
-      { value: "niño", label: "Niño" },
-      { value: "niña", label: "Niña" },
+      { value: "niños", label: "Niños" },
+      // { value: "niña", label: "Niña" },
     ],
   },
 
@@ -47,6 +47,8 @@ const filters = [
       { value: "pantalon", label: "pantalón" },
       { value: "plataforma", label: "plataforma" },
       { value: "polera", label: "poleras" },
+      { value: "polo", label: "polos" },
+
       { value: "terrex", label: "terrex" },
       { value: "bolso", label: "bolsos" },
       { value: "buzo", label: "buzos" },

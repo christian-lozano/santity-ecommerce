@@ -256,7 +256,10 @@ export default function FormPagar({ tipoEntrega }) {
     if (tipoEntrega === "recojo") {
       setPrecioDelibery(0)
     } else {
-      if (allValues.provincia === "Lima") {
+      if (
+        allValues.provincia === "ancon lima" &&
+        allValues.departamento === "Lima"
+      ) {
         setPrecioDelibery(10)
       } else {
         setPrecioDelibery(20)
@@ -413,7 +416,6 @@ export default function FormPagar({ tipoEntrega }) {
     // } else {
     //   setPrecioDelibery(20)
     // }
-    console.log(allValues)
   }, [allValues])
 
   const handlerDepartamento = (data, id) => {

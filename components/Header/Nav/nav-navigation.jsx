@@ -240,7 +240,7 @@ const dataHeader = {
     {
       id: "outlet",
       titulo: "OUTLET",
-      url: "tienda?price=desc",
+      url: "https://www.fritzsportoutlet.pe/",
     },
     {
       id: "tienda",
