@@ -22,13 +22,13 @@ export const metadata: Metadata = {
     siteName: "Fritz Sport",
     images: [
       {
-        url: `https://res.cloudinary.com/dmtq82guq/image/upload/v1712332042/fritz_sport/ecommerce_nti3ij.jpg`,
+        url: `/ecommerce-share.jpg`,
         width: 800,
         height: 600,
         alt: `Fritz Sport share Imagen`,
       },
       {
-        url: `https://res.cloudinary.com/dmtq82guq/image/upload/v1712332042/fritz_sport/ecommerce_nti3ij.jpg`,
+        url: `/ecommerce-share.jpg`,
 
         width: 1200,
         height: 630,

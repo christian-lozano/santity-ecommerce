@@ -104,12 +104,38 @@ export const product = defineType({
       of: [{ type: "image" }],
       validation: (rule) => rule.required(),
     },
+
     {
+      title: "Categoría",
       name: "categories",
-      title: "categories",
-      type: "array",
-      of: [{ type: "string" }],
+      type: "string",
+
       validation: (rule) => rule.required(),
+      options: {
+        list: [
+          { title: "Mochilas", value: "mochilas" },
+          { title: "Terrex", value: "terrex" },
+          { title: "Urbano", value: "urbano" },
+          { title: "Casacas", value: "casacas" },
+          { title: "Bolsos", value: "bolsos" },
+          { title: "Mochilas", value: "mochilas" },
+          { title: "Medias", value: "medias" },
+          { title: "Chimpunes", value: "chimpunes" },
+          { title: "Plataforma", value: "plataforma" },
+          { title: "Originals", value: "originals" },
+          { title: "Camisetas", value: "camisetas" },
+          { title: "Toma todo", value: "tomatodos" },
+          { title: "Medias", value: "medias" },
+          { title: "Buzos", value: "buzos" },
+          { title: "Escolar", value: "escolar" },
+          { title: "Pantalón", value: "pantalon" },
+          { title: "Gorras", value: "gorras" },
+          { title: "shorts", value: "shorts" },
+          { title: "Polos", value: "polos" },
+          { title: "Sandalias", value: "sandalias" },
+          { title: "Running", value: "running" },
+        ], // <-- predefined values
+      },
     },
     {
       name: "color",

@@ -1,4 +1,7 @@
+
 import mercadopago from "mercadopago"
+
+import { seedSanityData } from "@/lib/seed"
 
 export async function POST(req) {
   mercadopago.configure({
@@ -9,7 +12,7 @@ export async function POST(req) {
   try {
     const data = await req.json()
     // console.log(data)
-
+// tes
     // let productosCantidad = data.productos.map((el) => {
     //   let productos = {
     //     id: el.idsanity,
@@ -26,9 +29,9 @@ export async function POST(req) {
     let preference = {
       items: data.productos,
       payer: {
-        first_name: data.datosComprador.nombre,
-        last_name: data.datosComprador.apellido,
-        email: data.datosComprador.email,
+        first_name: data.nombres,
+        last_name: data.apellido,
+        email: data.email,
         phone: {
           area_code: "51",
           number: 987654321,
@@ -36,23 +39,23 @@ export async function POST(req) {
         address: {},
       },
       identification: {
-        number: data.datosComprador.documento,
+        number: data.documento,
         type: "DNI",
       },
       shipments: {
         receiver_address: {
           zip_code: "121212",
-          state_name: data.datosComprador.distrito,
+          state_name: data.distrito,
           city_name: "Lima",
-          street_name: data.datosComprador.distrito,
+          street_name: data.distrito,
           street_number: 3003,
         },
       },
 
       back_urls: {
-        success: `${process.env.URL_DOMINIO}/api/exito`,
-        failure: `${process.env.URL_DOMINIO}`,
-        pending: `${process.env.URL_DOMINIO}`,
+        success: `https://www.fritzsport.pe/api/exito`,
+        failure: `https://www.fritzsport.pe`,
+        pending: `https://www.fritzsport.pe`,
       },
 
       // installments: 1,
@@ -70,7 +73,7 @@ export async function POST(req) {
         installments: 1,
       },
       auto_return: "approved",
-  
+
       // notification_url: `${process.env.URL_DOMINIO}/api/exito`,
     }
 
@@ -81,7 +84,30 @@ export async function POST(req) {
       // const newPedido = new NewPedido(dataEnvioMongoUser)
       // const savePedido = await newPedido.save()
       // console.log(savePedido)
-      
+      let dataEnvioMongoUser = {
+        tipoEntrega: data.tipoEntrega,
+        razon: data.razon,
+        id_payer: response.body.id,
+        id_mercado_pago: "01",
+        estado: data.estado,
+        nombres: data.nombres,
+        apellidos: data.apellido,
+        email: data.email,
+        documento: data.documento,
+        cart_total: data.cartTotal,
+        telefono: data.telefono,
+        departamento: data.departamento,
+        distrito: data.distrito,
+        provincia: data.provincia,
+        direccion: data.direccion,
+        comprobante: data.comprobante,
+        info_adicional: data.adicional,
+        ruc: data.ruc,
+        productos: data.productos,
+      }
+
+      const dato = await seedSanityData(dataEnvioMongoUser)
+
       return new Response(
         JSON.stringify({
           url: response.body.init_point,

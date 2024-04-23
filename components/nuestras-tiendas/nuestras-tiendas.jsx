@@ -135,7 +135,7 @@ export default function NuestrasTiendas({ nuestrasTiendas }) {
                     </p>
                   </div>
                   <div className="flex items-center justify-between p-6">
-                    <div className="flex w-full justify-around">
+                    <div className="flex w-full justify-around gap-1">
                       <button
                         className=" bg-black p-5 py-2 capitalize  dark:bg-white "
                         onClick={handleOpen}

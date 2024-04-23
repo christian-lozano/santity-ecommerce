@@ -1,34 +1,37 @@
+
+import { redirect } from "next/navigation"
 import { NextResponse } from "next/server"
 import { client } from "@/sanity/lib/client"
+
 // sanity.js
-
-import mercadopago from "mercadopago"
-
-mercadopago.configure({
-  access_token: `${process.env.ACCESS_TOKEN_MERCADO}`,
-})
 
 // Import using ESM URL imports in environments that supports it:
 // import {createClient} from 'https://esm.sh/@sanity/client'
 
-export async function GET(req) {
-  async function updateDocumentTitle(_id, key, stock) {
-    const result = client
-      .patch(_id)
-      .dec({ [`tallas[_key == \"${key}\"].stock`]: stock })
+async function updateDocumentTitle(preference_id, collection_id, items) {
+  const resulta = await client
+    .patch(preference_id)
+    .set({ estado: "pagado", id_mercado_pago: collection_id })
+    .commit()
+
+  items.map(async (el) => {
+    await client
+      .patch(el.id)
+      .dec({ [`tallas[_key == \"${el.key}\"].stock`]: el.stock })
       // .append("tallas", [{ talla: talla, stock: 5 - stock }])
       .commit()
+  })
+  console.log(resulta)
 
-    return result
-  }
+  return resulta
+}
+
+export async function GET(req) {
   try {
     const searchParams = req.nextUrl.searchParams
     const collection_id = searchParams.get("collection_id")
     const preference_id = searchParams.get("preference_id")
-   
-
     // console.log(searchParams)
-
     // const filter = { id_payer: preference_id }
     // const update = {
     //   pedido_pagado: true,
@@ -36,28 +39,38 @@ export async function GET(req) {
     // }
     // let PedidoUpdate = await Pagos.findOneAndUpdate(filter, update)
 
-    fetch(`https://api.mercadopago.com/v1/payments/${collection_id}`, {
-      method: "GET",
-      headers: {
-        Authorization: `Bearer ${process.env.ACCESS_TOKEN_MERCADO}`,
-      },
-    })
-      .then((res) => res.json())
-      .then(async (result) => {
-        // console.log(preference_id)
-        const resulta = client
-          .patch(preference_id)
-          .set({ estado: "pagado", id_mercado_pago: collection_id })
-          .commit()
+    let mercadoPago = await fetch(
+      `https://api.mercadopago.com/v1/payments/${collection_id}`,
+      {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${process.env.ACCESS_TOKEN_MERCADO}`,
+        },
+      }
+    )
 
-        result.additional_info.items.map(async (el) => {
-          await updateDocumentTitle(el.id, el.description, Number(el.quantity))
-        })
-      })
+    let resultado = await mercadoPago.json()
 
-    return NextResponse.redirect(new URL("/exito", req.url))
+    // console.log(preference_id)
+
+    let rest = await updateDocumentTitle(
+      preference_id,
+      collection_id,
+      resultado.additional_info.items
+    )
+    console.log(rest)
+    if (rest) {
+      const url = req.nextUrl.clone()
+      url.pathname = "/exito"
+      return NextResponse.redirect(url)
+    } else {
+      return NextResponse.redirect(`/error`)
+    }
   } catch (error) {
     console.log(error)
-    return new Response(JSON.stringify({ error: "ocurrio un error" }))
+    return new Response(
+      JSON.stringify({ error: `ocurrio un error ${error.message}` })
+    )
   }
 }
+

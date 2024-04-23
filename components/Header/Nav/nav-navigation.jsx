@@ -11,7 +11,7 @@ const dataHeader = {
     {
       id: "mujer",
       titulo: "Mujer",
-      url: "tienda?genero=mujer",
+      url: "/tienda?genero=mujer",
 
       infoNav: [
         {
@@ -19,27 +19,27 @@ const dataHeader = {
             {
               id: "1",
               title: "Ver Todas las Zapatillas",
-              url: "tienda?genero=mujer&category=zapatilla",
+              url: "/tienda?genero=mujer",
             },
             {
               id: "3",
               title: "Terrex",
-              url: "tienda?genero=mujer&category=terrex",
+              url: "/tienda?genero=mujer&category=terrex",
             },
             {
               id: "5",
               title: "Urbano",
-              url: "tienda?genero=mujer&category=urbano",
+              url: "/tienda?genero=mujer&category=urbano",
             },
             {
               id: "6",
               title: "Sandalias",
-              url: "tienda?genero=mujer&category=sandalias",
+              url: "/tienda?genero=mujer&category=sandalias",
             },
             {
               id: "7",
               title: "Calzado de Plataforma",
-              url: "tienda?genero=mujer&category=plataforma",
+              url: "/tienda?genero=mujer&category=plataforma",
             },
           ],
         },
@@ -48,32 +48,32 @@ const dataHeader = {
             {
               id: "9",
               title: " Ropa",
-              url: "tienda?genero=mujer&category=ropa",
+              url: "/tienda?genero=mujer&category=ropas",
             },
             {
               id: "10",
               title: "Polos",
-              url: "tienda?genero=mujer&category=polo",
+              url: "/tienda?genero=mujer&category=polos",
             },
             {
               id: "12",
               title: "Casacas",
-              url: "tienda?genero=mujer&category=casaca",
+              url: "/tienda?genero=mujer&category=casacas",
             },
             {
               id: "12",
               title: "Poleras",
-              url: "tienda?genero=mujer&category=polera",
+              url: "/tienda?genero=mujer&category=poleras",
             },
             {
               id: "12",
               title: "Pantalones",
-              url: "tienda?genero=mujer&category=pantalon",
+              url: "/tienda?genero=mujer&category=pantalones",
             },
             {
               id: "12",
               title: "Buzos",
-              url: "tienda?genero=mujer&category=buzo",
+              url: "/tienda?genero=mujer&category=buzos",
             },
           ],
         },
@@ -82,22 +82,22 @@ const dataHeader = {
             {
               id: "13",
               title: "Accesorios",
-              url: "tienda?tipo=accesorios&genero=mujer",
+              url: "/tienda?tipo=accesorios&genero=mujer",
             },
             {
               id: "14",
               title: "Bolsos",
-              url: "tienda?tipo=accesorios&genero=mujer&category=bolso",
+              url: "/tienda?tipo=accesorios&genero=mujer&category=bolsos",
             },
             {
               id: "15",
               title: "Mochilas",
-              url: "tienda?tipo=accesorios&genero=mujer&category=mochila",
+              url: "/tienda?tipo=accesorios&genero=mujer&category=mochilas",
             },
             {
               id: "16",
               title: "Gorras",
-              url: "tienda?tipo=accesorios&genero=mujer&category=gorra",
+              url: "/tienda?tipo=accesorios&genero=mujer&category=gorras",
             },
           ],
         },
@@ -106,29 +106,29 @@ const dataHeader = {
     {
       id: "Hombre",
       titulo: "Hombre",
-      url: "tienda?genero=hombre",
+      url: "/tienda?genero=hombre",
       infoNav: [
         {
           categoria: [
             {
               id: "1",
               title: "Ver Todas las Zapatillas",
-              url: "tienda?tipo=calzado&genero=hombre&category=zapatilla",
+              url: "/tienda?tipo=calzado&genero=hombre",
             },
             {
               id: "3",
               title: "Terrex",
-              url: "tienda?tipo=calzado&genero=hombre&category=terrex",
+              url: "/tienda?tipo=calzado&genero=hombre&category=terrex",
             },
             {
               id: "5",
               title: "Urbano",
-              url: "tienda?tipo=calzado&genero=hombre&category=urbano",
+              url: "/tienda?tipo=calzado&genero=hombre&category=urbano",
             },
             {
               id: "6",
               title: "Sandalias",
-              url: "tienda?tipo=calzado&genero=hombre&category=sandalia",
+              url: "/tienda?tipo=calzado&genero=hombre&category=sandalias",
             },
           ],
         },
@@ -137,32 +137,32 @@ const dataHeader = {
             {
               id: "9",
               title: " Ropa",
-              url: "tienda?tipo=ropa&genero=hombre",
+              url: "/tienda?tipo=ropa&genero=hombre",
             },
             {
               id: "10",
               title: "Polos",
-              url: "tienda?tipo=ropa&genero=hombre&category=polo",
+              url: "/tienda?tipo=ropa&genero=hombre&category=polos",
             },
             {
               id: "12",
               title: "Casacas",
-              url: "tienda?tipo=ropa&genero=hombre&category=casaca",
+              url: "/tienda?tipo=ropa&genero=hombre&category=casacas",
             },
             {
               id: "12",
               title: "Poleras",
-              url: "tienda?tipo=ropa&genero=hombre&category=polera",
+              url: "/tienda?tipo=ropa&genero=hombre&category=poleras",
             },
             {
               id: "12",
               title: "Pantalones",
-              url: "tienda?tipo=ropa&genero=hombre&category=pantalon",
+              url: "/tienda?tipo=ropa&genero=hombre&category=pantalones",
             },
             {
               id: "12",
               title: "Buzos",
-              url: "tienda?tipo=ropa&genero=hombre&category=buzo",
+              url: "/tienda?tipo=ropa&genero=hombre&category=buzos",
             },
           ],
         },
@@ -171,18 +171,18 @@ const dataHeader = {
             {
               id: "13",
               title: "Accesorios",
-              url: "tienda?tipo=accesorios&genero=hombre",
+              url: "/tienda?tipo=accesorios&genero=hombre",
             },
 
             {
               id: "15",
               title: "Mochilas",
-              url: "tienda?tipo=accesorios&genero=hombre&category=mochila",
+              url: "/tienda?tipo=accesorios&genero=hombre&category=mochilas",
             },
             {
               id: "16",
               title: "Gorras",
-              url: "tienda?tipo=accesorios&genero=hombre&category=gorra",
+              url: "/tienda?tipo=accesorios&genero=hombre&category=gorras",
             },
           ],
         },
@@ -192,26 +192,26 @@ const dataHeader = {
     {
       id: "ninos",
       titulo: "Niños",
-      url: "tienda?genero=niños",
+      url: "/tienda?genero=niños",
       infoNav: [
         {
           categoria: [
             {
               id: "35",
-              title: "Calzado Niño",
-              url: "tienda?tipo=calzado&genero=niño",
+              title: "Calzado Niños",
+              url: "/tienda?tipo=calzado&genero=niños",
             },
             {
               id: "36",
               title: "Zapatillas",
-              url: "tienda?tipo=calzado&genero=niño&category=zapatilla",
+              url: "/tienda?tipo=calzado&genero=niños",
             },
 
             {
               id: "369",
               title: "Sandalias",
 
-              url: "tienda?tipo=calzado&genero=niño&category=sandalia",
+              url: "/tienda?tipo=calzado&genero=niños&category=sandalias",
             },
           ],
         },
@@ -220,18 +220,18 @@ const dataHeader = {
           categoria: [
             {
               id: "35",
-              title: "Calzado Niña",
-              url: "tienda?tipo=calzado&genero=niña",
+              title: "Calzado Niños",
+              url: "/tienda?tipo=calzado&genero=niños",
             },
             {
               id: "36",
               title: "Zapatillas",
-              url: "tienda?tipo=calzado&genero=niña&category=zapatilla",
+              url: "/tienda?tipo=calzado&genero=niños",
             },
             {
               id: "39",
               title: "Sandalias",
-              url: "tienda?tipo=calzado&genero=niña&category=sandalia",
+              url: "/tienda?tipo=calzado&genero=niños&category=sandalias",
             },
           ],
         },
@@ -240,17 +240,17 @@ const dataHeader = {
     {
       id: "outlet",
       titulo: "OUTLET",
-      url: "https://www.fritzsportoutlet.pe/",
+      url: "https://www.fritzsportoutlet.pe",
     },
     {
       id: "tienda",
       titulo: "Tienda",
-      url: "tienda",
+      url: "/tienda",
     },
     {
       id: "Ntiendas",
       titulo: "Nuestras Tiendas",
-      url: "nuestras-tiendas",
+      url: "/nuestras-tiendas",
     },
   ],
 }

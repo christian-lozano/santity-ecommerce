@@ -18,12 +18,12 @@ interface Props {
     id: string
   }
 }
-// export const generateMetadata = async ({
-//   params,
-// }: Props): Promise<Metadata> => {
-//   let meta = await metadataPage({ params })
-//   return meta
-// }
+export const generateMetadata = async ({
+  params,
+}: Props): Promise<Metadata> => {
+  let meta = await metadataPage({ params })
+  return meta
+}
 
 export default async function Page({ params }: Props) {
   const product =

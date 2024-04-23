@@ -35,13 +35,13 @@ export const metadata: Metadata = {
     siteName: "Fritz Sport",
     images: [
       {
-        url: `https://res.cloudinary.com/dmtq82guq/image/upload/v1712332042/fritz_sport/ecommerce_nti3ij.jpg`,
+        url: `/ecommerce-share.jpg`,
         width: 800,
         height: 600,
         alt: `Fritz Sport share Imagen`,
       },
       {
-        url: `https://res.cloudinary.com/dmtq82guq/image/upload/v1712332042/fritz_sport/ecommerce_nti3ij.jpg`,
+        url: `/ecommerce-share.jpg`,
 
         width: 1200,
         height: 630,
@@ -76,7 +76,7 @@ export default async function Page({ searchParams }: Props) {
     const tipoFilter = tipo ? `&& tipo match "${tipo}"` : ""
     const marcaFilter = marca ? `&& marca match "${marca}"` : ""
 
-    const categoryFilter = category ? `&& "${category}" in categories` : ""
+    const categoryFilter = category ? `&& "${category}" match categories` : ""
     const sizeFilter = size ? `&& tallas match "tallas"` : ""
     const generoFilter = genero ? `&& genero match "${genero}"` : ""
 

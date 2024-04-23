@@ -29,23 +29,23 @@ const columns = [
       },
     ],
   },
-  {
-    title: "Help",
-    links: [
-      {
-        text: "Problemas con mi Pedido",
-        link: "https://api.whatsapp.com/send/?phone=51983478551&text&type=phone_number&app_absent=0",
-      },
-      {
-        text: "Hacer una Devolución",
-        link: "https://api.whatsapp.com/send/?phone=51983478551&text&type=phone_number&app_absent=0",
-      },
-      {
-        text: "Talla Incorrecta",
-        link: "https://api.whatsapp.com/send/?phone=51983478551&text&type=phone_number&app_absent=0",
-      },
-    ],
-  },
+  // {
+  //   title: "Help",
+  //   links: [
+  //     {
+  //       text: "Problemas con mi Pedido",
+  //       link: "https://api.whatsapp.com/send/?phone=51983478551&text&type=phone_number&app_absent=0",
+  //     },
+  //     {
+  //       text: "Hacer una Devolución",
+  //       link: "https://api.whatsapp.com/send/?phone=51983478551&text&type=phone_number&app_absent=0",
+  //     },
+  //     {
+  //       text: "Talla Incorrecta",
+  //       link: "https://api.whatsapp.com/send/?phone=51983478551&text&type=phone_number&app_absent=0",
+  //     },
+  //   ],
+  // },
   {
     title: "Políticas",
     links: [

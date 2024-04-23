@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react"
 import Link from "next/link"
-import { Loader2 } from "lucide-react"
+
 import { useCart } from "react-use-cart"
 import { formatCurrencyString, useShoppingCart } from "use-shopping-cart"
 
