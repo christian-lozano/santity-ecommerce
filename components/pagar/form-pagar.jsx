@@ -514,7 +514,7 @@ export default function FormPagar({ tipoEntrega }) {
               </div>
             </div>
             <div className="mt-6 flex items-center justify-between ">
-              <p className="text-sm font-medium ">Precio de Envió</p>
+              <p className="text-sm font-medium ">Precio de Envío</p>
               <p className="text-base font-semibold ">S/{precioDelibery}</p>
             </div>
             <div className="mt-6 flex items-center justify-between ">
